@@ -4,11 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "build": "ng build",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "postinstall": "ng build --prod"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -88,5 +87,6 @@
   "engines": {
     "node": "10.15.0",
     "npm": "6.4.1"
-  }
+  },
+  "heroku-run-build-script": true
 }
