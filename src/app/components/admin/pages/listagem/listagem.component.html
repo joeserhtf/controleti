@@ -1,0 +1,55 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Solicitação De Compras
+    <small>Painel</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a routerLink="/admin/admin-home">
+        <i class="fa fa-dashboard"></i> Home</a>
+    </li>
+    <li class="active">SCs</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="box">
+    <div class="box-header">
+      <h3 class="box-title">Scs</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <table class="table table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Sc</th>
+            <th scope="col">Produto</th>
+            <th scope="col">Data</th>
+            <th scope="col">Situação</th>
+            <th scope='col'>Chamado</th>
+            <th><span class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#modalSc" (click)="resetForm()"></span>
+            </th>
+            <th scope="col" class="fa fa-trash text-red"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let sc of scs; index as i">
+            <td scope="row">{{i+1}}</td>
+            <td>{{ sc.numeroSC }}</td>
+            <td>{{ sc.produtoID }}</td>
+            <td>{{ sc.dataAP }}</td>
+            <td>{{ sc.situacaoSC == 1 ? 'Finalizada' : 'Pendente'}}</td>
+            <td>{{ sc.chamadoID }}</td>
+            <td> <span class="fa fa-pencil" data-toggle="modal" data-target="#modalSc" (click)="onPreUpdateSc(sc)"></span>
+            </td>
+            <td> <span class="fa fa-trash text-red" (click)="onDeleteSc(sc.id)"> </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- /.box-body -->
+  </div>
+</section>
+<app-modal-sc></app-modal-sc>

@@ -1,0 +1,45 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Inventario
+    <small>Itens</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a routerLink="/admin-home">
+        <i class="fa fa-dashboard"></i> Home</a>
+    </li>
+    <li class="active">Inventario</li>
+    <li class="active">Todos</li>
+  </ol>
+</section>
+<section class="content">
+    <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Inventario</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table class="table table-hover" datatable [dtTrigger]="dtTrigger">
+                <thead>
+                  <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">Quantidade</th>
+                    <th><span class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#modalInv" (click)="resetForm()"></span> </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let inv of invs">
+                    <td scope="row">{{inv.item}}</td>
+                    <td scope="row">{{inv.quantidade}}</td>
+                    <td>
+                        <span class="fa fa-minus-square" (click)="onPreUpdateInv(inv)" data-toggle="modal" data-target="#modalInv_menos"></span> 
+                    </td>
+                  </tr>
+                </tbody>
+                </table>
+        </div>
+        <!-- /.box-body -->
+      </div>
+</section>
+<app-modal-inv></app-modal-inv>

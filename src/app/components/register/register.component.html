@@ -1,0 +1,37 @@
+<div class="login-box">
+    <div class="login-logo">
+      <a [routerLink]="['admin/admin-home']">
+        <b>Painel</b> Carajas
+      </a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+      <p class="login-box-msg">Cadastrar</p>
+      <form #formRegister="ngForm" (ngSubmit)="onRegister()">
+        <div class="form-group has-feedback">
+          <input type="text" id="name" name="name" class="form-control" placeholder="Usuario" [(ngModel)]="user.name" required>
+          <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input type="email" id="email" name="email" class="form-control" placeholder="Email" [(ngModel)]="user.email" required>
+          </div>
+        <div class="form-group has-feedback">
+          <input type="password" id="password" name="password" class="form-control" placeholder="Senha" [(ngModel)]="user.password" required>
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        <div class="row">
+          <!-- /.col -->
+          <div class="col-xs-offset-8 col-xs-4">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Registrar</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+  
+     <a routerLink="../login">Ja tem conta?</a>
+      <br>
+  
+    </div>
+    <!-- /.login-box-body -->
+  </div>
+  <!-- /.login-box -->

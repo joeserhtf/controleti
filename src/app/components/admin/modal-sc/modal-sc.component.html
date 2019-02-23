@@ -1,0 +1,66 @@
+<div id="modalSc" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">{{!this.dataApiService.selectedSc.id ? 'Incluir Sc' : 'Editar/Detalhes'}}</h3>
+      </div>
+      <div class="modal-body">
+        <form class="form-book" #formSc="ngForm" (ngSubmit)="onSaveSc(formSc)">
+          <input type="hidden" id="id" name="id" class="form-control" [(ngModel)]="this.dataApiService.selectedSc.id">
+          <div class="form-group">
+            <label for="">Produtos</label>
+            <input type="text" id="produtoID" name="produtoID" class="form-control" placeholder="Produtos" [(ngModel)]="this.dataApiService.selectedSc.produtoID">
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="numeroSC">Sc:</label>
+              <input name="numeroSC" id="numeroSC" class="form-control" placeholder="Numero da Sc" [(ngModel)]="this.dataApiService.selectedSc.numeroSC">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="quantidadeP">Quantidade:</label>
+              <input type="quantidadeP" id="quantidadeP" name="quantidadeP" class="form-control" placeholder="Ex: 10" [(ngModel)]="this.dataApiService.selectedSc.quantidadeP">
+            </div>
+
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="dataAP">Data</label>
+                <input type="date" id="dataAP" name="dataAP" class="form-control" [(ngModel)]="this.dataApiService.selectedSc.dataAP">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="tipoID">Tipo:</label>
+              <input name="tipoID" id="tipoID" class="form-control" placeholder="Direta/Indireta" [(ngModel)]="this.dataApiService.selectedSc.tipoID">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="chamadoID">Chamado:</label>
+              <input type="text" id="chamadoID" name="chamadoID" class="form-control" placeholder="Numero Do Chamado"
+                [(ngModel)]="this.dataApiService.selectedSc.chamadoID">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="aprovadorName">Aprovador</label>
+              <input type="text" id="aprovadorName" name="aprovadorName" class="form-control" placeholder="Aprovador"
+                [(ngModel)]="this.dataApiService.selectedSc.aprovadorName">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="solicitanteName">Solicitante:</label>
+                <input type="text" id="solicitanteName" name="solicitanteName" class="form-control" placeholder="Solicitante" [(ngModel)]="this.dataApiService.selectedSc.solicitanteName">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="filial">Filial</label>
+                <input type="text" id="filial" name="filial" class="form-control" placeholder="Filial" >
+              </div>
+          </div>
+          <div class="form-group">
+            <label for="situacaoSC">Descrição:</label>
+            <textarea name="situacaoSC" id="situacaoSC" class="form-control" cols="50" rows="4" placeholder="Detalhes" [(ngModel)]="this.dataApiService.selectedSc.situacaoSC"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary float-right">Salvar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

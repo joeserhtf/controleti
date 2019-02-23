@@ -1,0 +1,53 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Historico Pagamentos
+    <small>Painel</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a routerLink="/admin/admin-home">
+        <i class="fa fa-dashboard"></i> Home</a>
+    </li>
+    <li class="active" routerLink="/admin/custofixo" >Custo Fixo</li>
+    <li class="active" routerLink="/admin/cfhistorico/0" (click)="reload()" >Historico</li>
+      <li *ngIf="testId()"  >
+        <span *ngFor="let name of names">
+          {{name.empresaName}}
+        </span>
+      </li>
+  </ol>
+</section>
+<section class="content">
+    <div class="box">
+        <div class="box-header" *ngIf="testId()">
+          <h3 class="box-title" *ngFor="let name of names">{{name.empresaName}}<span>&nbsp;&nbsp;</span><span class="glyphicon glyphicon-plus"></span></h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table class="table table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+                <thead>
+                  <tr>
+                      <th scope="col">NF</th>
+                      <th scope="col">Recebimento</th>
+                      <th scope="col">Vencimento</th>
+                      <th scope="col">Valor</th>
+                      <th scope="col">SC</th>
+                      <th scope="col">Situação</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let hist of hists"> <!-- Definir funçao no ts -->
+                    <td>{{ hist.nf }}</td>
+                    <td>{{ hist.recebimento }}</td>
+                    <td>{{ hist.vencimento }}</td>
+                    <td>{{ hist.valor }}</td>
+                    <td>{{ hist.sc }}</td>
+                    <td>{{ hist.situacao }}</td>
+                  </tr>
+                </tbody>
+                </table>
+        </div>
+        <!-- /.box-body -->
+      </div>
+</section>

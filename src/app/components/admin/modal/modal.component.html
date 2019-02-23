@@ -1,0 +1,46 @@
+<!-- Modal -->
+<div id="modalImp" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">{{!this.dataApiService.selectedImp.id ? 'Nova Impressora' : 'Atualizar Impressora'}}</h3>
+      </div>
+      <div class="modal-body">
+        <form class="form-book" #formImp="ngForm" (ngSubmit)="onSaveImp(formImp)">
+          <input type="hidden" id="id" name="id" class="form-control" [(ngModel)]="this.dataApiService.selectedImp.id">
+          <div class="form-group">
+            <label for="ip">Ip</label>
+            <input type="text" id="ip" name="ip" class="form-control" placeholder="Ip" [(ngModel)]="this.dataApiService.selectedImp.ip">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="filial">Filial</label>
+              <select name="filial" id="filial" class="form-control" [(ngModel)]="this.dataApiService.selectedImp.filial">
+                <option value="Matriz">Matriz</option>
+                <option value="JP">João Pessoa</option>
+                <option value="CBD">Cabedelo</option>
+                <option value="CD">CD</option>
+                <option value="JUA">Juazeiro Do Norte</option>
+                <option value="FOR">Fortaleza</option>
+                <option value="ARA">Arapiraca</option>
+                <option value="DV">Dona Valmira</option>
+                <option value="CG">Campina Grande</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="setor">Setor</label>
+              <input type="text" id="setor" name="setor" class="form-control" placeholder="Setor" [(ngModel)]="this.dataApiService.selectedImp.setor">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-group">
+              <label for="modelo">Modelo</label>
+              <input type="text" id="modelo" name="modelo" class="form-control" placeholder="Modelo" [(ngModel)]="this.dataApiService.selectedImp.modelo">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary float-right">Salvar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

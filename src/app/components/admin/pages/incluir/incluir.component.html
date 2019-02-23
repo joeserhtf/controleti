@@ -1,0 +1,63 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Impressora
+    <small>Editar</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a href="/admin/admin-home">
+        <i class="fa fa-dashboard"></i> Home</a>
+    </li>
+    <li class="active">Impressora</li>
+    <li class="active">Editar</li>
+  </ol>
+</section>
+
+<section class="content">
+
+    <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Scs</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>IP</th>
+                    <th>Setor</th>
+                    <th>Modelo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                  <td>
+                    <div class="form-group has-feedback">
+                      <input type="email" id="email" name="email" class="form-control" placeholder="{{ sc.numeroSC }}" required>
+                    </div>
+                  </td>
+                  <td>
+                      <div class="form-group has-feedback">
+                        <input type="email" id="email" name="email" class="form-control" placeholder="{{ sc.produtoID }}" required>
+                      </div>
+                    </td>
+                    <td>
+                        <div class="form-group has-feedback">
+                          <input type="email" id="email" name="email" class="form-control" placeholder="{{ sc.situacaoSC == 1 ? 'Finalizada' : 'Pendente'}}" required>
+                        </div>
+                      </td>
+                  </tr>
+                </tbody>
+                </table>
+                <div>
+                    <!-- /.col -->
+                    <div class="col-xs-offset-8 col-xs-4" class="float-right">
+                      <button type="submit" class="btn btn-primary btn-block btn-flat">Atualizar</button>
+                    </div>
+                    <!-- /.col -->
+                  </div>
+        </div>
+        <!-- /.box-body -->
+      </div>
+</section>

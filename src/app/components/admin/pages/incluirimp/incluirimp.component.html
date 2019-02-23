@@ -1,0 +1,59 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Adicionar
+    <small>SC</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a routerLink="/admin/admin-home">
+        <i class="fa fa-dashboard"></i> Home</a>
+    </li>
+    <li class="active">SC</li>
+    <li class="active">Incluir</li>
+  </ol>
+</section>
+
+
+<section class="content">
+<form #formRegister="ngForm" (ngSubmit)="onInclude()">
+  <div class="form-group has-feedback">
+    <input type="text" id="numeroSC" name="name" class="form-control" placeholder="Número SC" [(ngModel)]="sc.numeroSC" required>
+  </div>
+  <div class="form-group has-feedback">
+      <input type="text" id="produtoID" name="produtoID" class="form-control" placeholder="Produto" [(ngModel)]="sc.produtoID" required>
+    </div>
+  <div class="form-group has-feedback">
+    <input type="text" id="quantidadeP" name="quantidadeP" class="form-control" placeholder="Quantidade" [(ngModel)]="sc.quantidadeP" required>
+    
+  </div>
+  <div class="form-group has-feedback">
+      <input type="text" id="solicitanteName" name="solicitanteName" class="form-control" placeholder="Solicitante" [(ngModel)]="sc.solicitanteName" required>
+      
+    </div>
+    <div class="form-group has-feedback">
+        <input type="text" id="tipoID" name="tipoID" class="form-control" placeholder="Tipo(Direta/Indireta)" [(ngModel)]="sc.tipoID" required>
+        
+      </div>
+      <div class="form-group has-feedback">
+          <input type="text" id="chamadoID" name="chamadoID" class="form-control" placeholder="Chamado Referente" [(ngModel)]="sc.chamadoID" required>
+          
+        </div>
+        <div class="form-group has-feedback">
+            <input type="text" id="aprovadorName" name="aprovadorName" class="form-control" placeholder="Aprovador" [(ngModel)]="sc.aprovadorName" required>
+            
+          </div>
+          <div class="form-group has-feedback">
+              <input type="text" id="situacaoSC" name="situacaoSC" class="form-control" placeholder="Situação" [(ngModel)]="sc.situacaoSC" required>
+              
+            </div>
+  <div class="row">
+    <!-- /.col -->
+    <div class="col-xs-offset-8 col-xs-4">
+      <button type="submit" class="btn btn-primary btn-block btn-flat">Registrar</button>
+    </div>
+    <!-- /.col -->
+  </div>
+</form>
+
+</section>

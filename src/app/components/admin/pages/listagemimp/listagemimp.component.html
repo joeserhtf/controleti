@@ -1,0 +1,59 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Impressoras
+    <small>Painel</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a routerLink="/admin-home">
+        <i class="fa fa-dashboard"></i> Home</a>
+    </li>
+    <li class="active">Impressoras</li>
+    <li class="active">Listar</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="row">
+    <div>
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Impressoras</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body ">
+          <table class="table table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Setor</th>
+                <th scope="col">IP</th>
+                <th scope="col">Filial</th>
+                <th scope="col">Modelo</th>
+                <th><span class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#modalImp" (click)="resetForm()">
+                  </span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let imp of imps; index as i">
+                <td scope="row">{{i+1}}</td>
+                <td> {{ imp.setor }} <span class="fa fa-bars" data-toggle="modal" data-target="#modalUser" (click)="onPreUpdateImp(imp)">
+                  </span> </td>
+                <td>{{ imp.ip }}</td>
+                <td>{{ imp.filial }}</td>
+                <td>{{ imp.modelo}}</td>
+                <td>
+                  <span class="fa fa-pencil" (click)="onPreUpdateImp(imp)" data-toggle="modal" data-target="#modalImp"></span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- /.box-body -->
+      </div>
+    </div>
+    <!-- /.box-body -->
+  </div>
+</section>
+<app-modal></app-modal>
+<app-modal-user></app-modal-user>

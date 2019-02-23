@@ -1,0 +1,73 @@
+<div id="modalInv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content col-md-8">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">{{!this.inventarioDataService.selectedItem.id ? 'Novo Item' : 'Atualizar Inventario'}}</h3>
+          <h5> {{this.inventarioDataService.selectedItem.item}} </h5>          
+        </div>
+        <div class="box-body">
+          <div class="">
+          <form class="form-book" #formInv="ngForm" (ngSubmit)="onSaveInv(formInv)" >
+            <input type="hidden" id="id" name="id" class="form-control" [(ngModel)]="this.inventarioDataService.selectedItem.id">
+            <div class="form-horizontal">
+            <div class="form-group">
+              <label class="col-sm-4 control-label" for="item">Item</label> 
+              <div class="col-sm-6">
+                <input name="item" id="item" class="form-control" placeholder="Item" [(ngModel)]="this.inventarioDataService.selectedItem.item">
+              </div>
+            </div>
+          </div>
+              <div class="form-horizontal"> 
+              <div class="form-group">
+                <label class="col-sm-4 control-label" for="quantidade">Quantidade</label> 
+                <div class="col-sm-6">
+                  <input type="number" id="quantidade" name="quantidade" class="form-control" placeholder="Quantidade" [(ngModel)]="this.inventarioDataService.selectedItem.quantidade">
+                </div>
+              </div>   
+            </div>
+            <div class="box-footer">
+              <button type="submit" class="btn btn-primary pull-left">Salvar</button>
+            </div>
+          </form>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="modalInv_menos" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content col-md-8">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">Retirada Item: {{this.inventarioDataService.selectedItem.item}} </h3>    
+        </div>
+        <div class="box-body">
+          <div class="">
+          <form class="form-book" #formInvq="ngForm" (ngSubmit)="toNumberSaveMensagem(formInvq, this.inventarioDataService.selectedItem)" >
+            <input type="hidden" id="itemid" name="itemid" class="form-control" value="{{this.inventarioDataService.selectedItem.id}}" [(ngModel)]="this.inventarioDataService.mensagem.itemid" >
+            <div class="form-horizontal"> 
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="quantidade">Razão:</label> 
+                  <div class="col-sm-12">
+                    <textarea id="mensagem" name="mensagem" class="form-control" placeholder="Razão" [(ngModel)]="this.inventarioDataService.mensagem.mensagem" required></textarea>
+                  </div>
+                </div>  
+              </div>
+              <div class="form-horizontal"> 
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="quantidade">Data:</label>
+                  <div class="col-sm-6">
+                    <input id="data" type="date" name="data" class="form-control" placeholder="Data" [(ngModel)]="this.inventarioDataService.mensagem.data" required>
+                  </div>
+                </div>   
+              </div>
+            <div class="box-footer">
+              <button type="submit" class="btn btn-primary pull-left">Salvar</button>
+            </div>
+          </form>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
