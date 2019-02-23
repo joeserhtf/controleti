@@ -14,12 +14,12 @@ import { NgForm } from '@angular/forms';
 })
 export class AdminHomeComponent implements OnInit, OnDestroy {
 
-  private ates: atendimentoInterface;
+  public ates: atendimentoInterface;
   dtOptions: any = {};
   dtLanguage: any = portugues;
   dtTrigger: Subject<any> = new Subject();
 
-  constructor(private http: HttpClient, private atendimentoDataService: AtendimentoDataService, private authservice: AuthService) { }
+  constructor(public http: HttpClient, public atendimentoDataService: AtendimentoDataService, public authservice: AuthService) { }
 
   logado(){
     const token = this.authservice.getToken();

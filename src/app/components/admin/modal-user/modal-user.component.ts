@@ -14,12 +14,12 @@ import { NgForm } from '@angular/forms';
 })
 export class ModalUserComponent implements OnInit {
 
-  private uimps: usuarioImpInterface;
+  public uimps: usuarioImpInterface;
   dtOptions: any = {};
   dtLanguage: any = portugues;
   dtTrigger: Subject<any> = new Subject();
 
-  constructor(private dataApiService: DataApiService, private userImp: UsuarioimpDataService) { 
+  constructor(public dataApiService: DataApiService, public userImp: UsuarioimpDataService) { 
     setTimeout(() => {
       this.getUsersImpressoras();
     }, 2000);

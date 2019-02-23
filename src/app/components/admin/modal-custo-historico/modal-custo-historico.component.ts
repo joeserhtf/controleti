@@ -19,17 +19,17 @@ export class ModalCustoHistoricoComponent implements OnInit {
   dtOptions: any = {};
   dtLanguage: any = portugues;
   dtTrigger: Subject<any> = new Subject();
-  private hists: historicoInterface;
+  public hists: historicoInterface;
 
-  private names: historicoInterface;
+  public names: historicoInterface;
 
-  constructor(private http: HttpClient,
-    private custofixodata: CustofixoDataService,
-    private route: ActivatedRoute,
-    private location: Location
+  constructor(public http: HttpClient,
+    public custofixodata: CustofixoDataService,
+    public route: ActivatedRoute,
+    public location: Location
     ) { }
 
-  private histss: historicoInterface = {
+    public histss: historicoInterface = {
     cfid: '',
     nf: '',
     recebimento: '',

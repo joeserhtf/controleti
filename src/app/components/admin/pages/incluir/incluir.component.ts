@@ -11,7 +11,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class IncluirComponent implements OnInit {
 
   constructor(private dataApi: DataApiService, private route: ActivatedRoute) { }
-  private sc: ScInterface = {
+  public sc: ScInterface = {
     numeroSC: '',
     produtoID: '',
     quantidadeP: '',

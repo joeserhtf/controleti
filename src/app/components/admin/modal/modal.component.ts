@@ -12,8 +12,8 @@ import { Location } from '@angular/common';
 export class ModalComponent implements OnInit {
 
   constructor(
-    private dataApiService: DataApiService, 
-    private location: Location
+    public dataApiService: DataApiService, 
+    public location: Location
   ) { }
 
   ngOnInit() {

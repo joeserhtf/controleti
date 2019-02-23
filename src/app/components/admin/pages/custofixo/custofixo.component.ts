@@ -13,12 +13,12 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 })
 export class CustofixoComponent implements OnInit {
 
-  private cfs: custofixoInterface;
+  public cfs: custofixoInterface;
   dtOptions: any = {};
   dtLanguage: any = portugues;
   dtTrigger: Subject<any> = new Subject();
 
-  constructor(private http: HttpClient, private cfApi: CustofixoDataService ) { }
+  constructor(public http: HttpClient, public cfApi: CustofixoDataService ) { }
 
   getCustoFixo(): void{
       this.cfApi.getAllCustoFixo().subscribe((cfs: custofixoInterface) => {
