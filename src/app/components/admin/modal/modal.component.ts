@@ -12,7 +12,7 @@ import { Location } from '@angular/common';
 export class ModalComponent implements OnInit {
 
   constructor(
-    private dataApiService: DataApiService, 
+    public dataApiService: DataApiService, 
     private location: Location
   ) { }
 

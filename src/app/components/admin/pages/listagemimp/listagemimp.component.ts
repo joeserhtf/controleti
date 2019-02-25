@@ -17,7 +17,7 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class ListagemimpComponent implements OnInit, OnDestroy {
   
-  private imps: impInterface;
+  public imps: impInterface;
   private uimps: usuarioImpInterface;
   dtOptions: any = {};
   dtLanguage: any = portugues;

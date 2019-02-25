@@ -13,7 +13,7 @@ import { InventarioDataService } from '../../../../services/inventario-data.serv
 })
 export class InventarioComponent implements OnInit {
 
-  private invs: inventarioInterface;
+  public invs: inventarioInterface;
   dtOptions: any = {};
   dtLanguage: any = portugues;
   dtTrigger: Subject<any> = new Subject();

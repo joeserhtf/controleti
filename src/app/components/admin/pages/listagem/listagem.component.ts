@@ -20,7 +20,7 @@ export class ListagemComponent implements OnInit {
   // We use this trigger because fetching the list of persons can be quite long,
   // thus we ensure the data is fetched before rendering
 
-  private scs: ScInterface;
+  public scs: ScInterface;
   dtOptions: any = {};
   dtLanguage: any = portugues;
   dtTrigger: Subject<any> = new Subject();

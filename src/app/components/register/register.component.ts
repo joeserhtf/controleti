@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) { }
-  private user: UserInterface = {
+  public user: UserInterface = {
     name: "",
     email: "",
     password: ""

@@ -11,7 +11,7 @@ import { Location } from '@angular/common';
 })
 export class ModalInvComponent implements OnInit {
 
-  constructor(private inventarioDataService: InventarioDataService, private location: Location) { }
+  constructor(public inventarioDataService: InventarioDataService, private location: Location) { }
 
   ngOnInit() {
   }

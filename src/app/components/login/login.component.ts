@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   checkbox_icheck: HTMLElement = document.getElementById('checkbox_icheck');
 
   constructor(private authService: AuthService, private router: Router) { }
-  private user: UserInterface = {
+  public user: UserInterface = {
     email: "",
     password: ""
   }

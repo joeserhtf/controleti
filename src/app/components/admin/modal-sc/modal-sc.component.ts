@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalScComponent implements OnInit {
 
-  constructor(private dataApiService: DataApiService, private router: Router, private atendimentoService: AtendimentoDataService) { }
+  constructor(public dataApiService: DataApiService, private router: Router, private atendimentoService: AtendimentoDataService) { }
 
   onSaveSc(ScForm: NgForm): void{
       if(ScForm.value.id == null){

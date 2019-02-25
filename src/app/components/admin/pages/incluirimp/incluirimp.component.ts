@@ -11,7 +11,7 @@ import { ScInterface } from './../../../../models/sc-interface';
 export class IncluirimpComponent implements OnInit {
 
   constructor(private dataApi: DataApiService, private router: Router) { }
-  private sc: ScInterface = {
+  public sc: ScInterface = {
     numeroSC: '',
     produtoID: '',
     quantidadeP: '',

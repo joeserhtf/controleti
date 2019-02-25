@@ -19,7 +19,7 @@ export class ModalCustoHistoricoComponent implements OnInit {
   dtOptions: any = {};
   dtLanguage: any = portugues;
   dtTrigger: Subject<any> = new Subject();
-  private hists: historicoInterface;
+  public hists: historicoInterface;
 
   private names: historicoInterface;
 

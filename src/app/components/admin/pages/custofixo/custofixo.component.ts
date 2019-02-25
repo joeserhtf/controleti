@@ -13,7 +13,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 })
 export class CustofixoComponent implements OnInit {
 
-  private cfs: custofixoInterface;
+  public cfs: custofixoInterface;
   dtOptions: any = {};
   dtLanguage: any = portugues;
   dtTrigger: Subject<any> = new Subject();

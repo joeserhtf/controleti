@@ -4,7 +4,8 @@ import { NgModule } from '@angular/core';
 import { FullCalendarModule } from 'ng-fullcalendar';
 
 import { DataTablesModule } from 'angular-datatables';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { AdminComponent } from './components/admin/admin.component';
@@ -69,6 +70,7 @@ import { ModalInvComponent } from './components/admin/modal-inv/modal-inv.compon
     ModalInvComponent,
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -76,7 +78,7 @@ import { ModalInvComponent } from './components/admin/modal-inv/modal-inv.compon
     FormsModule,
     FullCalendarModule,
   ],
-  providers: [DataApiService, CustofixoDataService, AtendimentoDataService, InventarioDataService, UsuarioimpDataService],
+  providers: [HttpClient, HttpModule, HttpClientModule, DataApiService, CustofixoDataService, AtendimentoDataService, InventarioDataService, UsuarioimpDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
