@@ -13,7 +13,11 @@ export class ModalComponent implements OnInit {
 
   constructor(
     public dataApiService: DataApiService, 
+<<<<<<< HEAD
     private location: Location
+=======
+    public location: Location
+>>>>>>> 71867fddefc0cb86163ee6ac55c6fa5c6705dd5a
   ) { }
 
   ngOnInit() {
