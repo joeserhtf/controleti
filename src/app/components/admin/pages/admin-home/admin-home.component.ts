@@ -19,11 +19,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
   dtLanguage: any = portugues;
   dtTrigger: Subject<any> = new Subject();
 
-<<<<<<< HEAD
   constructor(private http: HttpClient, public atendimentoDataService: AtendimentoDataService, private authservice: AuthService) { }
-=======
-  constructor(public http: HttpClient, public atendimentoDataService: AtendimentoDataService, public authservice: AuthService) { }
->>>>>>> 71867fddefc0cb86163ee6ac55c6fa5c6705dd5a
 
   logado(){
     const token = this.authservice.getToken();

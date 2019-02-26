@@ -19,11 +19,7 @@ export class ModalUserComponent implements OnInit {
   dtLanguage: any = portugues;
   dtTrigger: Subject<any> = new Subject();
 
-<<<<<<< HEAD
   constructor(public dataApiService: DataApiService, private userImp: UsuarioimpDataService) { 
-=======
-  constructor(public dataApiService: DataApiService, public userImp: UsuarioimpDataService) { 
->>>>>>> 71867fddefc0cb86163ee6ac55c6fa5c6705dd5a
     setTimeout(() => {
       this.getUsersImpressoras();
     }, 2000);
