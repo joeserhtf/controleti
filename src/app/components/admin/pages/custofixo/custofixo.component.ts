@@ -18,7 +18,7 @@ export class CustofixoComponent implements OnInit {
   dtLanguage: any = portugues;
   dtTrigger: Subject<any> = new Subject();
 
-  constructor(private http: HttpClient, private cfApi: CustofixoDataService ) { }
+  constructor(public http: HttpClient, public cfApi: CustofixoDataService ) { }
 
   getCustoFixo(): void{
       this.cfApi.getAllCustoFixo().subscribe((cfs: custofixoInterface) => {
