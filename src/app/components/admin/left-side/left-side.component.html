@@ -10,61 +10,26 @@
         <p>{{user.name}}</p>
       </div>
     </div>
-    <!-- search form -->
-    <!-- <form action="#" method="get" class="sidebar-form">
-      <div class="input-group">
-        <input type="text" name="q" class="form-control" placeholder="Search...">
-        <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-      </div>
-    </form> -->
-
-
-    <!-- /.search form -->
-    <!-- sidebar menu: : style can be found in sidebar.less -->
 
     <ul class="sidebar-menu">
       <li class="header">Menus</li>
       <li class="treeview">
-          <a href="#">
-              <i class="fa fa-pie-chart"></i>
-              <span>Gestão</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
+          <a routerLink="/admin/admin-home">
+              <i class="fa fa-users"></i>
+              <span>Atendentes</span>
             </a>
-          <ul class="treeview-menu">
-            <li><a routerLink="/admin/admin-home"><i class="fa fa-circle-o"></i>Atendimento Atual</a></li>
-          </ul>
-          <ul class="treeview-menu">
-              <li *ngIf="!isLogged"><a routerLink="/admin/login"><i class="fa fa-circle-o"></i>Login</a></li>
-            </ul>
         </li>
       <li class="treeview" *ngIf="isLogged">
-        <a href="#">
-            <i class="fa fa-pie-chart"></i>
+        <a routerLink="/admin/listagem">
+            <i class="fa fa-shopping-cart"></i>
             <span>Solicitações de Compra</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
           </a>
-        <ul class="treeview-menu">
-          <li><a routerLink="/admin/listagem"><i class="fa fa-circle-o"></i>Listar</a></li>
-        </ul>
       </li>
       <li class="treeview" *ngIf="isLogged">
-        <a href="#">
-            <i class="fa fa-pie-chart"></i>
+        <a routerLink="/admin/listagemimp" >
+            <i class="fa fa-print"></i>
             <span>Impressoras</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
           </a>
-        <ul class="treeview-menu">
-          <li><a routerLink="/admin/listagemimp"><i class="fa fa-circle-o"></i>Listar</a></li>
-        </ul>
       </li>
       <li class="treeview" *ngIf="isLogged">
         <a href="#">
@@ -80,28 +45,16 @@
         </ul>
       </li>
       <li class="treeview" *ngIf="isLogged">
-        <a href="#">
-            <i class="fa fa-pie-chart"></i>
-            <span>Inventário</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+        <a routerLink="/admin/inventario">
+            <i class="fa fa-list-alt"></i>
+            <span>Inventário</span>            
           </a>
-        <ul class="treeview-menu">
-          <li><a routerLink="/admin/inventario"><i class="fa fa-circle-o"></i>Listar</a></li>
-        </ul>
       </li>
       <li class="treeview" *ngIf="isLogged">
-        <a href="#">
+        <a routerLink="/admin/horario">
             <i class="fa fa-calendar"></i>
             <span>Horarios</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
           </a>
-        <ul class="treeview-menu">
-          <li><a routerLink="/admin/horario"><i class="fa fa-circle-o"></i>Calendario</a></li>
-        </ul>
       </li>
     </ul>
   </section>

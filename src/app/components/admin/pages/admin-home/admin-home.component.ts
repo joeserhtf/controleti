@@ -30,6 +30,15 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
     }
   }
 
+  public isLogged: boolean = false;
+  onCheckUser(): void{
+    if(this.authservice.getCurrentUser() == null){
+      this.isLogged = false;
+    }else{
+      this.isLogged = true;
+    }
+  }
+
   getlistAtendentes(){
     this.atendimentoDataService.getAllAtendimentos().subscribe((ates: atendimentoInterface ) => {
     this.ates = ates;

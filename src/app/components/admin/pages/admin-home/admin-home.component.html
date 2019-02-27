@@ -28,7 +28,7 @@
                   <th scope="col">Local</th>
                   <th scope="col">Chamado</th>
                   <th scope="col">Obs</th>
-                  <th scope="col">Atualizar</th>
+                  <th *ngIf="isLogged" scope="col">Atualizar</th>
               </thead>
               <tbody>
                 <tr *ngFor="let ate of ates">
@@ -36,7 +36,7 @@
                   <td>{{ ate.local }}</td>
                   <td>{{ ate.chamado }}</td>
                   <td>{{ ate.mensagem}}</td>
-                  <td><span class="glyphicon glyphicon-option-horizontal" data-toggle="modal" data-target="#modalAte" (click)="onPreUpdateAte(ate)"></span></td>
+                  <td *ngIf="isLogged" ><span class="glyphicon glyphicon-option-horizontal" data-toggle="modal" data-target="#modalAte" (click)="onPreUpdateAte(ate)"></span></td>
                 </tr>
               </tbody>
             </table>
