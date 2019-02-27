@@ -21,7 +21,7 @@
 <section class="content">
     <div class="box">
         <div class="box-header" *ngIf="testId()">
-          <h3 class="box-title" *ngFor="let name of names">{{name.empresaName}}<span>&nbsp;&nbsp;</span><span class="glyphicon glyphicon-plus"></span></h3>
+          <h3 class="box-title" *ngFor="let name of names">{{name.empresaName}}<span>&nbsp;&nbsp;</span><span data-toggle="modal" data-target="#modalCF" class="glyphicon glyphicon-plus"></span></h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -51,3 +51,39 @@
         <!-- /.box-body -->
       </div>
 </section>
+
+<div id="modalCF" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel"></h3>
+        </div>
+        <div class="modal-body">
+          <form class="form-book" >
+            <input type="hidden" id="id" name="id" class="form-control">
+            <div class="form-group">
+              <label for="nf">NF</label>
+              <input type="text" id="nf" name="nf" class="form-control" placeholder="NF" >
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="recebimento">Recebimento</label>
+                <input type="date" id="recebimento" name="recebimento" class="form-control" placeholder="Recebimento" >
+              </div>
+              <div class="form-group">
+                <label for="setor">Vencimento</label>
+                <input type="date" id="vencimento" name="vencimento" class="form-control" placeholder="vencimento" >
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-group">
+                <label for="vencimento">Vencimento</label>
+                <input type="text" id="Vencimento" name="Vencimento" class="form-control" placeholder="Vencimento" >
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary float-right">Salvar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

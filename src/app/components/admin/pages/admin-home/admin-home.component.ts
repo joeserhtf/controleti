@@ -21,15 +21,6 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
 
   constructor(private http: HttpClient, public atendimentoDataService: AtendimentoDataService, private authservice: AuthService) { }
 
-  logado(){
-    const token = this.authservice.getToken();
-    if(token == null){
-      return false;
-    }else{
-      return true;
-    }
-  }
-
   public isLogged: boolean = false;
   onCheckUser(): void{
     if(this.authservice.getCurrentUser() == null){
@@ -57,6 +48,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getlistAtendentes();
+    this.onCheckUser();
   }
 
   ngOnDestroy(): void {
