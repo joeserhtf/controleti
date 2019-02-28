@@ -1,3 +1,4 @@
+import { RamalComponent } from './components/admin/pages/ramal/ramal.component';
 import { ModalScComponent } from './components/admin/modal-sc/modal-sc.component';
 import { AuthGuard } from './guards/auth.guard';
 import { CustofixoComponent } from './components/admin/pages/custofixo/custofixo.component';
@@ -15,7 +16,8 @@ import { ListagemimpComponent } from './components/admin/pages/listagemimp/lista
 import { HorarioComponent } from './components/admin/pages/horario/horario.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/admin/pages/profile/profile.component';
-import { ModalCustoHistoricoComponent } from './components/admin/modal-custo-historico/modal-custo-historico.component'
+import { ModalCustoHistoricoComponent } from './components/admin/modal-custo-historico/modal-custo-historico.component';
+
 
 const routes: Routes = [
   {
@@ -66,6 +68,10 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent, canActivate:[AuthGuard]
+      },
+      {
+        path: 'ramal',
+        component: RamalComponent, canActivate:[AuthGuard]
       },
       {
         path: 'modalsc',

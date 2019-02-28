@@ -39,6 +39,13 @@ export class ModalCustoHistoricoComponent implements OnInit {
     sc: ''
   };
 
+  onSaveHist(HistForm: NgForm): void{
+      this.custofixodata.saveHist(HistForm.value).subscribe(sc => 
+      setTimeout(() => {
+        location.reload();
+      }, 1000));    
+}
+
   ngOnInit() {
 
     this.dtOptions = {
@@ -62,6 +69,7 @@ export class ModalCustoHistoricoComponent implements OnInit {
     const cf_id = this.route.snapshot.params['id'];
     this.getHistorico(cf_id);
     this.getNameCf(cf_id);
+    this.cfid();
 
   }
 
@@ -73,6 +81,11 @@ export class ModalCustoHistoricoComponent implements OnInit {
 
 reload(){
   location.reload();
+}
+
+cfid(){
+  const cf_id = this.route.snapshot.params['id'];
+  this.custofixodata.SelectHist.cfid = cf_id;
 }
 
 testId(){

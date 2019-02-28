@@ -8,5 +8,6 @@ export interface ScInterface{
     aprovadorName?: string,
     dataAP?: string,
     situacaoSC?: string,
+    filial?: string,
     id?: string;
 }

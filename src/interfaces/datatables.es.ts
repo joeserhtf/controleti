@@ -1,3 +1,7 @@
+export {
+  portugues
+};
+
 const portugues = {
   processing: 'Processando...',
   search: 'Procurar:',
@@ -29,6 +33,4 @@ const portugues = {
   }
 };
 
-export {
-  portugues
-};
+

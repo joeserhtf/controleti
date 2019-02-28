@@ -59,26 +59,38 @@
           <h3 class="modal-title" id="exampleModalLabel"></h3>
         </div>
         <div class="modal-body">
-          <form class="form-book" >
-            <input type="hidden" id="id" name="id" class="form-control">
+          <form class="form-book" #formHist="ngForm" (ngSubmit)="onSaveHist(formHist)">
+            <input type="text" id="cfid" name="cfid" class="form-control" [(ngModel)]="this.custofixodata.SelectHist.cfid">
             <div class="form-group">
               <label for="nf">NF</label>
-              <input type="text" id="nf" name="nf" class="form-control" placeholder="NF" >
+              <input type="text" id="nf" name="nf" class="form-control" placeholder="NF" [(ngModel)]="this.custofixodata.SelectHist.nf">
             </div>
             <div class="form-row">
               <div class="form-group">
                 <label for="recebimento">Recebimento</label>
-                <input type="date" id="recebimento" name="recebimento" class="form-control" placeholder="Recebimento" >
+                <input type="date" id="recebimento" name="recebimento" class="form-control" placeholder="Recebimento" [(ngModel)]="this.custofixodata.SelectHist.recebimento">
               </div>
               <div class="form-group">
-                <label for="setor">Vencimento</label>
-                <input type="date" id="vencimento" name="vencimento" class="form-control" placeholder="vencimento" >
+                <label for="vencimento">Vencimento</label>
+                <input type="date" id="vencimento" name="vencimento" class="form-control" placeholder="vencimento" [(ngModel)]="this.custofixodata.SelectHist.vencimento">
               </div>
             </div>
             <div class="form-group">
               <div class="form-group">
-                <label for="vencimento">Vencimento</label>
-                <input type="text" id="Vencimento" name="Vencimento" class="form-control" placeholder="Vencimento" >
+                <label for="valor">Valor</label>
+                <input type="text" id="valor" name="valor" class="form-control" placeholder="valor" [(ngModel)]="this.custofixodata.SelectHist.valor">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-group">
+                <label for="sc">SC</label>
+                <input type="text" id="sc" name="sc" class="form-control" placeholder="sc" [(ngModel)]="this.custofixodata.SelectHist.sc">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-group">
+                <label for="situacao">Situação</label>
+                <input type="text" id="situacao" name="situacao" class="form-control" placeholder="situacao" [(ngModel)]="this.custofixodata.SelectHist.situacao">
               </div>
             </div>
             <button type="submit" class="btn btn-primary float-right">Salvar</button>

@@ -41,6 +41,7 @@ import { ModalScComponent } from './components/admin/modal-sc/modal-sc.component
 import { ModalUserComponent } from './components/admin/modal-user/modal-user.component';
 import { ModalCustoHistoricoComponent } from './components/admin/modal-custo-historico/modal-custo-historico.component';
 import { ModalInvComponent } from './components/admin/modal-inv/modal-inv.component';
+import { RamalComponent } from './components/admin/pages/ramal/ramal.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { ModalInvComponent } from './components/admin/modal-inv/modal-inv.compon
     ModalUserComponent,
     ModalCustoHistoricoComponent,
     ModalInvComponent,
+    RamalComponent,
   ],
   imports: [
     HttpModule,

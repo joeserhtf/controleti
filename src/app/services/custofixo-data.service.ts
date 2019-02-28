@@ -27,7 +27,17 @@ export class CustofixoDataService {
 
   //Var atend
   cf: Observable<any>;
-  cfs: Observable<any>; 
+  cfs: Observable<any>;
+  
+  public SelectHist: historicoInterface = {
+    cfid: '',
+    nf: '',
+    recebimento: '',
+    vencimento: '',
+    valor: '',
+    situacao: '',
+    sc: ''
+  };
 
   getAllCustoFixo(){
     const url_api = 'https://carajas-tic-dashboard.mybluemix.net/api/custofixos';
@@ -51,6 +61,13 @@ export class CustofixoDataService {
       const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/historicos/?filter[where][cfid]=${cf_id}`;
       return this.http.get<historicoInterface>(url_api);
     }
+  }
+
+  saveHist(hist: historicoInterface){
+    let token = this.authService.getToken();
+    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/historicos/?access_token=${token}`;
+    return this.http.post<historicoInterface>(url_api, hist ,{headers: this.headers})
+    .pipe(map(data => data));
   }
 
   getNameById(cf_id: number){

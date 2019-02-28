@@ -9,6 +9,7 @@ import { AuthService } from './auth.service';
 //Interfaces
 import { inventarioInterface } from '../models/inventario-interface';
 import { mensagemInterface } from '../models/mensagem-Interface';
+import { ramalInterface } from './../models/ramal-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +25,11 @@ export class InventarioDataService {
   });
 
   //Var atend
+  ramal: Observable<any>;
   inv: Observable<any>;
   invs: Observable<any>;
+
+  //Inventario
 
   public selectedItem: inventarioInterface = {
     id: null,
@@ -71,6 +75,19 @@ export class InventarioDataService {
     let token = this.authService.getToken();
     const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/mensagens/?access_token=${token}`;
     return this.http.post<mensagemInterface>(url_api, mensagem ,{headers: this.headers})
+    .pipe(map(data => data));
+  }
+
+  //Ramal
+  getAllRamal(){
+    const url_api = 'https://carajas-tic-dashboard.mybluemix.net/api/ramais';
+    return this.http.get<ramalInterface>(url_api);
+  }
+
+  saveRamal(ramal: ramalInterface){
+    let token = this.authService.getToken();
+    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/ramais/?access_token=${token}`;
+    return this.http.post<ramalInterface>(url_api, ramal ,{headers: this.headers})
     .pipe(map(data => data));
   }
 

@@ -35,6 +35,7 @@ export class DataApiService {
     chamadoID: '',
     aprovadorName: '',
     situacaoSC: '',
+    filial: ''
   };
 
   //Metodos Sc

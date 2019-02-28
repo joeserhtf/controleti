@@ -1,0 +1,44 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Ramais
+    <small>N°</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a routerLink="/admin-home">
+        <i class="fa fa-dashboard"></i> Home</a>
+    </li>
+    <li class="active">Ramais</li>
+    <li class="active">Todos</li>
+  </ol>
+</section>
+<section class="content">
+    <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Ramais</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table class="table table-hover" datatable [dtTrigger]="dtTrigger">
+                <thead>
+                  <tr>
+                    <th scope="col">Index</th>
+                    <th scope="col">Ramal</th>
+                    <th scope="col">Setor</th>
+                    <th scope="col">Usuarios </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let ramal of ramais; index as i">
+                    <td scope="row"> {{i+1}}</td>
+                    <td scope="row">{{ramal.ramal}}</td>
+                    <td scope="row">{{ramal.setor}}</td>
+                    <td scope="row">{{ramal.usuarios}}</td>
+                  </tr>
+                </tbody>
+                </table>
+        </div>
+        <!-- /.box-body -->
+      </div>
+</section>
