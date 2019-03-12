@@ -9,5 +9,6 @@ export interface ScInterface{
     dataAP?: string,
     situacaoSC?: string,
     filial?: string,
+    descricao?: string;
     id?: string;
 }

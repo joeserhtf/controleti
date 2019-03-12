@@ -82,6 +82,7 @@ export class ListagemComponent implements OnInit {
       chamadoID: '',
       aprovadorName: '',
       situacaoSC: '',
+      descricao: '',
     };
   }
 

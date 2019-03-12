@@ -25,7 +25,7 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <table class="table table-hover">
+            <table class="table table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
                 <thead>
                   <tr>
                       <th scope="col">NF</th>
@@ -43,7 +43,7 @@
                     <td>{{ hist.vencimento }}</td>
                     <td>{{ hist.valor }}</td>
                     <td>{{ hist.sc }}</td>
-                    <td>{{ hist.situacao }}</td>
+                    <td>{{ hist.situacao == 1 ? 'Entregue' : 'Pendente'}}</td>
                   </tr>
                 </tbody>
                 </table>
@@ -55,12 +55,10 @@
 <div id="modalCF" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
-        <div class="modal-header">
           <h3 class="modal-title" id="exampleModalLabel"></h3>
-        </div>
         <div class="modal-body">
           <form class="form-book" #formHist="ngForm" (ngSubmit)="onSaveHist(formHist)">
-            <input type="text" id="cfid" name="cfid" class="form-control" [(ngModel)]="this.custofixodata.SelectHist.cfid">
+            <input type="hidden" id="cfid" name="cfid" class="form-control" [(ngModel)]="this.custofixodata.SelectHist.cfid">
             <div class="form-group">
               <label for="nf">NF</label>
               <input type="text" id="nf" name="nf" class="form-control" placeholder="NF" [(ngModel)]="this.custofixodata.SelectHist.nf">
@@ -84,13 +82,16 @@
             <div class="form-group">
               <div class="form-group">
                 <label for="sc">SC</label>
-                <input type="text" id="sc" name="sc" class="form-control" placeholder="sc" [(ngModel)]="this.custofixodata.SelectHist.sc">
+                <input type="text" id="sc" name="sc" class="form-control" placeholder="Sc" [(ngModel)]="this.custofixodata.SelectHist.sc">
               </div>
             </div>
             <div class="form-group">
               <div class="form-group">
                 <label for="situacao">Situação</label>
-                <input type="text" id="situacao" name="situacao" class="form-control" placeholder="situacao" [(ngModel)]="this.custofixodata.SelectHist.situacao">
+                <select id="situacao" name="situacao" class="form-control" [(ngModel)]="this.custofixodata.SelectHist.situacao">
+                  <option value="0">Pendente</option>
+                  <option value="1">Entregue</option>
+                  </select>
               </div>
             </div>
             <button type="submit" class="btn btn-primary float-right">Salvar</button>

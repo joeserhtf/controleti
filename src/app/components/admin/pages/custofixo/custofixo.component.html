@@ -23,20 +23,18 @@
             <table class="table table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
                 <thead>
                   <tr>
-                    <th scope="col">Ordem</th>
+                    <th scope="col">Recebimento Padrão</th>
                     <th scope="col">Empresa</th>
                     <th scope="col">Serviço</th>
                     <th scope="col">Unidade</th>
-                    <th scope="col">Recebimento Padrão</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let cf of cfs; index as i"> <!-- Definir funçao no ts --> 
-                    <td scope="row">{{i+1}}</td>
+                  <tr *ngFor="let cf of cfs">
+                    <td>{{ cf.recebimentoData }}</td>
                     <td>{{ cf.empresaName }} <span routerLink="/admin/cfhistorico/{{cf.cfhid}}" class="glyphicon glyphicon-folder-open"></span></td>
                     <td>{{ cf.servico }}</td>
                     <td>{{ cf.unidade }}</td>
-                    <td>{{ cf.recebimentoData }}</td>
                   </tr>
                 </tbody>
                 </table>

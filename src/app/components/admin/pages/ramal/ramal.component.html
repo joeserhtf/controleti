@@ -23,15 +23,13 @@
             <table class="table table-hover" datatable [dtTrigger]="dtTrigger">
                 <thead>
                   <tr>
-                    <th scope="col">Index</th>
                     <th scope="col">Ramal</th>
                     <th scope="col">Setor</th>
                     <th scope="col">Usuarios </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let ramal of ramais; index as i">
-                    <td scope="row"> {{i+1}}</td>
+                  <tr *ngFor="let ramal of ramais">
                     <td scope="row">{{ramal.ramal}}</td>
                     <td scope="row">{{ramal.setor}}</td>
                     <td scope="row">{{ramal.usuarios}}</td>

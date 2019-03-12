@@ -14,11 +14,11 @@
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="numeroSC">Sc:</label>
-              <input name="numeroSC" id="numeroSC" class="form-control" placeholder="Numero da Sc" [(ngModel)]="this.dataApiService.selectedSc.numeroSC">
+              <input type="number" name="numeroSC" id="numeroSC" class="form-control" placeholder="Numero da Sc" [(ngModel)]="this.dataApiService.selectedSc.numeroSC">
             </div>
             <div class="form-group col-md-6">
               <label for="quantidadeP">Quantidade:</label>
-              <input type="quantidadeP" id="quantidadeP" name="quantidadeP" class="form-control" placeholder="Ex: 10" [(ngModel)]="this.dataApiService.selectedSc.quantidadeP">
+              <input type="number" id="quantidadeP" name="quantidadeP" class="form-control" placeholder="Ex: 10" [(ngModel)]="this.dataApiService.selectedSc.quantidadeP">
             </div>
 
           </div>
@@ -29,13 +29,16 @@
             </div>
             <div class="form-group col-md-6">
               <label for="tipoID">Tipo:</label>
-              <input name="tipoID" id="tipoID" class="form-control" placeholder="Direta/Indireta" [(ngModel)]="this.dataApiService.selectedSc.tipoID">
+              <select name="tipoID" id="tipoID" class="form-control" placeholder="Direta/Indireta" [(ngModel)]="this.dataApiService.selectedSc.tipoID">
+                <option value="0">Direta</option>
+                <option value="1">Indireta</option>
+                </select>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="chamadoID">Chamado:</label>
-              <input type="text" id="chamadoID" name="chamadoID" class="form-control" placeholder="Numero Do Chamado"
+              <input type="number" id="chamadoID" name="chamadoID" class="form-control" placeholder="Numero Do Chamado"
                 [(ngModel)]="this.dataApiService.selectedSc.chamadoID">
             </div>
             <div class="form-group col-md-6">
@@ -51,12 +54,23 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="filial">Filial</label>
-                <input type="text" id="filial" name="filial" class="form-control" placeholder="Filial" [(ngModel)]="this.dataApiService.selectedSc.filial">
+                <select id="filial" name="filial" class="form-control" [(ngModel)]="this.dataApiService.selectedSc.filial">
+                  <option value="Maceió">Matriz</option>
+                  <option value="João Pessoa">João Pessoa</option>
+                  <option value="Juazeiro Do Norte">Juazeiro Do Norte</option>
+                  <option value="Cabedelo">Cabedelo</option>
+                  <option value="Dona Valmira">Dona Valmira</option>
+                  <option value="Arapiraca">Arapiraca</option>
+                  <option value="Natal">Natal</option>
+                  <option value="Fortaleza">Fortaleza</option>
+                  <option value="Campina Grande">Campina Grande</option>
+                  <option value="Rio Largo(CD)">CD</option>
+                  </select>
               </div>
           </div>
           <div class="form-group">
-            <label for="situacaoSC">Descrição:</label>
-            <textarea name="situacaoSC" id="situacaoSC" class="form-control" cols="50" rows="4" placeholder="Detalhes" [(ngModel)]="this.dataApiService.selectedSc.situacaoSC"></textarea>
+            <label for="descricao">Descrição:</label>
+            <textarea name="descricao" id="descricao" class="form-control" cols="50" rows="4" placeholder="Detalhes" [(ngModel)]="this.dataApiService.selectedSc.descricao"></textarea>
           </div>
           <button type="submit" class="btn btn-primary float-right">Salvar</button>
         </form>
