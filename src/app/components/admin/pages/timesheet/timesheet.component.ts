@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { portugues } from './../../../../../interfaces/datatables.es';
 import { Subject, Observable } from 'rxjs';
-import moment = require('moment');
+import * as moment from "moment";
 
 @Component({
   selector: 'app-timesheet',
@@ -17,33 +17,26 @@ export class TimesheetComponent implements OnInit {
   dtLanguage: any = portugues;
   dtTrigger: Subject<any> = new Subject();
 
-  m = moment();
-  year: number;
+  nuss: number;
+  i: number;
   user: UserInterface;
-  data: Date;
-  monthnames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
-  month: string;
+  year = moment().locale('pt-br').format('YYYY');
+  month =moment().locale('pt-br').format('MMMM');
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  getdate(){
-    this.data = new Date;
-    return this.data.getMonth();
+  loop(){
+    for(this.i = 0;this.i<=10;this.i++) {
+      this.nuss = this.nuss+this.i;
+    }
+    console.log(this.nuss);
   }
 
-  monthName(){
-    return this.monthnames[this.getdate()];
-  }
-
-  getyear(){
-    return this.data.getFullYear();
-  }
 
   ngOnInit() {
     this.user = this.authService.getCurrentUser();
-    this.month = this.monthName();
-    this.year = this.getyear();
-    this.m.toISOString();
+    this.month;
+    this.year;
   }
 
 }
