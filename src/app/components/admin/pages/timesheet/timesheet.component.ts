@@ -13,10 +13,15 @@ import * as moment from "moment";
 })
 export class TimesheetComponent implements OnInit {
 
+  range = [];
   dtOptions: any = {};
   dtLanguage: any = portugues;
   dtTrigger: Subject<any> = new Subject();
+  
+  // sd = moment().startOf('month').add(1, 'days').locale('pt-br').format('dddd');
 
+
+  fd = moment().startOf('month').locale('pt-br').format('dddd');
   nuss: number;
   i: number;
   user: UserInterface;
@@ -25,18 +30,27 @@ export class TimesheetComponent implements OnInit {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
+
+  test(){
+    for(var i=1;i<=moment().daysInMonth();i++) {
+      this.range.push(i);
+    }
+  }
+
   loop(){
     for(this.i = 0;this.i<=10;this.i++) {
       this.nuss = this.nuss+this.i;
     }
     console.log(this.nuss);
-  }
+  }  
 
 
   ngOnInit() {
+    this.test();
     this.user = this.authService.getCurrentUser();
     this.month;
     this.year;
+    this.fd;    
   }
 
 }
