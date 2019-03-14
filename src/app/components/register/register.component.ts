@@ -12,7 +12,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) { }
   public user: UserInterface = {
-    name: "",
+    username: "",
     email: "",
     password: ""
   };
@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
   
   onRegister(): void{
     this.authService.registerUser(
-      this.user.name,
+      this.user.username,
       this.user.email,
       this.user.password
       )
