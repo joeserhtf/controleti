@@ -19,6 +19,18 @@
               <span>Atendentes</span>
             </a>
         </li>
+        <li class="treeview" *ngIf="isLogged">
+          <a routerLink="/admin/timesheet">
+              <i class="fa fa-table"></i>
+              <span>TimeSheet</span>
+            </a>
+        </li>
+        <li class="treeview" *ngIf="isLogged">
+          <a routerLink="/admin/projetos">
+              <i class="fa fa-book"></i>
+              <span>Projetos</span>
+            </a>
+        </li>
       <li class="treeview" *ngIf="isLogged">
         <a routerLink="/admin/listagem">
             <i class="fa fa-shopping-cart"></i>

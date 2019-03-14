@@ -43,6 +43,8 @@ import { ModalCustoHistoricoComponent } from './components/admin/modal-custo-his
 import { ModalInvComponent } from './components/admin/modal-inv/modal-inv.component';
 import { RamalComponent } from './components/admin/pages/ramal/ramal.component';
 import { RecadoComponent } from './components/admin/pages/recado/recado.component';
+import { ProjetosComponent } from './components/admin/pages/projetos/projetos.component';
+import { TimesheetComponent } from './components/admin/pages/timesheet/timesheet.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +74,8 @@ import { RecadoComponent } from './components/admin/pages/recado/recado.componen
     ModalInvComponent,
     RamalComponent,
     RecadoComponent,
+    ProjetosComponent,
+    TimesheetComponent,
   ],
   imports: [
     HttpModule,

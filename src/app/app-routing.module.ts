@@ -17,6 +17,8 @@ import { HorarioComponent } from './components/admin/pages/horario/horario.compo
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/admin/pages/profile/profile.component';
 import { ModalCustoHistoricoComponent } from './components/admin/modal-custo-historico/modal-custo-historico.component';
+import { TimesheetComponent } from './components/admin/pages/timesheet/timesheet.component';
+import { ProjetosComponent } from './components/admin/pages/projetos/projetos.component';
 
 
 const routes: Routes = [
@@ -80,6 +82,14 @@ const routes: Routes = [
       {
         path: 'cfhistorico/:id',
         component: ModalCustoHistoricoComponent, canActivate:[AuthGuard]
+      },
+      {
+        path: 'projetos',
+        component: ProjetosComponent, canActivate:[AuthGuard]
+      },
+      {
+        path: 'timesheet',
+        component: TimesheetComponent, canActivate:[AuthGuard]
       },
       { 
         path: 'login',
