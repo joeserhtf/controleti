@@ -22,10 +22,10 @@
       <table class="table table-bordered table-striped mb-0" >
         <thead>
           <tr >
-            <th scope="col">Data</th>
+            <th scope="col" >Data</th>
             <th scope="col">Dia</th>
             <th scope="col">Total</th>
-            <th scope="col">E1</th>
+            <th scope="col" >E1</th>
             <th scope="col">S1</th>
             <th scope="col">E2</th>
             <th scope="col">S2</th>
@@ -36,14 +36,14 @@
         <tbody>
             <tr *ngFor="let r of range; index as i">
                 <td><span name="data">{{i+1}}</span></td>
-                <td><span name="dia">{{fd}}</span></td>
-                <td><span name="total">Soma</span></td>
-                <td><input name="e1" type="time" ></td>
-                <td><input name="s1" type="time" ></td>
-                <td><input name="e2" type="time" ></td>
-                <td><input name="s2" type="time" ></td>
-                <td><input name="e3" type="time" ></td>
-                <td><input name="s3" type="time" ></td>
+                <td><span name="dia">{{diames(i)}}</span></td>
+                <td><span name="total">{{(horario[i].s1-horario[i].e1+horario[i].s2-horario[i].e2+horario[i].s3-horario[i].e3) > 0 ? ((horario[i].s1-horario[i].e1+horario[i].s2-horario[i].e2+horario[i].s3-horario[i].e3)) : 0}}  H</span></td>
+                <td><input name="e1" type="number" style="width: 100%" [(ngModel)]="horario[i].e1" ></td>
+                <td><input name="s1" type="number" style="width: 100%" [(ngModel)]="horario[i].s1" ></td>
+                <td><input name="e2" type="number" style="width: 100%" [(ngModel)]="horario[i].e2" ></td>
+                <td><input name="s2" type="number" style="width: 100%" [(ngModel)]="horario[i].s2" ></td>
+                <td><input name="e3" type="number" style="width: 100%" [(ngModel)]="horario[i].e3" ></td>
+                <td><input name="s3" type="number" style="width: 100%" [(ngModel)]="horario[i].s3" ></td>
                 <td><textarea name="obs" ></textarea></td>
               </tr>
           
