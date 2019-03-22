@@ -15,38 +15,55 @@
 <section class="content">
   <div class="box">
     <div class="box-header">
-      <h3 class="box-title">{{month}} - {{year}} - <span class="fa fa-check text-blue">Salvar</span></h3>
+      <h3 class="box-title">
+        <select [(ngModel)]="selectedMonth" (change)="getDays(selectedMonth)">
+          <option *ngFor="let m of months">
+            {{m.value}}
+          </option>
+        </select>
+        <select [(ngModel)]="selectedYear" (change)="getDays(selectedYear)">
+            <option *ngFor="let y of years">
+              {{y.value}}
+            </option>
+          </select>
+      </h3>
     </div>
     <!-- /.box-header -->
+
     <div class="table-wrapper-scroll-y my-custom-scrollbar">
-      <table class="table table-bordered table-striped mb-0" >
+      <table class="table table-bordered table-striped mb-0">
         <thead>
-          <tr >
-            <th scope="col" >Data</th>
+          <tr>
+            <th scope="col">Data</th>
             <th scope="col">Dia</th>
             <th scope="col">Total</th>
-            <th scope="col" >E1</th>
+            <th scope="col">E1</th>
             <th scope="col">S1</th>
             <th scope="col">E2</th>
             <th scope="col">S2</th>
             <th scope="col">E3</th>
             <th scope="col">S3</th>
             <th scope='col'>Observações</th>
+            <th> BT</th>
         </thead>
+
         <tbody>
-            <tr *ngFor="let r of range; index as i">
-                <td><span name="data">{{i+1}}</span></td>
-                <td><span name="dia">{{diames(i)}}</span></td>
-                <td><span name="total">{{(horario[i].s1-horario[i].e1+horario[i].s2-horario[i].e2+horario[i].s3-horario[i].e3) > 0 ? ((horario[i].s1-horario[i].e1+horario[i].s2-horario[i].e2+horario[i].s3-horario[i].e3)) : 0}}  H</span></td>
-                <td><input name="e1" type="number" style="width: 100%" [(ngModel)]="horario[i].e1" ></td>
-                <td><input name="s1" type="number" style="width: 100%" [(ngModel)]="horario[i].s1" ></td>
-                <td><input name="e2" type="number" style="width: 100%" [(ngModel)]="horario[i].e2" ></td>
-                <td><input name="s2" type="number" style="width: 100%" [(ngModel)]="horario[i].s2" ></td>
-                <td><input name="e3" type="number" style="width: 100%" [(ngModel)]="horario[i].e3" ></td>
-                <td><input name="s3" type="number" style="width: 100%" [(ngModel)]="horario[i].s3" ></td>
-                <td><textarea name="obs" ></textarea></td>
-              </tr>
-          
+          <tr *ngFor="let day of days; index as i">
+            <td><span name="data">{{i+1}}</span></td>
+            <td><span name="dia">{{diames(i)}}</span></td>
+            <td><span
+                name="total">{{(day.s1-day.e1+day.s2-day.e2+day.s3-day.e3) > 0 ? ((day.s1-day.e1+day.s2-day.e2+day.s3-day.e3)) : 0}}
+                H</span></td>
+            <input name="id" type="hidden" style="width: 100%" [(ngModel)]="day.id">
+            <td><input name="e1" type="number" style="width: 100%" [(ngModel)]="day.e1"></td>
+            <td><input name="s1" type="number" style="width: 100%" [(ngModel)]="day.s1"></td>
+            <td><input name="e2" type="number" style="width: 100%" [(ngModel)]="day.e2"></td>
+            <td><input name="s2" type="number" style="width: 100%" [(ngModel)]="day.s2"></td>
+            <td><input name="e3" type="number" style="width: 100%" [(ngModel)]="day.e3"></td>
+            <td><input name="s3" type="number" style="width: 100%" [(ngModel)]="day.s3"></td>
+            <td><textarea name="obs" [(ngModel)]="day.obs"></textarea></td>
+            <td><button (click)="UpdateDay(day)"> Bt </button></td>
+          </tr>
         </tbody>
       </table>
     </div>

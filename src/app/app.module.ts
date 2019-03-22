@@ -45,6 +45,7 @@ import { RamalComponent } from './components/admin/pages/ramal/ramal.component';
 import { RecadoComponent } from './components/admin/pages/recado/recado.component';
 import { ProjetosComponent } from './components/admin/pages/projetos/projetos.component';
 import { TimesheetComponent } from './components/admin/pages/timesheet/timesheet.component';
+import { TimesheetService } from './services/timesheet.service';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,7 @@ import { TimesheetComponent } from './components/admin/pages/timesheet/timesheet
     FormsModule,
     FullCalendarModule,
   ],
-  providers: [HttpClient, HttpModule, HttpClientModule, DataApiService, CustofixoDataService, AtendimentoDataService, InventarioDataService, UsuarioimpDataService],
+  providers: [HttpClient, HttpModule, HttpClientModule, DataApiService, CustofixoDataService, AtendimentoDataService, InventarioDataService, UsuarioimpDataService, TimesheetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
