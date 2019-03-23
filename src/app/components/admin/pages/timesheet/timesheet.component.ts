@@ -37,8 +37,8 @@ export class TimesheetComponent implements OnInit {
     obs: ''
   };
 
-  selectedMonth: number;
-  selectedYear: number;
+  selectedMonth = "03";
+  selectedYear = 2019;
 
   months = [
     { value: "01" },
@@ -103,6 +103,7 @@ export class TimesheetComponent implements OnInit {
     this.month;
     this.year;
     this.fd;
+    this.getDays();
   }
 
 }
