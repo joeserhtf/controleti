@@ -21,7 +21,7 @@
             {{m.value}}
           </option>
         </select>
-        Ano: <select [(ngModel)]="selectedYear" (change)="getDays(selectedYear)">
+        Ano: <select [(ngModel)]="selectedYear" (change)="getDays()">
           <option selected *ngFor="let y of years">
             {{y.value}}
           </option>
