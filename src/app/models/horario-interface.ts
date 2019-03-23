@@ -11,5 +11,5 @@ export interface Horariointerface {
     s2?: number;
     e3?: number;
     s3?: number;
-    obs?: string;          
+    obs?: string;         
 }

@@ -1,5 +1,10 @@
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from 'src/app/services/auth.service';
+import { ProjetosService } from './../../../../services/projetos.service';
+import { projetosInterface } from './../../../../models/projetos-interface';
 import { Component, OnInit } from '@angular/core';
 import * as moment from "moment";
+
 
 @Component({
   selector: 'app-projetos',
@@ -8,7 +13,15 @@ import * as moment from "moment";
 })
 export class ProjetosComponent implements OnInit {
 
-  constructor() { }
+  public projetos: projetosInterface;
+
+  constructor(private http: HttpClient, private authService: AuthService, private ProjetosService: ProjetosService) { }
+
+  getDays(): void {
+    this.ProjetosService.getAllProjetos().subscribe((projetos: projetosInterface) => {
+      this.projetos = projetos;
+    });
+  }
 
   ngOnInit() {
 

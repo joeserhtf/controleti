@@ -7,13 +7,13 @@ import { map } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 
 //Interface
-import { Horariointerface } from './../models/horario-interface';
+import { projetosInterface } from './../models/projetos-interface';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class TimesheetService {
+export class ProjetosService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
@@ -22,37 +22,41 @@ export class TimesheetService {
     Authorization: this.authService.getToken()
   });
 
-  public horario: Horariointerface = {
-    userid: 0,
-    ano: 0,
-    mes: 0,
-    dia: 0,
-    total: 0,
-    e1: 0,
-    s1: 0,
-    e2: 0,
-    s2: 0,
-    e3: 0,
-    s3: 0,
-    obs: ''
+
+  public projetos: projetosInterface = {
+    id: '',
+    mensagem: ''
   };
 
-  getAllDays(){
+
+  getAllProjetos(){
     const url_api = 'https://carajas-tic-dashboard.mybluemix.net/api/timesheets';
-    return this.http.get<Horariointerface>(url_api);
+    return this.http.get<projetosInterface>(url_api);
   }
 
   //?filter[where][and][0][userid]=1&filter[where][and][1][ano]=2019
 
   getDaysByYearAndMonth(userid ,ano, mes){
     const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/timesheets?filter[where][and][0][userid]=${userid}&filter[where][and][1][ano]=${ano}&filter[where][and][2][mes]=${mes}`;
-    return this.http.get<Horariointerface>(url_api);
+    return this.http.get<projetosInterface>(url_api);
   }
 
   updateDay(ts){
     let token = this.authService.getToken();
     const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/timesheets?access_token=${token}`;
-    return this.http.put<Horariointerface>(url_api, ts ,{headers: this.headers})
+    return this.http.put<projetosInterface>(url_api, ts ,{headers: this.headers})
     .pipe(map(data => data));
   }
+
+
+
+
+
+
+
+
+
+
+
+
 }

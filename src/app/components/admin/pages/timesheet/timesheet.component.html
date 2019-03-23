@@ -16,16 +16,16 @@
   <div class="box">
     <div class="box-header">
       <h3 class="box-title">
-        <select [(ngModel)]="selectedMonth" (change)="getDays(selectedMonth)">
+        Mês: <select [(ngModel)]="selectedMonth" (change)="getDays()">
           <option *ngFor="let m of months">
             {{m.value}}
           </option>
         </select>
-        <select [(ngModel)]="selectedYear" (change)="getDays(selectedYear)">
-            <option *ngFor="let y of years">
-              {{y.value}}
-            </option>
-          </select>
+        Ano: <select [(ngModel)]="selectedYear" (change)="getDays(selectedYear)">
+          <option selected *ngFor="let y of years">
+            {{y.value}}
+          </option>
+        </select>
       </h3>
     </div>
     <!-- /.box-header -->
@@ -44,13 +44,13 @@
             <th scope="col">E3</th>
             <th scope="col">S3</th>
             <th scope='col'>Observações</th>
-            <th> BT</th>
+            <th> Salvar</th>
         </thead>
 
         <tbody>
           <tr *ngFor="let day of days; index as i">
-            <td><span name="data">{{i+1}}</span></td>
-            <td><span name="dia">{{diames(i)}}</span></td>
+            <td><span name="data">{{day.dia}}</span></td>
+            <td><span name="dia">{{diames(selectedYear, selectedMonth, i)}}</span></td>
             <td><span
                 name="total">{{(day.s1-day.e1+day.s2-day.e2+day.s3-day.e3) > 0 ? ((day.s1-day.e1+day.s2-day.e2+day.s3-day.e3)) : 0}}
                 H</span></td>
@@ -62,7 +62,7 @@
             <td><input name="e3" type="number" style="width: 100%" [(ngModel)]="day.e3"></td>
             <td><input name="s3" type="number" style="width: 100%" [(ngModel)]="day.s3"></td>
             <td><textarea name="obs" [(ngModel)]="day.obs"></textarea></td>
-            <td><button (click)="UpdateDay(day)"> Bt </button></td>
+            <td><button (click)="UpdateDay(day)"> <span class="fa fa-check text-blue"></span> </button></td>
           </tr>
         </tbody>
       </table>
@@ -70,3 +70,4 @@
     <!-- /.box-body -->
   </div>
 </section>
+<div class="clearfix"></div>

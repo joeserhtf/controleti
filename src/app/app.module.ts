@@ -46,6 +46,7 @@ import { RecadoComponent } from './components/admin/pages/recado/recado.componen
 import { ProjetosComponent } from './components/admin/pages/projetos/projetos.component';
 import { TimesheetComponent } from './components/admin/pages/timesheet/timesheet.component';
 import { TimesheetService } from './services/timesheet.service';
+import { ProjetosService } from './services/projetos.service';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,7 @@ import { TimesheetService } from './services/timesheet.service';
     FormsModule,
     FullCalendarModule,
   ],
-  providers: [HttpClient, HttpModule, HttpClientModule, DataApiService, CustofixoDataService, AtendimentoDataService, InventarioDataService, UsuarioimpDataService, TimesheetService],
+  providers: [HttpClient, HttpModule, HttpClientModule, DataApiService, CustofixoDataService, AtendimentoDataService, InventarioDataService, UsuarioimpDataService, TimesheetService, ProjetosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
