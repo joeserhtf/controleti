@@ -42,6 +42,7 @@
     "datatables.net-buttons-dt": "^1.5.2",
     "daterangepicker": "^2.1.25",
     "express": "^4.16.4",
+    "file-saver": "^2.0.1",
     "font-awesome": "^4.7.0",
     "fullcalendar": "^3.6.1",
     "icheck": "^1.0.2",
@@ -60,6 +61,7 @@
     "raphael": "^2.2.7",
     "rxjs": "^6.0.0",
     "typescript": "^3.2.4",
+    "xlsx": "^0.14.1",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

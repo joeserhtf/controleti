@@ -1,3 +1,4 @@
+import { ExcelService } from './../../../../services/shared/excel.service';
 import { TimesheetService } from './../../../../services/timesheet.service';
 import { Time, NgForOf } from '@angular/common';
 import { AuthService } from 'src/app/services/auth.service';
@@ -9,6 +10,7 @@ import { Subject, Observable, empty } from 'rxjs';
 import * as moment from "moment";
 import { Horariointerface } from './../../../../models/horario-interface';
 import { isNullOrUndefined, isNull } from 'util';
+import { timestamp } from 'rxjs/operators';
 
 @Component({
   selector: 'app-timesheet',
@@ -71,12 +73,21 @@ export class TimesheetComponent implements OnInit {
   year = moment().locale('pt-br').format('YYYY');
   month = moment().locale('pt-br').format('MMMM');
   public days;
-  constructor(private http: HttpClient, private authService: AuthService, private timesheetService: TimesheetService) { }
+  test;
+  constructor(private http: HttpClient, private authService: AuthService, private timesheetService: TimesheetService, private excelService: ExcelService) { }
 
   mesDias() {
     for (var i = 1; i <= moment("02022019", "DDMMYYYY").daysInMonth(); i++) {
       this.range.push(i);
     }
+  }
+
+  log(){
+    console.log(this.test);
+  }
+
+  exportAsXLSX():void {
+    this.excelService.exportAsExcelFile(this.days, 'sample');
   }
 
   diames(ano: number, mes: number, i: number) {

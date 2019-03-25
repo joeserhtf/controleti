@@ -26,6 +26,7 @@
             {{y.value}}
           </option>
         </select>
+        <button class="pull-right" (click)="exportAsXLSX()">Excel</button>
       </h3>
     </div>
     <!-- /.box-header -->
@@ -54,7 +55,7 @@
             <td><span
                 name="total">{{(day.s1-day.e1+day.s2-day.e2+day.s3-day.e3) > 0 ? ((day.s1-day.e1+day.s2-day.e2+day.s3-day.e3)) : 0}}
                 H</span></td>
-            <input name="id" type="hidden" style="width: 100%" [(ngModel)]="day.id">
+            <input name="id" type="hidden"  style="width: 100%" [(ngModel)]="day.id">
             <td><input name="e1" type="number" style="width: 100%" [(ngModel)]="day.e1"></td>
             <td><input name="s1" type="number" style="width: 100%" [(ngModel)]="day.s1"></td>
             <td><input name="e2" type="number" style="width: 100%" [(ngModel)]="day.e2"></td>
