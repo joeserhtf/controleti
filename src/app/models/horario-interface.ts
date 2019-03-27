@@ -2,15 +2,15 @@ import { Time } from '@angular/common';
 export interface Horariointerface {
     id?: string;
     userid?: number;
-    ano?: number;
-    mes?: number;
-    dia?: number;
-    total?: number;
-    e1?: number;
-    s1?: number;
-    e2?: number;
-    s2?: number;
-    e3?: number;
-    s3?: number;
+    ano?: string;
+    mes?: string;
+    dia?: string;
+    total?: string;
+    e1?: string;
+    s1?: string;
+    e2?: string;
+    s2?: string;
+    e3?: string;
+    s3?: string;
     obs?: string;
 }

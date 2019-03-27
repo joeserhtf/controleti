@@ -26,21 +26,21 @@ export class TimesheetComponent implements OnInit {
 
   public horario: Horariointerface = {
     userid: 0,
-    ano: 0,
-    mes: 0,
-    dia: 0,
-    total: 0,
-    e1: null,
-    s1: 0,
-    e2: 0,
-    s2: 0,
-    e3: 0,
-    s3: 0,
+    ano: '',
+    mes: '',
+    dia: '',
+    total: '',
+    e1: '',
+    s1: '',
+    e2: '',
+    s2: '',
+    e3: '',
+    s3: '',
     obs: ''
   };
 
   selectedMonth = "03";
-  selectedYear = 2019;
+  selectedYear = '2019';
 
   months = [
     { value: "01" },
@@ -52,19 +52,21 @@ export class TimesheetComponent implements OnInit {
     { value: "07" },
     { value: "08" },
     { value: "09" },
-    { value: 10 },
-    { value: 11 },
-    { value: 12 },
+    { value: '10' },
+    { value: '11' },
+    { value: '12' },
   ]
 
   years = [
-    { value: 2019 },
-    { value: 2020 }
+    { value: '2019' },
+    { value: '2020' },
+    { value: '2021' }
   ]
 
 
   // sd = moment().startOf('month').add(1, 'days').locale('pt-br').format('dddd');
 
+  mesatual;
   data: Horariointerface;
   fd = moment().startOf('month').locale('pt-br').format('dddd');
   nuss: number;
@@ -90,7 +92,7 @@ export class TimesheetComponent implements OnInit {
     this.excelService.exportAsExcelFile(this.days, 'sample');
   }
 
-  diames(ano: number, mes: number, i: number) {
+  diames(ano: string, mes: string, i: number) {
     return moment(`${ano}${mes}01`, "YYYYMMDD").startOf('month').locale('pt-br').add(`${i}`, 'days').format('dddd');
   }
 

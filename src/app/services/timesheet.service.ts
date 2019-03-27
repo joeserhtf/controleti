@@ -24,16 +24,16 @@ export class TimesheetService {
 
   public horario: Horariointerface = {
     userid: 0,
-    ano: 0,
-    mes: 0,
-    dia: 0,
-    total: 0,
-    e1: 0,
-    s1: 0,
-    e2: 0,
-    s2: 0,
-    e3: 0,
-    s3: 0,
+    ano: '',
+    mes: '',
+    dia: '',
+    total: '',
+    e1: '',
+    s1: '',
+    e2: '',
+    s2: '',
+    e3: '',
+    s3: '',
     obs: ''
   };
 
