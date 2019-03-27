@@ -27,9 +27,11 @@ export class HorarioComponent implements OnInit {
     },
   ];
 
+  jsonPretty;
+
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute, private timesheetService: TimesheetService,  private authService: AuthService) { }
+  constructor(private http: HttpClient, private route: ActivatedRoute, private timesheetService: TimesheetService, private authService: AuthService) { }
 
   getDaysUser(): void {
     this.timesheetService.getDaysByUser(this.user.idt).subscribe((days: Horariointerface) => {
@@ -37,13 +39,22 @@ export class HorarioComponent implements OnInit {
     });
   }
 
+  testt() {
+    //var obj = JSON.parse(json);
+    //obj.useridd = obj.userid;
+    //delete obj.userid;
+    this.jsonPretty = JSON.stringify(this.days);
+    return this.jsonPretty;
+  }
 
   ngOnInit() {
+    this.user = this.authService.getCurrentUser();
+    
     //  this.getEventsCalendarRest().subscribe(data => {
     //      this.events = <any>data
     //  })     
-    this.user = this.authService.getCurrentUser();
 
+    console.log(this.testt());
     this.calendarOptions = {
       locale: 'pt-br',
       editable: true,

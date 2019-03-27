@@ -44,7 +44,7 @@ export class TimesheetService {
   //?filter[where][and][0][userid]=1&filter[where][and][1][ano]=2019
 
   getDaysByUser(userid){
-    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/timesheets?filter[where][and][0][userid]=${userid}`;
+    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/timesheets?filter[where][userid]=${userid}`;
     return this.http.get<Horariointerface>(url_api);
   }
 
