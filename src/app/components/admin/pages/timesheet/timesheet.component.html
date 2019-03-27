@@ -53,15 +53,14 @@
             <td><span name="data">{{day.dia}}</span></td>
             <td><span name="dia">{{diames(selectedYear, selectedMonth, i)}}</span></td>
             <td><span
-                name="total"><!-- {{(day.s1-day.e1+day.s2-day.e2+day.s3-day.e3) > 0 ? ((day.s1-day.e1+day.s2-day.e2+day.s3-day.e3)) : 0}} -->
-                H</span></td>
-            <input name="id" type="hidden"  style="width: 100%" [(ngModel)]="day.id">
-            <td><input name="e1" type="time" style="width: 100%" [(ngModel)]="day.e1"></td>
-            <td><input name="s1" type="time" style="width: 100%" [(ngModel)]="day.s1"></td>
-            <td><input name="e2" type="time" style="width: 100%" [(ngModel)]="day.e2"></td>
-            <td><input name="s2" type="time" style="width: 100%" [(ngModel)]="day.s2"></td>
-            <td><input name="e3" type="time" style="width: 100%" [(ngModel)]="day.e3"></td>
-            <td><input name="s3" type="time" style="width: 100%" [(ngModel)]="day.s3"></td>
+                name="totalv" >{{totalhoras(day.e1, day.s1, day.e2, day.s2, day.e3, day.s3)}} H</span></td>
+            <input name="id" type="hidden"  style="width: 100%"  [(ngModel)]="day.id">
+            <td><input name="e1" type="time" style="width: 100%" (change)="totalhoras(day.e1, day.s1, day.e2, day.s2, day.e3, day.s3)" [(ngModel)]="day.e1"></td>
+            <td><input name="s1" type="time" style="width: 100%" (change)="totalhoras(day.e1, day.s1, day.e2, day.s2, day.e3, day.s3)" [(ngModel)]="day.s1"></td>
+            <td><input name="e2" type="time" style="width: 100%" (change)="totalhoras(day.e1, day.s1, day.e2, day.s2, day.e3, day.s3)" [(ngModel)]="day.e2"></td>
+            <td><input name="s2" type="time" style="width: 100%" (change)="totalhoras(day.e1, day.s1, day.e2, day.s2, day.e3, day.s3)" [(ngModel)]="day.s2"></td>
+            <td><input name="e3" type="time" style="width: 100%" (change)="totalhoras(day.e1, day.s1, day.e2, day.s2, day.e3, day.s3)" [(ngModel)]="day.e3"></td>
+            <td><input name="s3" type="time" style="width: 100%" (change)="totalhoras(day.e1, day.s1, day.e2, day.s2, day.e3, day.s3)" [(ngModel)]="day.s3"></td>
             <td><textarea name="obs" [(ngModel)]="day.obs"></textarea></td>
             <td><button (click)="UpdateDay(day)"> <span class="fa fa-check text-blue"></span> </button></td>
           </tr>

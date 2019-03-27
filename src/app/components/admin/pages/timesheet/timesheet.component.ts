@@ -11,6 +11,11 @@ import * as moment from "moment";
 import { Horariointerface } from './../../../../models/horario-interface';
 import { isNullOrUndefined, isNull } from 'util';
 import { timestamp } from 'rxjs/operators';
+import { add } from 'timelite/time';
+import { sub } from 'timelite/time';
+import { str } from 'timelite/time';
+
+
 
 @Component({
   selector: 'app-timesheet',
@@ -20,15 +25,10 @@ import { timestamp } from 'rxjs/operators';
 
 export class TimesheetComponent implements OnInit {
 
-  tt: number;
-  range = [];
-  array = [0, 1, 2, 3]
-
   public horario: Horariointerface = {
     userid: 0,
-    ano: '',
-    mes: '',
     dia: '',
+    data: '',
     total: '',
     e1: '',
     s1: '',
@@ -38,9 +38,6 @@ export class TimesheetComponent implements OnInit {
     s3: '',
     obs: ''
   };
-
-  selectedMonth = "03";
-  selectedYear = '2019';
 
   months = [
     { value: "01" },
@@ -65,35 +62,40 @@ export class TimesheetComponent implements OnInit {
 
 
   // sd = moment().startOf('month').add(1, 'days').locale('pt-br').format('dddd');
-
-  mesatual;
+  selectedMonth = "03";
+  selectedYear = '2019';
+  totalhora;
   data: Horariointerface;
   fd = moment().startOf('month').locale('pt-br').format('dddd');
-  nuss: number;
   i: number;
   user: UserInterface;
-  year = moment().locale('pt-br').format('YYYY');
-  month = moment().locale('pt-br').format('MMMM');
   public days;
-  test;
   constructor(private http: HttpClient, private authService: AuthService, private timesheetService: TimesheetService, private excelService: ExcelService) { }
 
-  mesDias() {
-    for (var i = 1; i <= moment("02022019", "DDMMYYYY").daysInMonth(); i++) {
-      this.range.push(i);
-    }
-  }
-
-  log(){
-    console.log(this.test);
+  totalhoras(e1, s1, e2, s2, e3, s3){
+    var hora1;
+    var hora2;
+    var hora3;
+    var tots;
+    hora1 = sub([s1,e1]);
+    hora2 = sub([s2,e2]);
+    hora3 = sub([s3,e3]);
+    hora1 = str(hora1);
+    hora2 = str(hora2);
+    hora3 = str(hora3);
+    tots = add([hora1, hora2]);
+    tots = str(tots);
+    tots = add([tots, hora3]);
+    this.totalhora = str(tots);
+    return this.totalhora;
   }
 
   exportAsXLSX():void {
-    this.excelService.exportAsExcelFile(this.days, 'sample');
+    this.excelService.exportAsExcelFile(this.days, 'Timesheet');
   }
 
   diames(ano: string, mes: string, i: number) {
-    return moment(`${ano}${mes}01`, "YYYYMMDD").startOf('month').locale('pt-br').add(`${i}`, 'days').format('dddd');
+    return moment(`01${mes}${ano}`, "DDMMYYYY").startOf('month').locale('pt-br').add(`${i}`, 'days').format('dddd');
   }
 
   getDays(): void {
@@ -102,19 +104,12 @@ export class TimesheetComponent implements OnInit {
     });
   }
 
-  reload(){
-      location.reload();
-  }
-
   UpdateDay(day: Horariointerface) {
     this.timesheetService.updateDay(day).subscribe();
   }
 
   ngOnInit() {
-    this.mesDias();
     this.user = this.authService.getCurrentUser();
-    this.month;
-    this.year;
     this.fd;
     this.getDays();
   }

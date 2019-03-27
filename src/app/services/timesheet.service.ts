@@ -24,9 +24,8 @@ export class TimesheetService {
 
   public horario: Horariointerface = {
     userid: 0,
-    ano: '',
-    mes: '',
     dia: '',
+    data: '',
     total: '',
     e1: '',
     s1: '',
@@ -44,8 +43,13 @@ export class TimesheetService {
 
   //?filter[where][and][0][userid]=1&filter[where][and][1][ano]=2019
 
+  getDaysByUser(userid){
+    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/timesheets?filter[where][and][0][userid]=${userid}`;
+    return this.http.get<Horariointerface>(url_api);
+  }
+
   getDaysByYearAndMonth(userid ,ano, mes){
-    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/timesheets?filter[where][and][0][userid]=${userid}&filter[where][and][1][ano]=${ano}&filter[where][and][2][mes]=${mes}`;
+    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/timesheets?filter[where][and][0][userid]=${userid}&filter[where][and][1][data]=${mes}/${ano}`;
     return this.http.get<Horariointerface>(url_api);
   }
 
