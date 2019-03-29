@@ -1,9 +1,6 @@
-export interface Horariointerface {
-    id?: string;
-    userid?: number;
+export interface exceltimeInterface {
     dia?: string;
     data?: string;
-    total?: string;
     e1?: string;
     s1?: string;
     e2?: string;

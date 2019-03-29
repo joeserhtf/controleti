@@ -7,6 +7,8 @@ import { CalendarComponent, FullCalendarModule } from 'ng-fullcalendar';
 import { Options } from 'fullcalendar';
 import { TimesheetService } from 'src/app/services/timesheet.service';
 import { UserInterface } from 'src/app/models/user-interface';
+import { normalize } from 'timelite/date'
+import { str } from 'timelite/date'
 
 @Component({
   selector: 'app-horario',
@@ -18,16 +20,18 @@ export class HorarioComponent implements OnInit {
   user: UserInterface;
   public days;
   calendarOptions: Options;
-  events = [
-    {
-      title: "test",
-      start: "2019-03-24 06:00:00",
-      end: "2019-03-24 11:00:00",
-      Obs: "testss"
-    },
-  ];
+  events = [ ];
+  dataseparador = "-";
+  datatimeseparador = " ";
+  colorE1 = "green";
+  colorE2 = "orange";
+  colorE3 = "red";
 
-  jsonPretty;
+  //{
+  // 
+  //  Obs: "testss"
+  //}
+
 
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
 
@@ -37,24 +41,40 @@ export class HorarioComponent implements OnInit {
     this.timesheetService.getDaysByUser(this.user.idt).subscribe((days: Horariointerface) => {
       this.days = days;
     });
-  }
-
-  testt() {
-    //var obj = JSON.parse(json);
-    //obj.useridd = obj.userid;
-    //delete obj.userid;
-    this.jsonPretty = JSON.stringify(this.days);
-    return this.jsonPretty;
-  }
-
-  ngOnInit() {
-    this.user = this.authService.getCurrentUser();
     
-    //  this.getEventsCalendarRest().subscribe(data => {
-    //      this.events = <any>data
-    //  })     
+  }
 
-    console.log(this.testt());
+  getevents() {
+    var i = 0;
+    this.days.forEach(element => {
+      if(!(this.days[i].e1 === "" || this.days[i].e1 === "00:00")){
+        this.events.push(
+        {
+          title: this.days[i].obs,
+          start: this.days[i].data + this.dataseparador + this.days[i].dia + this.datatimeseparador + this.days[i].e1,
+          end: this.days[i].data + this.dataseparador + this.days[i].dia + this.datatimeseparador + this.days[i].s1,
+          color: this.colorE1
+        });
+      }
+      if(!(this.days[i].e2 === "" || this.days[i].e2 === "00:00")){
+        this.events.push({
+          start: this.days[i].data + this.dataseparador + this.days[i].dia + this.datatimeseparador + this.days[i].e2,
+          end: this.days[i].data + this.dataseparador + this.days[i].dia + this.datatimeseparador + this.days[i].s2,
+          color: this.colorE2
+        });
+      }
+      if(!(this.days[i].e3 === "" || this.days[i].e3 === "00:00")){
+        this.events.push({
+          start: this.days[i].data + this.dataseparador + this.days[i].dia + this.datatimeseparador + this.days[i].e3,
+          end: this.days[i].data + this.dataseparador + this.days[i].dia + this.datatimeseparador + this.days[i].s3,
+          color: this.colorE3
+        });
+      }
+      i++;
+    });
+  }
+
+  opencalendar(){
     this.calendarOptions = {
       locale: 'pt-br',
       editable: true,
@@ -65,7 +85,7 @@ export class HorarioComponent implements OnInit {
         right: 'month,agendaWeek,agendaDay,listMonth'
       },
       columnFormat: 'ddd D/M',
-      timeFormat: 'h:mm',
+      timeFormat: 'HH:mm',
       allDayText: '24H',
       buttonText: {
         today: "Hoje",
@@ -73,9 +93,25 @@ export class HorarioComponent implements OnInit {
         week: "Semana",
         day: "Dia"
       },
+      views: {
+        month: {
+          displayEventEnd: true
+        }
+      },
       height: 600,
       events: this.events
-    };
+      }
+  }
+
+  ngOnInit() {
+    this.user = this.authService.getCurrentUser();
+    
+    this.getDaysUser();
+    
+    setTimeout(() => {
+      this.getevents();
+      this.opencalendar();
+    }, 2000);      
   }
 
 }

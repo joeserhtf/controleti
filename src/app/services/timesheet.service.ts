@@ -49,7 +49,7 @@ export class TimesheetService {
   }
 
   getDaysByYearAndMonth(userid ,ano, mes){
-    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/timesheets?filter[where][and][0][userid]=${userid}&filter[where][and][1][data]=${mes}/${ano}`;
+    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/timesheets?filter[where][and][0][userid]=${userid}&filter[where][and][1][data]=${ano}-${mes}`;
     return this.http.get<Horariointerface>(url_api);
   }
 

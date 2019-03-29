@@ -20,10 +20,17 @@
             </a>
         </li>
         <li class="treeview" *ngIf="isLogged">
-          <a routerLink="/admin/timesheet">
-              <i class="fa fa-table"></i>
-              <span>TimeSheet</span>
+          <a href="#">
+              <i class="fa fa-pie-chart"></i>
+              <span>Horario</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
             </a>
+          <ul class="treeview-menu">
+            <li><a routerLink="/admin/horario"><i class="fa fa-circle-o"></i>Calendário</a></li>
+            <li *ngIf="isAdm" ><a routerLink="/admin/timesheet"><i class="fa fa-circle-o"></i>Timesheet</a></li>
+          </ul>
         </li>
         <li class="treeview" *ngIf="isLogged">
           <a routerLink="/admin/projetos">
@@ -67,13 +74,7 @@
             <i class="fa fa-list-alt"></i>
             <span>Inventário</span>            
           </a>
-      </li>
-      <li class="treeview" *ngIf="isLogged">
-        <a routerLink="/admin/horario">
-            <i class="fa fa-calendar"></i>
-            <span>Horarios</span>
-          </a>
-      </li>
+        </li>
     </ul>
   </section>
   <!-- /.sidebar -->

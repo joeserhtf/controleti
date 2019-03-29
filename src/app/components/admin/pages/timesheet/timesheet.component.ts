@@ -1,3 +1,4 @@
+import { exceltimeInterface } from './../../../../models/excel-time-interface';
 import { ExcelService } from './../../../../services/shared/excel.service';
 import { TimesheetService } from './../../../../services/timesheet.service';
 import { Time, NgForOf } from '@angular/common';
@@ -39,6 +40,18 @@ export class TimesheetComponent implements OnInit {
     obs: ''
   };
 
+  public exceli: exceltimeInterface = {
+    dia: '',
+    data: '',
+    e1: '',
+    s1: '',
+    e2: '',
+    s2: '',
+    e3: '',
+    s3: '',
+    obs: ''
+  };
+
   months = [
     { value: "01" },
     { value: "02" },
@@ -70,6 +83,7 @@ export class TimesheetComponent implements OnInit {
   i: number;
   user: UserInterface;
   public days;
+  public excel;
   constructor(private http: HttpClient, private authService: AuthService, private timesheetService: TimesheetService, private excelService: ExcelService) { }
 
   totalhoras(e1, s1, e2, s2, e3, s3){
@@ -91,12 +105,30 @@ export class TimesheetComponent implements OnInit {
   }
 
   exportAsXLSX():void {
-    this.excelService.exportAsExcelFile(this.days, 'Timesheet');
+    this.excelService.exportAsExcelFile(this.excel, 'Timesheet');
   }
 
   diames(ano: string, mes: string, i: number) {
     return moment(`01${mes}${ano}`, "DDMMYYYY").startOf('month').locale('pt-br').add(`${i}`, 'days').format('dddd');
   }
+
+  getDaysToExcel(): void {
+    this.timesheetService.getDaysByYearAndMonth(this.user.idt ,this.selectedYear, this.selectedMonth).subscribe((excel: exceltimeInterface) => {
+      this.excel = excel;
+    });
+    setTimeout(() => {
+      var i = 0;
+      this.excel.forEach(element => {
+        delete this.excel[i].id;
+        delete this.excel[i].userid;
+        delete this.excel[i].id;
+        i++;
+      });
+    }, 2000); 
+    
+    
+  }
+
 
   getDays(): void {
     this.timesheetService.getDaysByYearAndMonth(this.user.idt ,this.selectedYear, this.selectedMonth).subscribe((days: Horariointerface) => {
@@ -112,6 +144,7 @@ export class TimesheetComponent implements OnInit {
     this.user = this.authService.getCurrentUser();
     this.fd;
     this.getDays();
+    this.getDaysToExcel();
   }
 
 }
