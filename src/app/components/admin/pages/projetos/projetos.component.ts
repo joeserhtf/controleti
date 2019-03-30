@@ -22,7 +22,7 @@ export class ProjetosComponent implements OnInit {
   public projetosd: projetosInterface;
   nome = "Projeto Teste";
 
-  constructor(private http: HttpClient, private authService: AuthService, private ProjetosService: ProjetosService) { }
+  constructor(private http: HttpClient, private authService: AuthService, public ProjetosService: ProjetosService) { }
 
   getProjetos(): void {
     this.ProjetosService.getAllProjetos().subscribe((projetos: projetosInterface) => {
