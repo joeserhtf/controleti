@@ -28,23 +28,24 @@ export class ProjetosService {
   public projetos: projetosInterface = {
     id: null,
     nome: "",
-    codigo: 0,
-    orcamento: 0,
+    codigo: null,
+    orcamento: null,
     indispensavel: null,
     empresa: "",
-    cdppai: 0,
+    cdppai: null,
     area: "",
     subarea: "",
     kuser: "",
     kcontato: "",
     solicitante: "",
-    status: 0,
-    prioridade: 0,    
+    status: null,
+    prioridade: null,    
     inicio: "",
     previsao: "",
     objetivo: "",
     beneficioqt: "",
-    beneficioql: ""
+    beneficioql: "",
+    escopo: ""
   };
 
   public orcamentoss: orcamentoInterface = {
@@ -99,6 +100,13 @@ export class ProjetosService {
     let token = this.authService.getToken();
     const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/orcamentopjs?access_token=${token}`;
     return this.http.put<orcamentoInterface>(url_api, orca ,{headers: this.headers})
+    .pipe(map(data => data));
+  }
+
+  saveProjeto(projeto){
+    let token = this.authService.getToken();
+    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/projetos?access_token=${token}`;
+    return this.http.post<projetosInterface>(url_api, projeto ,{headers: this.headers})
     .pipe(map(data => data));
   }
 

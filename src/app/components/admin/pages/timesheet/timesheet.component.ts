@@ -52,36 +52,44 @@ export class TimesheetComponent implements OnInit {
     obs: ''
   };
 
+  worker = [
+    { name: "Joeser Fermiano", value: 1 },
+    { name: "João Ortiz", value: 2 },
+    { name: "Wylliane Costa", value: 3 },
+    { name: "Weldon Rafael", value: 4 },
+  ]
+
   months = [
-    { value: "01" },
-    { value: "02" },
-    { value: "03" },
-    { value: "04" },
-    { value: "05" },
-    { value: "06" },
-    { value: "07" },
-    { value: "08" },
-    { value: "09" },
-    { value: '10' },
-    { value: '11' },
-    { value: '12' },
+    { name: "Janeiro", value: "01" },
+    { name: "Fevereiro", value: "02" },
+    { name: "Março", value: "03" },
+    { name: "Abril", value: "04" },
+    { name: "Maio", value: "05" },
+    { name: "Junho", value: "06" },
+    { name: "Julho", value: "07" },
+    { name: "Agosto", value: "08" },
+    { name: "Setembro", value: "09" },
+    { name: "Outubro", value: '10' },
+    { name: "Novembro", value: '11' },
+    { name: "Dezembro", value: '12' },
   ]
 
   years = [
     { value: '2019' },
-    { value: '2020' },
-    { value: '2021' }
+    { value: '2020' }
   ]
 
 
   // sd = moment().startOf('month').add(1, 'days').locale('pt-br').format('dddd');
-  selectedMonth = "03";
-  selectedYear = '2019';
+  user: UserInterface;
   totalhora;
+  public isAdm: boolean = false;
   data: Horariointerface;
   fd = moment().startOf('month').locale('pt-br').format('dddd');
   i: number;
-  user: UserInterface;
+  selectedworker = null;
+  selectedMonth = "03";
+  selectedYear = '2019';
   public days;
   public excel;
   constructor(private http: HttpClient, private authService: AuthService, private timesheetService: TimesheetService, private excelService: ExcelService) { }
@@ -124,27 +132,41 @@ export class TimesheetComponent implements OnInit {
         delete this.excel[i].id;
         i++;
       });
-    }, 2000); 
-    
-    
+    }, 2000);  
   }
 
-
   getDays(): void {
-    this.timesheetService.getDaysByYearAndMonth(this.user.idt ,this.selectedYear, this.selectedMonth).subscribe((days: Horariointerface) => {
+    this.timesheetService.getDaysByYearAndMonth(this.selectedworker ,this.selectedYear, this.selectedMonth).subscribe((days: Horariointerface) => {
       this.days = days;
     });
+  }
+
+  onAdmUser(): void{
+    if(this.user.idt == 1){
+      this.isAdm = true;
+    }else{
+      this.isAdm = false;
+    }
   }
 
   UpdateDay(day: Horariointerface) {
     this.timesheetService.updateDay(day).subscribe();
   }
 
+  test(){
+    console.log(this.selectedworker);
+  }
+
   ngOnInit() {
     this.user = this.authService.getCurrentUser();
+    this.selectedworker = this.user.idt;
+    this.onAdmUser();
     this.fd;
-    this.getDays();
+    setTimeout(() => {
+      this.getDays();
+    }, 2000); 
     this.getDaysToExcel();
   }
+
 
 }

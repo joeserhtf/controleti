@@ -2,7 +2,7 @@
 <section class="content-header">
   <h1>
     TimeSheet
-    <small>{{user.username}}</small>
+    <small  >{{user.username}}</small>
   </h1>
   <ol class="breadcrumb">
     <li>
@@ -16,13 +16,20 @@
   <div class="box">
     <div class="box-header">
       <h3 class="box-title">
+        <div class="box-title" *ngIf="isAdm">
+          Colaborador: <select [(ngModel)]="selectedworker"   (change)="getDays()">
+          <option  *ngFor="let work of worker" [ngValue]="work.value">
+            {{work.name}}
+          </option>
+        </select>
+      </div>        
         Mês: <select [(ngModel)]="selectedMonth" (change)="getDays()">
-          <option *ngFor="let m of months">
-            {{m.value}}
+          <option *ngFor="let m of months" [ngValue]="m.value">
+            {{m.name}}
           </option>
         </select>
         Ano: <select [(ngModel)]="selectedYear" (change)="getDays()">
-          <option selected *ngFor="let y of years">
+          <option selected *ngFor="let y of years" [ngValue]="y.value">
             {{y.value}}
           </option>
         </select>

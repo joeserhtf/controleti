@@ -49,6 +49,12 @@ export class ProjetosComponent implements OnInit {
       this.getProjeto();
   }
 
+  saveProjeto(projetoFrom: NgForm): void{
+    this.ProjetosService.saveProjeto(projetoFrom.value).subscribe();
+    this.getProjeto();
+    window.close();
+}
+
   saveLog(logForm: NgForm): void{
     this.ProjetosService.saveLog(logForm.value).subscribe();
     this.getProjeto();

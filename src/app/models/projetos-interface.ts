@@ -17,5 +17,6 @@ export interface projetosInterface {
     previsao?: string,
     objetivo?: string,
     beneficioqt?: string,
-    beneficioql?: string
+    beneficioql?: string,
+    escopo?: string
 }

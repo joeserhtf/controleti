@@ -1,9 +1,9 @@
-<!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Projetos
+        Projetos <span class="fa fa-plus" data-toggle="modal" data-target="#modalProjeto"></span>
         <small><select [(ngModel)]="nome" (change)="getProjeto()">
-                <option *ngFor="let projetonome of projetos">{{projetonome.nome}}</option>
+                <option *ngFor="let projetonome of projetos" [ngValue]="projetonome.nome">
+                    {{projetonome.codigo}}.{{projetonome.nome}}</option>
             </select></small>
     </h1>
     <ol class="breadcrumb">
@@ -16,49 +16,53 @@
     <div class="row">
         <div class="col-xs-12">
             <h2 class="page-header">
-                <i class="fa fa-globe"></i> {{projeto.nome}}
+                <i class="fa fa-globe"></i> {{projeto.codigo}}. {{projeto.nome}}
                 <small class="pull-right">Data: {{projeto.inicio}}</small>
             </h2>
         </div>
-        <!-- /.col -->
     </div>
     <!-- Informaçoes do projeto from-->
-    <div class="row invoice-info">
-        <div class="col-sm-4 invoice-col">
-            <address>
-                <b>Código:</b> {{projeto.codigo}} <br>
-                <b>Orçamento:</b>{{projeto.orcamento}} <br>
-                <b>Indispensavel:</b> {{projeto.indispensavel ? 'Verdade' : 'Mentira'}} <br>
-                <b>Empresa:</b> {{projeto.empresa}} <br>
-                <b>Projeto Pai:</b> {{projeto.cdppai}} <br>
-            </address>
+    <div class="row">
+        <div class="col-md-9 col-sm-8">
+            <div class="pad">
+                <div class="row invoice-info">
+                    <div class="col-sm-4 invoice-col">
+                        <address>
+                            <b>Status:</b> {{projeto.status}}<br>
+                            <b>Prioridade:</b> {{projeto.prioridade}}<br>
+                            <b>Previsao:</b> {{projeto.previsao}}<br>
+                            <b>Key-Contato:</b> {{projeto.kcontato}} <br>
+                        </address>
+                    </div>
+                    <div class="col-sm-4 invoice-col">
+                        <address>
+                            <b>Àrea:</b> {{projeto.area}} <br>
+                            <b>Sub-área:</b> {{projeto.subarea}} <br>
+                            <b>Key-user:</b> {{projeto.kuser}} <br>
+                            <b>Solicitante:</b> {{projeto.solicitante}} <br>
+                        </address>
+                    </div>
+                    <!-- importante detalhe-->
+                    <div class="col-sm-4 invoice-col">
+                        <b>Projeto Pai:</b> {{projeto.cdppai}} <br>
+                        <b>Orçamento:</b>{{projeto.orcamento}} <br>
+                        <b>Indispensavel:</b> {{projeto.indispensavel ? 'Verdade' : 'Mentira'}} <br>
+                        <b>Empresa:</b> {{projeto.empresa}} <br>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- 2 to-->
-        <div class="col-sm-4 invoice-col">
-            <address>
-                <b>Àrea:</b> {{projeto.area}} <br>
-                <b>Sub-área:</b> {{projeto.subarea}} <br>
-                <b>Key-user:</b> {{projeto.kuser}} <br>
-                <b>Key-Contato:</b> {{projeto.kcontato}} <br>
-                <b>Solicitante:</b> {{projeto.solicitante}} <br>
-            </address>
-        </div>
-        <!-- importante detalhe-->
-        <div class="col-sm-4 invoice-col">
-            <b>Detalhes importantes</b><br>
-            <b>Status:</b> {{projeto.status}}<br>
-            <b>Prioridade:</b> {{projeto.prioridade}}<br>
-            <b>Previsao:</b> {{projeto.previsao}}<br>
-        </div>
-        <!-- /.col -->
     </div>
-    <!-- /.row -->
-
     <!--Table de informaçoes variavel -->
     <div class="row">
         <div class="table-responsive">
             <table class="table">
                 <tbody>
+                    <tr>
+                        <th style="width:15%">Escopo:</th>
+                        <td><textarea cols="120" rows="3" [(ngModel)]="projeto.escopo" placeholder="Detalhes"
+                                readonly></textarea></td>
+                    </tr>
                     <tr>
                         <th style="width:15%">Objetivo:</th>
                         <td><textarea cols="120" rows="3" [(ngModel)]="projeto.objetivo" placeholder="Detalhes"
@@ -77,106 +81,362 @@
                 </tbody>
             </table>
         </div>
-        <!-- /.col -->
     </div>
-    <!-- /.row -->
-
-    <div class="row">
-        <!-- accepted payments column -->
-        <div class="col-xs-6">
-            <p class="lead">Orçamentos:</p>
-            <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                <table class="table table-bordered table-striped mb-0">
-                    <thead>
-                        <tr>
-                            <th scope="col">Ano</th>
-                            <th scope="col">Valor</th>
-                            <th scope="col">Comentario</th>
-                    </thead>
-
-                    <tbody>
-                        <tr *ngFor="let orcamento of orcamentos">
-                            <td>{{orcamento.ano}}</td>
-                            <td>{{orcamento.valor}}</td>
-                            <td>{{orcamento.comentario}}</td>
-                        </tr>
-                    </tbody>
-                </table>
+    <!--Orçamentos-->
+    <div class="box box-success collapsed-box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Orçamentos</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
             </div>
         </div>
-        <!-- /.col -->
-        <div class="col-xs-6">
-            <p class="lead">Adicionar:</p>
+        <div class="box-body no-padding" style="">
+            <div class="row">
+                <div class="col-md-9 col-sm-8">
+                    <div class="pad">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <p class="lead">Orçamentos:</p>
+                                <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                    <table class="table table-bordered table-striped mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Ano</th>
+                                                <th scope="col">Valor</th>
+                                                <th scope="col">Comentario</th>
+                                        </thead>
 
-            <div class="table-responsive">
-                <form #orcaForm="ngForm" (ngSubmit)="saveOrca(orcaForm)">
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <input type="hidden" id="nameprojeto" name="nameprojeto"
-                                    [(ngModel)]="this.ProjetosService.orcamentoss.nameprojeto">
-                                <th style="width:50%">Ano:</th>
-                                <td><input id="ano" name="ano" [(ngModel)]="this.ProjetosService.orcamentoss.ano"
-                                        placeholder="2019"></td>
-                            </tr>
-                            <tr>
-                                <th>Valor:</th>
-                                <td><input id="valor" name="valor" [(ngModel)]="this.ProjetosService.orcamentoss.valor"
-                                        placeholder="65,00"></td>
-                            </tr>
-                            <tr>
-                                <th>Comentário:</th>
-                                <td><textarea id="comentario" name="comentario" placeholder="Detalhes"
-                                        [(ngModel)]="this.ProjetosService.orcamentoss.comentario"></textarea></td>
-                            </tr>
-                            <tr>
-                                <th>Confirmar:</th>
-                                <td><button class="btn btn-danger">Adicionar</button></td>
-                            </tr>
+                                        <tbody>
+                                            <tr *ngFor="let orcamento of orcamentos">
+                                                <td>{{orcamento.ano}}</td>
+                                                <td>{{orcamento.valor}}</td>
+                                                <td>{{orcamento.comentario}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <p class="lead">Adicionar:</p>
 
-                        </tbody>
-                    </table>
+                                <div class="table-responsive">
+                                    <form #orcaForm="ngForm" (ngSubmit)="saveOrca(orcaForm)">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <input type="hidden" id="nameprojeto" name="nameprojeto"
+                                                        [(ngModel)]="this.ProjetosService.orcamentoss.nameprojeto">
+                                                    <th style="width:50%">Ano:</th>
+                                                    <td><input id="ano" name="ano"
+                                                            [(ngModel)]="this.ProjetosService.orcamentoss.ano"
+                                                            placeholder="2019"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Valor:</th>
+                                                    <td><input id="valor" name="valor"
+                                                            [(ngModel)]="this.ProjetosService.orcamentoss.valor"
+                                                            placeholder="65,00"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Comentário:</th>
+                                                    <td><textarea id="comentario" name="comentario"
+                                                            placeholder="Detalhes"
+                                                            [(ngModel)]="this.ProjetosService.orcamentoss.comentario"></textarea>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Confirmar:</th>
+                                                    <td><button class="btn btn-danger">Adicionar</button></td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Log-->
+    <div class="row">
+        <div class="col-xs-12 table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Titulo</th>
+                        <th>Comentario</th>
+                        <th>Tipo</th>
+                        <th>Usuario</th>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let log of logs">
+                        <td>{{log.titulo}}</td>
+                        <td>{{log.comentario}}</td>
+                        <td>{{log.tipo}}</td>
+                        <td>{{log.usuario}}</td>
+                        <td>{{log.data}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button data-toggle="modal" data-target="#modalLog">Adicionar Log</button>
+    </div>
+</section>
+<div class="clearfix"></div>
+<!--Modal Projeto-->
+<div id="modalProjeto" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Novo Projeto</h3>
+            </div>
+            <div class="modal-body">
+                <form class="form-book" #formProjeto="ngForm" (ngSubmit)="saveProjeto(formProjeto)">
+                    <input type="hidden" id="id" name="id" class="form-control"
+                        [(ngModel)]="this.ProjetosService.projetos.id">
+                    <div class="form-group">
+                        <label for="">Nome</label>
+                        <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome"
+                            [(ngModel)]="this.ProjetosService.projetos.nome">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="solicitante">Solicitante</label>
+                            <select id="solicitante" name="solicitante" class="form-control"
+                                [(ngModel)]="this.ProjetosService.projetos.solicitante">
+                                <option value="João Ortiz">João Ortiz</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="empresa">Empresa</label>
+                            <input type="text" name="empresa" id="empresa" class="form-control" placeholder="Selecione"
+                                [(ngModel)]="this.ProjetosService.projetos.empresa">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inicio">Inicio</label>
+                            <input type="date" id="inicio" name="inicio" class="form-control"
+                                [(ngModel)]="this.ProjetosService.projetos.inicio">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="previsao">Previsão</label>
+                            <input type="date" name="previsao" id="previsao" class="form-control"
+                                [(ngModel)]="this.ProjetosService.projetos.previsao">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="kuser">Key-User</label>
+                            <select id="kuser" name="kuser" class="form-control"
+                                [(ngModel)]="this.ProjetosService.projetos.kuser">
+                                <option value="Joeser Fermiano">Joeser Fermiano</option>
+                                <option value="João Ortiz">João Ortiz</option>
+                                <option value="Wylianne Costa">Wylianne Costa</option>
+                                <option value="Weldon Rafael">Weldon Rafael</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="kcontato">Key-Contato</label>
+                            <select id="kcontato" name="kcontato" class="form-control"
+                                [(ngModel)]="this.ProjetosService.projetos.kcontato">
+                                <option value="Joeser Fermiano">Joeser Fermiano</option>
+                                <option value="João Ortiz">João Ortiz</option>
+                                <option value="Wylianne Costa">Wylianne Costa</option>
+                                <option value="Weldon Rafael">Weldon Rafael</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="codigo">Código</label>
+                            <input type="number" name="codigo" id="codigo" class="form-control"
+                                [(ngModel)]="this.ProjetosService.projetos.codigo">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="orcamento">Orçamento Inicial</label>
+                            <input type="number" id="orcamento" name="orcamento" class="form-control"
+                                placeholder="Ex: R$ 100,00" [(ngModel)]="this.ProjetosService.projetos.orcamento">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="prioridade">Prioridade</label>
+                            <select id="prioridade" name="prioridade" class="form-control"
+                                [(ngModel)]="this.ProjetosService.projetos.prioridade">
+                                <option value="3">Maxima</option>
+                                <option value="2">Media</option>
+                                <option value="1">Baixa</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="indispensavel">Indispensável</label>
+                            <select type="number" id="indispensavel" name="dataAP" class="form-control"
+                                [(ngModel)]="this.ProjetosService.projetos.indispensavel">
+                                <option value="1"> Sim </option>
+                                <option value="0"> Nao </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="status">Status</label>
+                            <select id="status" name="status" class="form-control"
+                                [(ngModel)]="this.ProjetosService.projetos.status">
+                                <option value="3">Finalizado</option>
+                                <option value="2">Andamento</option>
+                                <option value="1">Não Iniciado</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="cdppai">Projeto Pai</label>
+                            <select id="cdppai" name="cdppai" class="form-control"
+                                [(ngModel)]="this.ProjetosService.projetos.cdppai">
+                                <option *ngFor="let projetonome of projetos" [ngValue]="projetonome.codigo">
+                                    {{projetonome.nome}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="area">Área</label>
+                            <input type="text" id="area" name="area" class="form-control" placeholder="Área"
+                                [(ngModel)]="this.ProjetosService.projetos.area">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="subarea">Sub-Área</label>
+                            <input type="text" id="subarea" name="subarea" class="form-control" placeholder="Sub-Área"
+                                [(ngModel)]="this.ProjetosService.projetos.subarea">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="escopo">Escopo</label>
+                        <textarea name="escopo" id="escopo" class="form-control" cols="50" rows="4" placeholder="-"
+                            [(ngModel)]="this.ProjetosService.projetos.escopo"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="objetivo">Objetivo</label>
+                        <textarea name="objetivo" id="objetivo" class="form-control" cols="50" rows="4" placeholder="-"
+                            [(ngModel)]="this.ProjetosService.projetos.objetivo"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="beneficioqt">Beneficios Quantitativos</label>
+                        <textarea name="beneficioqt" id="beneficioqt" class="form-control" cols="50" rows="4"
+                            placeholder="-" [(ngModel)]="this.ProjetosService.projetos.beneficioqt"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="beneficioql">Beneficios Qualitativos:</label>
+                        <textarea name="beneficioql" id="beneficioql" class="form-control" cols="50" rows="4"
+                            placeholder="-" [(ngModel)]="this.ProjetosService.projetos.beneficioql"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary float-right">Salvar</button>
                 </form>
             </div>
         </div>
-        <!-- /.col -->
     </div>
-    <!-- /.row -->
+</div>
 
-    <div class="row">
-        <div class="col-xs-12 table-responsive">
+
+<div class="modal fade" id="modalLog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Adicionar Atualização</h4>
+            </div>
             <form #logForm="ngForm" (ngSubmit)="saveLog(logForm)">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Titulo</th>
-                            <th>Comentario</th>
-                            <th>Tipo</th>
-                            <th>Usuario</th>
-                            <th>Data</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                            <input type="hidden" id="nameprojeto" name="nameprojeto" [(ngModel)]="this.ProjetosService.logss.nameprojeto" > 
-                            <td><input style="width: 75%" id="titulo" name="titulo" [(ngModel)]="this.ProjetosService.logss.titulo" placeholder="Insira: Titulo" ></td>
-                            <td><input style="width: 75%" id="comentario" name="comentario" [(ngModel)]="this.ProjetosService.logss.comentario" placeholder="Insira: Comentario" ></td>
-                            <td><input style="width: 75%" id="tipo" name="tipo" [(ngModel)]="this.ProjetosService.logss.tipo" placeholder="Insira: Tipo" ></td>
-                            <td><input style="width: 75%" id="usuario" name="usuario" [(ngModel)]="this.ProjetosService.logss.usuario" placeholder="Insira: Usuario" ></td>
-                            <td><input style="width: 75%" id="data" name="data" [(ngModel)]="this.ProjetosService.logss.data" placeholder="Insira: Data" ></td>
-                            <td><button class="btn btn-primary">Log</button></td>
-                        <tr *ngFor="let log of logs">
-                            <td>{{log.titulo}}</td>
-                            <td>{{log.comentario}}</td>
-                            <td>{{log.tipo}}</td>
-                            <td>{{log.usuario}}</td>
-                            <td>{{log.data}}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="modal-body">
+                        <div class="form-row">
+                    <div class="form-group">
+                        <input type="hidden" id="nameprojeto" name="nameprojeto"
+                        [(ngModel)]="this.ProjetosService.logss.nameprojeto">
+                    </div>
+                    <div class="form-group">
+                        <label for="beneficioql">Titulo </label>
+                        <input  id="titulo" name="titulo" [(ngModel)]="this.ProjetosService.logss.titulo"
+                            placeholder="Insira: Titulo">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                    <label for="beneficioql">Tipo </label>
+                    <input  id="tipo" name="tipo" [(ngModel)]="this.ProjetosService.logss.tipo"
+                        placeholder="Insira: Tipo">
+                    </div>
+                    <div class="form-group">
+                        <label for="beneficioql">Usuario </label>
+                        <input  id="usuario" name="usuario"
+                        [(ngModel)]="this.ProjetosService.logss.usuario" placeholder="Insira: Usuario">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="beneficioql">Data </label>
+                        <input type="date" id="data" name="data" [(ngModel)]="this.ProjetosService.logss.data">
+                    </div>
+                    <div class="form-group">
+                    <label for="beneficioql">Comentario </label><br/>
+                        <textarea  id="comentario" name="comentario"
+                        [(ngModel)]="this.ProjetosService.logss.comentario" placeholder="Insira: Comentario"></textarea>
+                    </div>
+                </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
             </form>
         </div>
-        <!-- /.col -->
+        <!-- /.modal-content -->
     </div>
-    <!-- /.row -->
-</section>
-<div class="clearfix"></div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+<!--Base de collapse
+
+  <div class="box box-success">
+    <div class="box-header with-border">
+      <h3 class="box-title">Detalhes</h3>
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+        </button>
+        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+      </div>
+    </div>
+    <div class="box-body no-padding" style="">
+        <div class="row">
+                Onde vai os dados: Map will be created here 
+
+        </div>
+    </div>
+    </div>
+
+
+<div class="box box-default box-solid collapsed-box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Expandable</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="box-body" style="display: none;">
+              The body of the box
+            </div>
+          </div>
+
+
+
+-->

@@ -14,18 +14,18 @@ export class ModalScComponent implements OnInit {
 
   constructor(public dataApiService: DataApiService, private router: Router, private atendimentoService: AtendimentoDataService) { }
 
-  onSaveSc(ScForm: NgForm): void{
-      if(ScForm.value.id == null){
-        this.dataApiService.saveSc(ScForm.value).subscribe(sc => setTimeout(() => {
-          location.reload();
-        }, 1000));
-      }else{
-        this.dataApiService.updateSc(ScForm.value).subscribe(sc => setTimeout(() => {
-          location.reload();
-        }, 1000));
-      }
-      
-}
+  onSaveSc(ScForm: NgForm): void {
+    if (ScForm.value.id == null) {
+      this.dataApiService.saveSc(ScForm.value).subscribe(sc => setTimeout(() => {
+        location.reload();
+      }, 1000));
+    } else {
+      this.dataApiService.updateSc(ScForm.value).subscribe(sc => setTimeout(() => {
+        location.reload();
+      }, 1000));
+    }
+
+  }
 
   ngOnInit() {
   }

@@ -4,4 +4,8 @@ export interface UserInterface {
     username?: string;
     email?: string;
     password?: string;
+    setor?: string;
+    cargo?: string;
+    filial?: string;
+    contato?: string;
 }

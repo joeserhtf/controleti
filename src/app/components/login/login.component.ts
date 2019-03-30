@@ -44,7 +44,9 @@ export class LoginComponent implements OnInit, OnDestroy {
        let token = data.id;
        this.authService.setToken(token);
        this.router.navigate(['/admin/admin-home']);
-       location.reload();
+       setTimeout(() => {
+        location.reload();
+        }, 500); 
        this.isError = false;
        },
        error => this.onIsError());
