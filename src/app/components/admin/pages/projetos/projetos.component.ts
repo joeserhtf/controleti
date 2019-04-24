@@ -45,19 +45,21 @@ export class ProjetosComponent implements OnInit {
   }
 
   saveOrca(orcaForm: NgForm): void{
-      this.ProjetosService.saveOrcamento(orcaForm.value).subscribe();
-      this.getProjeto();
+      this.ProjetosService.saveOrcamento(orcaForm.value).subscribe(orc => setTimeout(() => {
+        location.reload();
+      }, 500));
   }
 
   saveProjeto(projetoFrom: NgForm): void{
-    this.ProjetosService.saveProjeto(projetoFrom.value).subscribe();
-    this.getProjeto();
-    window.close();
+    this.ProjetosService.saveProjeto(projetoFrom.value).subscribe(proj => setTimeout(() => {
+      location.reload();
+    }, 500));
 }
 
   saveLog(logForm: NgForm): void{
-    this.ProjetosService.saveLog(logForm.value).subscribe();
-    this.getProjeto();
+    this.ProjetosService.saveLog(logForm.value).subscribe(log => setTimeout(() => {
+      location.reload();
+    }, 500));
   }
 
   ngOnInit() {

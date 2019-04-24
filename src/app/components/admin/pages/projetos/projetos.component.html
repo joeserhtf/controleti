@@ -82,6 +82,7 @@
             </table>
         </div>
     </div>
+
     <!--Orçamentos-->
     <div class="box box-success collapsed-box">
         <div class="box-header with-border">
@@ -89,72 +90,32 @@
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                 </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                <button type="button" class="btn btn-box-tool" data-toggle="modal" data-target="#modalOrc"><i
+                        class="fa fa-file"></i></button>
             </div>
         </div>
-        <div class="box-body no-padding" style="">
+        <div class="box-body no-padding">
             <div class="row">
                 <div class="col-md-9 col-sm-8">
                     <div class="pad">
                         <div class="row">
-                            <div class="col-xs-6">
-                                <p class="lead">Orçamentos:</p>
-                                <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                                    <table class="table table-bordered table-striped mb-0">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Ano</th>
-                                                <th scope="col">Valor</th>
-                                                <th scope="col">Comentario</th>
-                                        </thead>
+                            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                <table class="table table-bordered table-striped mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Ano</th>
+                                            <th scope="col">Valor</th>
+                                            <th scope="col">Comentario</th>
+                                    </thead>
 
-                                        <tbody>
-                                            <tr *ngFor="let orcamento of orcamentos">
-                                                <td>{{orcamento.ano}}</td>
-                                                <td>{{orcamento.valor}}</td>
-                                                <td>{{orcamento.comentario}}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="col-xs-6">
-                                <p class="lead">Adicionar:</p>
-
-                                <div class="table-responsive">
-                                    <form #orcaForm="ngForm" (ngSubmit)="saveOrca(orcaForm)">
-                                        <table class="table">
-                                            <tbody>
-                                                <tr>
-                                                    <input type="hidden" id="nameprojeto" name="nameprojeto"
-                                                        [(ngModel)]="this.ProjetosService.orcamentoss.nameprojeto">
-                                                    <th style="width:50%">Ano:</th>
-                                                    <td><input id="ano" name="ano"
-                                                            [(ngModel)]="this.ProjetosService.orcamentoss.ano"
-                                                            placeholder="2019"></td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Valor:</th>
-                                                    <td><input id="valor" name="valor"
-                                                            [(ngModel)]="this.ProjetosService.orcamentoss.valor"
-                                                            placeholder="65,00"></td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Comentário:</th>
-                                                    <td><textarea id="comentario" name="comentario"
-                                                            placeholder="Detalhes"
-                                                            [(ngModel)]="this.ProjetosService.orcamentoss.comentario"></textarea>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Confirmar:</th>
-                                                    <td><button class="btn btn-danger">Adicionar</button></td>
-                                                </tr>
-
-                                            </tbody>
-                                        </table>
-                                    </form>
-                                </div>
+                                    <tbody>
+                                        <tr *ngFor="let orcamento of orcamentos">
+                                            <td>{{orcamento.ano}}</td>
+                                            <td>{{orcamento.valor}}</td>
+                                            <td>{{orcamento.comentario}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -163,33 +124,52 @@
         </div>
     </div>
     <!--Log-->
-    <div class="row">
-        <div class="col-xs-12 table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Titulo</th>
-                        <th>Comentario</th>
-                        <th>Tipo</th>
-                        <th>Usuario</th>
-                        <th>Data</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let log of logs">
-                        <td>{{log.titulo}}</td>
-                        <td>{{log.comentario}}</td>
-                        <td>{{log.tipo}}</td>
-                        <td>{{log.usuario}}</td>
-                        <td>{{log.data}}</td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="box box-success collapsed-box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Logs</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-toggle="modal" data-target="#modalLog"><i
+                        class="fa fa-file"></i></button>
+            </div>
         </div>
-        <button data-toggle="modal" data-target="#modalLog">Adicionar Log</button>
+        <div class="box-body no-padding">
+            <div class="row">
+
+
+                <div class="row">
+                    <div class="col-xs-12 table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Titulo</th>
+                                    <th>Comentario</th>
+                                    <th>Tipo</th>
+                                    <th>Usuario</th>
+                                    <th>Data</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let log of logs">
+                                    <td>{{log.titulo}}</td>
+                                    <td>{{log.comentario}}</td>
+                                    <td>{{log.tipo}}</td>
+                                    <td>{{log.usuario}}</td>
+                                    <td>{{log.data}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 <div class="clearfix"></div>
+
+
 <!--Modal Projeto-->
 <div id="modalProjeto" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
@@ -337,63 +317,65 @@
                         <textarea name="beneficioql" id="beneficioql" class="form-control" cols="50" rows="4"
                             placeholder="-" [(ngModel)]="this.ProjetosService.projetos.beneficioql"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary float-right">Salvar</button>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
 
-
+<!--Modal Log-->
 <div class="modal fade" id="modalLog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">Adicionar Atualização</h4>
+                <h4 class="modal-title">Adicionar LOG</h4>
             </div>
             <form #logForm="ngForm" (ngSubmit)="saveLog(logForm)">
                 <div class="modal-body">
-                        <div class="form-row">
-                    <div class="form-group">
-                        <input type="hidden" id="nameprojeto" name="nameprojeto"
-                        [(ngModel)]="this.ProjetosService.logss.nameprojeto">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="hidden" id="nameprojeto" name="nameprojeto"
+                                [(ngModel)]="this.ProjetosService.logss.nameprojeto">
+                        </div>
+                        <div class="form-group">
+                            <label for="beneficioql">Titulo </label>
+                            <input class="form-control" id="titulo" name="titulo"
+                                [(ngModel)]="this.ProjetosService.logss.titulo" placeholder="Insira: Titulo">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="beneficioql">Titulo </label>
-                        <input  id="titulo" name="titulo" [(ngModel)]="this.ProjetosService.logss.titulo"
-                            placeholder="Insira: Titulo">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="beneficioql">Tipo </label>
+                            <input class="form-control" id="tipo" name="tipo"
+                                [(ngModel)]="this.ProjetosService.logss.tipo" placeholder="Insira: Tipo">
+                        </div>
+                        <div class="form-group">
+                            <label for="beneficioql">Usuario </label>
+                            <input class="form-control" id="usuario" name="usuario"
+                                [(ngModel)]="this.ProjetosService.logss.usuario" placeholder="Insira: Usuario">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="beneficioql">Data </label>
+                            <input class="form-control" type="date" id="data" name="data"
+                                [(ngModel)]="this.ProjetosService.logss.data">
+                        </div>
+                        <div class="form-group">
+                            <label for="beneficioql">Comentario </label><br />
+                            <textarea class="form-control" id="comentario" name="comentario"
+                                [(ngModel)]="this.ProjetosService.logss.comentario"
+                                placeholder="Insira: Comentario"></textarea>
+                        </div>
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group">
-                    <label for="beneficioql">Tipo </label>
-                    <input  id="tipo" name="tipo" [(ngModel)]="this.ProjetosService.logss.tipo"
-                        placeholder="Insira: Tipo">
-                    </div>
-                    <div class="form-group">
-                        <label for="beneficioql">Usuario </label>
-                        <input  id="usuario" name="usuario"
-                        [(ngModel)]="this.ProjetosService.logss.usuario" placeholder="Insira: Usuario">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="beneficioql">Data </label>
-                        <input type="date" id="data" name="data" [(ngModel)]="this.ProjetosService.logss.data">
-                    </div>
-                    <div class="form-group">
-                    <label for="beneficioql">Comentario </label><br/>
-                        <textarea  id="comentario" name="comentario"
-                        [(ngModel)]="this.ProjetosService.logss.comentario" placeholder="Insira: Comentario"></textarea>
-                    </div>
-                </div>
-                </div>
-
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-primary">Adicionar</button>
                 </div>
             </form>
         </div>
@@ -402,6 +384,47 @@
     <!-- /.modal-dialog -->
 </div>
 
+<!--Modal Orçamento-->
+<div class="modal fade" id="modalOrc">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Adicionar Orçamento</h4>
+            </div>
+            <form #orcaForm="ngForm" (ngSubmit)="saveOrca(orcaForm)">
+                <div class="modal-body">
+                    <input type="hidden" id="nameprojeto" name="nameprojeto"
+                        [(ngModel)]="this.ProjetosService.orcamentoss.nameprojeto">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Ano:</label>
+                            <input class="form-control" id="ano" name="ano"
+                                [(ngModel)]="this.ProjetosService.orcamentoss.ano" placeholder="2019">
+                        </div>
+                    
+                    <div class="form-group">
+                        <label>Valor:</label>
+                        <input class="form-control" id="valor" name="valor"
+                            [(ngModel)]="this.ProjetosService.orcamentoss.valor" placeholder="65,00">
+                    </div>
+                </div>
+                    <div class="form-group">
+                        <label for="beneficioql">Comentário </label><br />
+                        <textarea class="form-control" id="comentario" name="comentario"
+                            [(ngModel)]="this.ProjetosService.orcamentoss.comentario" placeholder="Detalhes"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" data-dismiss="modalOrc" class="btn btn-primary">Adicionar</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 
 <!--Base de collapse
 
@@ -438,5 +461,41 @@
           </div>
 
 
+
+
+
+
+          <form #orcaForm="ngForm" (ngSubmit)="saveOrca(orcaForm)">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <input type="hidden" id="nameprojeto" name="nameprojeto"
+                                                        [(ngModel)]="this.ProjetosService.orcamentoss.nameprojeto">
+                                                    <th >Ano:</th>
+                                                    <td><input id="ano" name="ano"
+                                                            [(ngModel)]="this.ProjetosService.orcamentoss.ano"
+                                                            placeholder="2019"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Valor:</th>
+                                                    <td><input id="valor" name="valor"
+                                                            [(ngModel)]="this.ProjetosService.orcamentoss.valor"
+                                                            placeholder="65,00"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Comentário:</th>
+                                                    <td><textarea id="comentario" name="comentario"
+                                                            placeholder="Detalhes"
+                                                            [(ngModel)]="this.ProjetosService.orcamentoss.comentario"></textarea>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Confirmar:</th>
+                                                    <td><button class="btn btn-danger">Adicionar</button></td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </form>
 
 -->
