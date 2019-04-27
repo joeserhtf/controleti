@@ -111,7 +111,7 @@ export class HorarioComponent implements OnInit {
     setTimeout(() => {
       this.getevents();
       this.opencalendar();
-    }, 2000);      
+    }, 2500);      
   }
 
 }

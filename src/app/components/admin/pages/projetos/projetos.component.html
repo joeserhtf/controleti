@@ -94,7 +94,7 @@
                         class="fa fa-file"></i></button>
             </div>
         </div>
-        <div class="box-body no-padding">
+        <div class="box-body ">
             <div class="row">
                 <div class="col-md-9 col-sm-8">
                     <div class="pad">
@@ -134,7 +134,7 @@
                         class="fa fa-file"></i></button>
             </div>
         </div>
-        <div class="box-body no-padding">
+        <div class="box-body">
             <div class="row">
 
 
@@ -446,56 +446,5 @@
     </div>
 
 
-<div class="box box-default box-solid collapsed-box">
-            <div class="box-header with-border">
-              <h3 class="box-title">Expandable</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                </button>
-              </div>
-            </div>
-            <div class="box-body" style="display: none;">
-              The body of the box
-            </div>
-          </div>
-
-
-
-
-
-
-          <form #orcaForm="ngForm" (ngSubmit)="saveOrca(orcaForm)">
-                                        <table class="table">
-                                            <tbody>
-                                                <tr>
-                                                    <input type="hidden" id="nameprojeto" name="nameprojeto"
-                                                        [(ngModel)]="this.ProjetosService.orcamentoss.nameprojeto">
-                                                    <th >Ano:</th>
-                                                    <td><input id="ano" name="ano"
-                                                            [(ngModel)]="this.ProjetosService.orcamentoss.ano"
-                                                            placeholder="2019"></td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Valor:</th>
-                                                    <td><input id="valor" name="valor"
-                                                            [(ngModel)]="this.ProjetosService.orcamentoss.valor"
-                                                            placeholder="65,00"></td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Comentário:</th>
-                                                    <td><textarea id="comentario" name="comentario"
-                                                            placeholder="Detalhes"
-                                                            [(ngModel)]="this.ProjetosService.orcamentoss.comentario"></textarea>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Confirmar:</th>
-                                                    <td><button class="btn btn-danger">Adicionar</button></td>
-                                                </tr>
-
-                                            </tbody>
-                                        </table>
-                                    </form>
 
 -->

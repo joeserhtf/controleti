@@ -22,7 +22,7 @@
         <li class="treeview" *ngIf="isLogged">
           <a href="#">
               <i class="fa fa-pie-chart"></i>
-              <span>Horario</span>
+              <span>Horário</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -35,7 +35,7 @@
         <li class="treeview" *ngIf="isLogged">
           <a routerLink="/admin/projetos">
               <i class="fa fa-book"></i>
-              <span>Projetoss</span>
+              <span>Projetos</span>
             </a>
         </li>
       <li class="treeview" *ngIf="isLogged">
@@ -56,6 +56,12 @@
             <span>Ramal</span>            
           </a>
       </li>
+      <li class="treeview" *ngIf="isLogged">
+          <a routerLink="/admin/colaborador">
+              <i class="fa fa-user"></i>
+              <span>Colaboradores</span>            
+            </a>
+        </li>
       <li class="treeview" *ngIf="isLogged">
         <a href="#">
             <i class="fa fa-pie-chart"></i>

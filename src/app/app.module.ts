@@ -24,6 +24,7 @@ import { IncluirComponent } from './components/admin/pages/incluir/incluir.compo
 import { ListagemimpComponent } from './components/admin/pages/listagemimp/listagemimp.component';
 import { IncluirimpComponent } from './components/admin/pages/incluirimp/incluirimp.component';
 import { HorarioComponent } from './components/admin/pages/horario/horario.component';
+import { ColaboradorComponent } from './components/admin/pages/colaborador/colaborador.component';
 import { FormsModule } from '@angular/forms';
 
 //Service
@@ -47,6 +48,7 @@ import { ProjetosComponent } from './components/admin/pages/projetos/projetos.co
 import { TimesheetComponent } from './components/admin/pages/timesheet/timesheet.component';
 import { TimesheetService } from './services/timesheet.service';
 import { ProjetosService } from './services/projetos.service';
+import { ColaboradorServiceService } from './services/colaborador-service.service';
 
 @NgModule({
   declarations: [
@@ -78,6 +80,7 @@ import { ProjetosService } from './services/projetos.service';
     RecadoComponent,
     ProjetosComponent,
     TimesheetComponent,
+    ColaboradorComponent,
   ],
   imports: [
     HttpModule,
@@ -88,7 +91,7 @@ import { ProjetosService } from './services/projetos.service';
     FormsModule,
     FullCalendarModule,
   ],
-  providers: [HttpClient, HttpModule, HttpClientModule, DataApiService, CustofixoDataService, AtendimentoDataService, InventarioDataService, UsuarioimpDataService, TimesheetService, ProjetosService],
+  providers: [HttpClient, HttpModule, HttpClientModule, DataApiService, CustofixoDataService, AtendimentoDataService, InventarioDataService, UsuarioimpDataService, TimesheetService, ProjetosService, ColaboradorServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

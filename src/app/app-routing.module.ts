@@ -1,3 +1,4 @@
+import { ColaboradorComponent } from './components/admin/pages/colaborador/colaborador.component';
 import { RamalComponent } from './components/admin/pages/ramal/ramal.component';
 import { ModalScComponent } from './components/admin/modal-sc/modal-sc.component';
 import { AuthGuard } from './guards/auth.guard';
@@ -90,6 +91,10 @@ const routes: Routes = [
       {
         path: 'timesheet',
         component: TimesheetComponent, canActivate:[AuthGuard]
+      },
+      {
+        path: 'colaborador',
+        component: ColaboradorComponent, canActivate:[AuthGuard]
       },
       { 
         path: 'login',

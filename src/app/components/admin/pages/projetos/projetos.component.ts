@@ -20,7 +20,7 @@ export class ProjetosComponent implements OnInit {
   public projetos: projetosInterface;
   public logs: logInterface;
   public projetosd: projetosInterface;
-  nome = "Projeto Teste";
+  nome = "CRJTI";
 
   constructor(private http: HttpClient, private authService: AuthService, public ProjetosService: ProjetosService) { }
 

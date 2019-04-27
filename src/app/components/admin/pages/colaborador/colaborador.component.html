@@ -1,0 +1,105 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Colaboradores
+    <small>Painel</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a routerLink="/admin-home">
+        <i class="fa fa-dashboard"></i> Home</a>
+    </li>
+    <li class="active">Colaboradores</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="row">
+    <div>
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Colaboradores</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body ">
+          <table class="table table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" >
+            <thead>
+              <tr>
+                <th scope="col">Unidade</th>
+                <th scope="col">Setor</th>
+                <th scope="col">Nome</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Cargo</th>
+                <th><span class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#modalCol" (click)="resetForm()"> </span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let col of cols">
+                <td>{{ col.unidade}}</td>
+                <td>{{ col.setor }}</td>
+                <td>{{ col.nome }}</td>
+                <td>{{ col.email }}</td>
+                <td>{{ col.cargo}}</td>
+                <td>
+                  <span class="fa fa-pencil" (click)="onPreCol(col)" data-toggle="modal" data-target="#modalCol"></span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- /.box-body -->
+      </div>
+    </div>
+    <!-- /.box-body -->
+  </div>
+</section>
+
+
+<!-- Modal -->
+<div id="modalCol" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">{{!this.colApi.SelectCol.id ? 'Novo Cadastro' : 'Atualizar Cadastro'}}</h3>
+      </div>
+      <div class="modal-body">
+        <form class="form-book" #formCol="ngForm" (ngSubmit)="onSaveCol(formCol)">
+          <input type="hidden" id="id" name="id" class="form-control" [(ngModel)]="this.colApi.SelectCol.id">
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" class="form-control" placeholder="nome" [(ngModel)]="this.colApi.SelectCol.nome">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="unidade">Unidade</label>
+              <select name="unidade" id="unidade" class="form-control" [(ngModel)]="this.colApi.SelectCol.unidade">
+                <option value="Matriz">Matriz</option>
+                <option value="JP">João Pessoa</option>
+                <option value="CBD">Cabedelo</option>
+                <option value="CD">CD</option>
+                <option value="JUA">Juazeiro Do Norte</option>
+                <option value="FOR">Fortaleza</option>
+                <option value="ARA">Arapiraca</option>
+                <option value="DV">Dona Valmira</option>
+                <option value="CG">Campina Grande</option>
+                <option value="NAT">Natal</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="setor">Setor</label>
+              <input type="text" id="setor" name="setor" class="form-control" placeholder="Setor" [(ngModel)]="this.colApi.SelectCol.setor">
+            </div>
+            <div class="form-group">
+              <label for="cargo">Cargo</label>
+              <input type="text" id="cargo" name="cargo" class="form-control" placeholder="Cargo" [(ngModel)]="this.colApi.SelectCol.cargo">
+            </div>
+              <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="text" id="email" name="email" class="form-control" placeholder="email" [(ngModel)]="this.colApi.SelectCol.email">
+              </div>
+          </div>
+          <button type="submit"  class="btn btn-primary float-right">Salvar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

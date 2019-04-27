@@ -57,6 +57,8 @@ export class TimesheetComponent implements OnInit {
     { name: "João Ortiz", value: 2 },
     { name: "Wylliane Costa", value: 3 },
     { name: "Weldon Rafael", value: 4 },
+    { name: "Bruno Barbosa", value: 5 },
+    { name: "Crisostomos Silva", value: 6 }
   ]
 
   months = [
@@ -88,7 +90,7 @@ export class TimesheetComponent implements OnInit {
   fd = moment().startOf('month').locale('pt-br').format('dddd');
   i: number;
   selectedworker = null;
-  selectedMonth = "03";
+  selectedMonth = "04";
   selectedYear = '2019';
   public days;
   public excel;
@@ -142,7 +144,7 @@ export class TimesheetComponent implements OnInit {
   }
 
   onAdmUser(): void{
-    if(this.user.idt == 1){
+    if(this.user.idt == 1 || this.user.idt == 2){
       this.isAdm = true;
     }else{
       this.isAdm = false;
