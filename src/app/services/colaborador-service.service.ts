@@ -36,13 +36,13 @@ export class ColaboradorServiceService {
 
   //Metodos Col
   getColaboradores(){
-    const url_api = 'http://crj.kinghost.net/restapi/api/games';
+    const url_api = 'http://crj.kinghost.net/restapi/api/colab';
     return this.http.get<colaboradorInterface>(url_api);
   }  
 
   saveCol(col: colaboradorInterface){
     let token = this.authService.getToken();
-    const url_api = `http://crj.kinghost.net/restapi/api/games`;
+    const url_api = `http://crj.kinghost.net/restapi/api/colab`;
     return this.http.post<colaboradorInterface>(url_api, col ,{ headers: this.headers})
     .pipe(map(data => data));
   }  
@@ -50,7 +50,7 @@ export class ColaboradorServiceService {
   updateCol(col: colaboradorInterface){
     const colID = col.id;
     let token = this.authService.getToken();
-    const url_api = `http://crj.kinghost.net/restapi/api/games/${colID}`;
+    const url_api = `http://crj.kinghost.net/restapi/api/colab/${colID}`;
     return this.http.put<colaboradorInterface>(url_api, col,{headers: this.headers})
     .pipe(map(data => data));
   }
