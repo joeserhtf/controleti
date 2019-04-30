@@ -50,7 +50,7 @@ export class ColaboradorServiceService {
   updateCol(col: colaboradorInterface){
     const colID = col.id;
     let token = this.authService.getToken();
-    const url_api = `http://crj.kinghost.net/restapi/api/colab/${colID}`;
+    const url_api = ``;
     return this.http.put<colaboradorInterface>(url_api, col,{headers: this.headers})
     .pipe(map(data => data));
   }
