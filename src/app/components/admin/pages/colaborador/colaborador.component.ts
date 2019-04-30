@@ -45,6 +45,7 @@ export class ColaboradorComponent implements OnInit {
       unidade: '',
       setor: '',
       cargo: '',
+      contato: '',
       email: ''
     };
   }

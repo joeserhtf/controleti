@@ -80,7 +80,7 @@ export class InventarioDataService {
 
   //Ramal
   getAllRamal(){
-    const url_api = 'https://carajas-tic-dashboard.mybluemix.net/api/ramais';
+    const url_api = 'http://crj.kinghost.net/restapi/api/games/ramal';
     return this.http.get<ramalInterface>(url_api);
   }
 

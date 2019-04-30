@@ -30,18 +30,19 @@ export class ColaboradorServiceService {
     setor: '',
     cargo: '',
     nome: '',
+    contato: '',
     email: ''
   };
 
   //Metodos Col
   getColaboradores(){
-    const url_api = 'https://carajas-tic-dashboard.mybluemix.net/api/colaboradores';
+    const url_api = 'http://crj.kinghost.net/restapi/api/games';
     return this.http.get<colaboradorInterface>(url_api);
   }  
 
   saveCol(col: colaboradorInterface){
     let token = this.authService.getToken();
-    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/colaboradores?access_token=${token}`;
+    const url_api = `http://crj.kinghost.net/restapi/api/games`;
     return this.http.post<colaboradorInterface>(url_api, col ,{ headers: this.headers})
     .pipe(map(data => data));
   }  
@@ -49,7 +50,7 @@ export class ColaboradorServiceService {
   updateCol(col: colaboradorInterface){
     const colID = col.id;
     let token = this.authService.getToken();
-    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/colaboradores/${colID}?access_token=${token}`;
+    const url_api = `http://crj.kinghost.net/restapi/api/games/${colID}`;
     return this.http.put<colaboradorInterface>(url_api, col,{headers: this.headers})
     .pipe(map(data => data));
   }

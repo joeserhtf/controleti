@@ -4,5 +4,6 @@ export interface colaboradorInterface{
     cargo?: string;
     nome?: string;
     email?: string;
+    contato?: string;
     id?: string;
 }

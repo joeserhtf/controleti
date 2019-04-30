@@ -1,6 +1,6 @@
 export interface ramalInterface{
     ramal?: string;
     setor?: string;
-    usuario?: string;
+    unidade?: string;
     id?: string;
 }
