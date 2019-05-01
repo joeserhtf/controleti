@@ -1,7 +1,7 @@
 export interface atendimentoInterface{
-    atendente?: string;
-    local?: string;
-    chamado?: string;
+    nome?: string;
+    setor?: string;
+    chamadoatual?: string;
     mensagem?: string;
     id?: string;
 }

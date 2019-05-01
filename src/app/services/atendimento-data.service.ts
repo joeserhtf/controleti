@@ -27,21 +27,21 @@ export class AtendimentoDataService {
   
   public selectedAte: atendimentoInterface = {
     id: null,
-    atendente: '',
-    local: '',
-    chamado: '',
+    nome: '',
+    setor: '',
+    chamadoatual: '',
     mensagem: ''
   };
 
   getAllAtendimentos(){
-    const url_api = 'https://carajas-tic-dashboard.mybluemix.net/api/atendimentos';
+    const url_api = 'https://crjapi.herokuapp.com/';
     return this.http.get<atendimentoInterface>(url_api);
   }
 
   updateAtendimentos(atend){
     let token = this.authService.getToken();
-    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/atendimentos?access_token=${token}`;
-    return this.http.patch<atendimentoInterface>(url_api, atend ,{headers: this.headers})
+    const url_api = `https://crjapi.herokuapp.com/${atend.id}`;
+    return this.http.put<atendimentoInterface>(url_api, atend ,{headers: this.headers})
     .pipe(map(data => data));
   }
 

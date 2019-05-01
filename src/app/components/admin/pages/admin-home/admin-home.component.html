@@ -32,10 +32,10 @@
               </thead>
               <tbody>
                 <tr *ngFor="let ate of ates">
-                  <td>{{ ate.atendente }}</td>
-                  <td>{{ ate.local }}</td>
-                  <td>{{ ate.chamado }}</td>
-                  <td>{{ ate.mensagem}}</td>
+                  <td>{{ ate.nome }}</td>
+                  <td>{{ ate.nsetor }}</td>
+                  <td>{{ ate.chamadoatual }}</td>
+                  <td>{{ ate.unidade}}</td>
                   <td *ngIf="isLogged"  ><span class="glyphicon glyphicon-option-horizontal" data-toggle="modal" data-target="#modalAte" (click)="onPreUpdateAte(ate)"></span></td>
                 </tr>
               </tbody>
