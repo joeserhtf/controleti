@@ -51,18 +51,18 @@
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content col-md-4">
         <div class="modal-body">
-            <h4 class="" >{{this.atendimentoDataService.selectedAte.atendente}}</h4>
+            <h4 class="" >{{this.atendimentoDataService.selectedAte.nome}}</h4>
           <form class="form-book" #formAte="ngForm" (ngSubmit)="updateAte(formAte)">
             <input type="hidden" id="id" name="id" class="form-control" [(ngModel)]="this.atendimentoDataService.selectedAte.id">
-            <input type="hidden" id="atendente" name="atendente" class="form-control" placeholder="Produtos" [(ngModel)]="this.atendimentoDataService.selectedAte.atendente">
+            <input type="hidden" id="nome" name="nome" class="form-control" placeholder="Produtos" [(ngModel)]="this.atendimentoDataService.selectedAte.nome">
             <div class="form-group">
               <div class="form-group">
-                <label for="local">Local:</label>
-                <input name="local" id="local" class="form-control" placeholder="Numero da Sc" [(ngModel)]="this.atendimentoDataService.selectedAte.local" required>
+                <label for="setor">Local:</label>
+                <input name="setor" id="setor" class="form-control" placeholder="Numero da Sc" [(ngModel)]="this.atendimentoDataService.selectedAte.setor" required>
               </div>
               <div class="form-group">
-                <label for="chamado">Chamado:</label>
-                <input type="number" id="chamado" name="chamado" class="form-control" placeholder="Ex: 10" [(ngModel)]="this.atendimentoDataService.selectedAte.chamado">
+                <label for="chamadoatual">Chamado:</label>
+                <input type="number" id="chamadoatual" name="chamadoatual" class="form-control" placeholder="Ex: 10" [(ngModel)]="this.atendimentoDataService.selectedAte.chamadoatual">
               </div>
               <div class="form-group">
                   <label for="mensagem">Obs:</label>
