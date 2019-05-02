@@ -90,7 +90,7 @@ export class DataApiService {
 
   //Metodos Imp
   getallimpressoras(){
-    const url_api = 'https://carajas-tic-dashboard.mybluemix.net/api/impressoras';
+    const url_api = 'http://localhost:21181/api/data/';
     return this.http.get<impInterface>(url_api);
   }  
 

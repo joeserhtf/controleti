@@ -28,8 +28,7 @@ export class TimesheetComponent implements OnInit {
 
   public horario: Horariointerface = {
     userid: 0,
-    dia: '',
-    data: '',
+    datat: '',
     total: '',
     e1: '',
     s1: '',
@@ -166,7 +165,7 @@ export class TimesheetComponent implements OnInit {
     this.fd;
     setTimeout(() => {
       this.getDays();
-    }, 2000); 
+    }, 500); 
     this.getDaysToExcel();
   }
 

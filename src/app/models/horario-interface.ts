@@ -1,8 +1,7 @@
 export interface Horariointerface {
     id?: string;
     userid?: number;
-    dia?: string;
-    data?: string;
+    datat?: string;
     total?: string;
     e1?: string;
     s1?: string;

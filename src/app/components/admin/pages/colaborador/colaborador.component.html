@@ -66,35 +66,33 @@
           <input type="hidden" id="id" name="id" class="form-control" [(ngModel)]="this.colApi.SelectCol.id">
           <div class="form-group">
             <label for="nome">Nome</label>
-            <input type="text" id="nome" name="nome" class="form-control" placeholder="nome" [(ngModel)]="this.colApi.SelectCol.nome">
+            <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" [(ngModel)]="this.colApi.SelectCol.nome">
           </div>
           <div class="form-row">
             <div class="form-group">
               <label for="unidade">Unidade</label>
-              <select name="unidade" id="unidade" class="form-control" [(ngModel)]="this.colApi.SelectCol.unidade">
-                <option value="1">Matriz</option>
-                <option value="2">João Pessoa</option>
-                <option value="3">Cabedelo</option>
-                <option value="4">CD</option>
-                <option value="5">Juazeiro Do Norte</option>
-                <option value="6">Fortaleza</option>
-                <option value="7">Arapiraca</option>
-                <option value="8">Dona Valmira</option>
-                <option value="9">Campina Grande</option>
-                <option value="10">Natal</option>
+              <select name="unidade" id="unidade" class="form-control" [(ngModel)]="this.colApi.SelectCol.unidade" required>
+                <option *ngFor="let unid of unids" [ngValue]="unid.id">
+                  {{unid.unidade}}</option>
               </select>
             </div>
             <div class="form-group">
               <label for="setor">Setor</label>
-              <input type="text" id="setor" name="setor" class="form-control" placeholder="Setor" [(ngModel)]="this.colApi.SelectCol.setor">
+              <select name="setor" id="setor" class="form-control" [(ngModel)]="this.colApi.SelectCol.setor">
+                <option *ngFor="let setor of setores" [ngValue]="setor.id">
+                  {{setor.setor}}</option>
+              </select>
             </div>
             <div class="form-group">
               <label for="cargo">Cargo</label>
-              <input type="text" id="cargo" name="cargo" class="form-control" placeholder="Cargo" [(ngModel)]="this.colApi.SelectCol.cargo">
+              <select name="cargo" id="cargo" class="form-control" [(ngModel)]="this.colApi.SelectCol.cargo">
+                <option *ngFor="let carg of cargs" [ngValue]="carg.id">
+                  {{carg.cargo}}</option>
+              </select>
             </div>
               <div class="form-group">
                 <label for="email">E-mail</label>
-                <input type="text" id="email" name="email" class="form-control" placeholder="email" [(ngModel)]="this.colApi.SelectCol.email">
+                <input type="text" id="email" name="email" class="form-control" placeholder="E-mail" [(ngModel)]="this.colApi.SelectCol.email">
               </div>
           </div>
           <button type="submit"  class="btn btn-primary float-right">Salvar</button>

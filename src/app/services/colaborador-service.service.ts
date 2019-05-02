@@ -36,21 +36,33 @@ export class ColaboradorServiceService {
 
   //Metodos Col
   getColaboradores(){
-    const url_api = 'http://crj.kinghost.net/restapi/api/colab';
+    const url_api = 'http://localhost:21181/api/colab';
     return this.http.get<colaboradorInterface>(url_api);
-  }  
+  }
+
+  getUnidades(){
+    const url_api = 'http://localhost:21181/api/colab/u';
+    return this.http.get(url_api);
+  }
+
+  getCargos(){
+    const url_api = 'http://localhost:21181/api/colab/c';
+    return this.http.get(url_api);
+  } 
+
+  getSetores(){
+    const url_api = 'http://localhost:21181/api/colab/s';
+    return this.http.get(url_api);
+  } 
 
   saveCol(col: colaboradorInterface){
-    let token = this.authService.getToken();
-    const url_api = `http://crj.kinghost.net/restapi/api/colab`;
+    const url_api = `http://localhost:21181/api/colab/${col.id}`;
     return this.http.post<colaboradorInterface>(url_api, col ,{ headers: this.headers})
     .pipe(map(data => data));
   }  
 
   updateCol(col: colaboradorInterface){
-    const colID = col.id;
-    let token = this.authService.getToken();
-    const url_api = ``;
+    const url_api = `http://localhost:21181/api/colab/${col.id}`;
     return this.http.put<colaboradorInterface>(url_api, col,{headers: this.headers})
     .pipe(map(data => data));
   }

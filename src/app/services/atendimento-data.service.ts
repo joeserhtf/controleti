@@ -34,13 +34,13 @@ export class AtendimentoDataService {
   };
 
   getAllAtendimentos(){
-    const url_api = 'https://crjapi.herokuapp.com/';
+    const url_api = 'http://localhost:21181/';
     return this.http.get<atendimentoInterface>(url_api);
   }
 
   updateAtendimentos(atend){
     let token = this.authService.getToken();
-    const url_api = `https://crjapi.herokuapp.com/${atend.id}`;
+    const url_api = `http://localhost:21181/${atend.id}`;
     return this.http.put<atendimentoInterface>(url_api, atend ,{headers: this.headers})
     .pipe(map(data => data));
   }

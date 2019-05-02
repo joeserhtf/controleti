@@ -80,7 +80,7 @@ export class InventarioDataService {
 
   //Ramal
   getAllRamal(){
-    const url_api = 'http://crj.kinghost.net/restapi/api/games/ramal';
+    const url_api = 'http://localhost:21181/api/data/ramal';
     return this.http.get<ramalInterface>(url_api);
   }
 

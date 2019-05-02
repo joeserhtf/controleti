@@ -17,6 +17,9 @@ import { NgForm } from '@angular/forms';
 export class ColaboradorComponent implements OnInit {
 
   public cols: colaboradorInterface;
+  public unids;
+  public cargs;
+  public setores;
   dtOptions: any = {};
   dtLanguage: any = portugues;
   dtTrigger: Subject<any> = new Subject();
@@ -35,6 +38,24 @@ export class ColaboradorComponent implements OnInit {
     this.colApi.getColaboradores().subscribe((cols: colaboradorInterface ) => { 
     this.cols = cols;
     this.dtTrigger.next();
+    });
+  }
+
+  getUnidade(): void{
+    this.colApi.getUnidades().subscribe((unids) => { 
+    this.unids = unids;
+    });
+  }
+
+  getSetor(): void{
+    this.colApi.getSetores().subscribe((setores) => { 
+    this.setores = setores;
+    });
+  }
+
+  getCargo(): void{
+    this.colApi.getCargos().subscribe((cargs) => { 
+    this.cargs = cargs;
     });
   }
 
@@ -57,6 +78,9 @@ export class ColaboradorComponent implements OnInit {
   ngOnInit() {
 
     this.getColaboradores();
+    this.getUnidade();
+    this.getCargo();
+    this.getSetor();
 
     this.dtOptions = {
       pagingType: 'full_numbers',
