@@ -31,8 +31,8 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let cf of cfs">
-                    <td>{{ cf.recebimentoData }}</td>
-                    <td>{{ cf.empresaName }} <span routerLink="/admin/cfhistorico/{{cf.cfhid}}" class="glyphicon glyphicon-folder-open"></span></td>
+                    <td>{{ cf.recebimentop }}</td>
+                    <td>{{ cf.prestador }} <span routerLink="/admin/cfhistorico/{{cf.cfhid}}" class="glyphicon glyphicon-folder-open"></span></td>
                     <td>{{ cf.servico }}</td>
                     <td>{{ cf.unidade }}</td>
                   </tr>

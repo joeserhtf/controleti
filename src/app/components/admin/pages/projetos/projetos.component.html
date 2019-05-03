@@ -2,8 +2,8 @@
     <h1>
         Projetos <span class="fa fa-plus" data-toggle="modal" data-target="#modalProjeto"></span>
         <small><select [(ngModel)]="nome" (change)="getProjeto()">
-                <option *ngFor="let projetonome of projetos" [ngValue]="projetonome.nome">
-                    {{projetonome.codigo}}.{{projetonome.nome}}</option>
+                <option *ngFor="let projetonome of projetos" [ngValue]="projetonome.nome " selected="1">
+                    {{projetonome.nome}}</option>
             </select></small>
     </h1>
     <ol class="breadcrumb">
@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-xs-12">
             <h2 class="page-header">
-                <i class="fa fa-globe"></i> {{projeto.codigo}}. {{projeto.nome}}
+                <i class="fa fa-globe"></i>{{projeto.nome}}
                 <small class="pull-right">Data: {{projeto.inicio}}</small>
             </h2>
         </div>
@@ -110,7 +110,7 @@
 
                                     <tbody>
                                         <tr *ngFor="let orcamento of orcamentos">
-                                            <td>{{orcamento.ano}}</td>
+                                            <td>{{orcamento.data}}</td>
                                             <td>{{orcamento.valor}}</td>
                                             <td>{{orcamento.comentario}}</td>
                                         </tr>
@@ -155,7 +155,7 @@
                                     <td>{{log.titulo}}</td>
                                     <td>{{log.comentario}}</td>
                                     <td>{{log.tipo}}</td>
-                                    <td>{{log.usuario}}</td>
+                                    <td>{{log.usuarioid}}</td>
                                     <td>{{log.data}}</td>
                                 </tr>
                             </tbody>

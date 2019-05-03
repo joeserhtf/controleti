@@ -38,12 +38,12 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let hist of hists"> <!-- Definir funçao no ts -->
-                    <td>{{ hist.nf }}</td>
-                    <td>{{ hist.recebimento }}</td>
+                    <td>{{ hist.numnota }}</td>
+                    <td>{{ hist.recebido }}</td>
                     <td>{{ hist.vencimento }}</td>
                     <td>{{ hist.valor }}</td>
-                    <td>{{ hist.sc }}</td>
-                    <td>{{ hist.situacao == 1 ? 'Entregue' : 'Pendente'}}</td>
+                    <td>{{ hist.idcf }}</td>
+                    <td>{{ hist.ref}}</td>
                   </tr>
                 </tbody>
                 </table>

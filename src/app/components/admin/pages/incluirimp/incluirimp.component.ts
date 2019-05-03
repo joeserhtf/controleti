@@ -12,14 +12,14 @@ export class IncluirimpComponent implements OnInit {
 
   constructor(private dataApi: DataApiService, private router: Router) { }
   public sc: ScInterface = {
-    numeroSC: '',
-    produtoID: '',
-    quantidadeP: '',
-    solicitanteName: '',
-    tipoID: '',
-    chamadoID: '',
-    aprovadorName: '',
-    situacaoSC: '',
+    id: null,
+    numerosc: null,
+    solicitante: null,
+    tipo: null,
+    chamado: null,
+    aprovador: null,
+    situacao: null,
+    filial: ''
   };
 
   ngOnInit() {

@@ -20,7 +20,7 @@ export class ProjetosComponent implements OnInit {
   public projetos: projetosInterface;
   public logs: logInterface;
   public projetosd: projetosInterface;
-  nome = "CRJTI";
+  id = 1;
 
   constructor(private http: HttpClient, private authService: AuthService, public ProjetosService: ProjetosService) { }
 
@@ -31,17 +31,17 @@ export class ProjetosComponent implements OnInit {
   }
 
   getProjeto(): void {
-    this.ProjetosService.getProjetoD(this.nome).subscribe((projetosd: projetosInterface) => {
+    this.ProjetosService.getProjetoD(this.id).subscribe((projetosd: projetosInterface) => {
       this.projetosd = projetosd;
     });
-    this.ProjetosService.getOrçamento(this.nome).subscribe((orcamentos: orcamentoInterface) => {
+    this.ProjetosService.getOrçamento(this.id).subscribe((orcamentos: orcamentoInterface) => {
       this.orcamentos = orcamentos;
     });
-    this.ProjetosService.getLogs(this.nome).subscribe((logs: logInterface) => {
+    this.ProjetosService.getLogs(this.id).subscribe((logs: logInterface) => {
       this.logs = logs;
     });
-    this.ProjetosService.orcamentoss.nameprojeto = this.nome;
-    this.ProjetosService.logss.nameprojeto = this.nome;
+    this.ProjetosService.orcamentoss.idprojeto = this.id;
+    this.ProjetosService.logss.idprojeto = this.id;
   }
 
   saveOrca(orcaForm: NgForm): void{

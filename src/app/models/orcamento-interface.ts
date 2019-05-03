@@ -1,6 +1,6 @@
 export interface orcamentoInterface{
-    id?: string;
-    nameprojeto?: string;
+    id?: number;
+    idprojeto?: number;
     ano?: string;
     valor?: number;
     comentario?: string;

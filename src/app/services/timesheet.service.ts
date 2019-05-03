@@ -47,6 +47,11 @@ export class TimesheetService {
     return this.http.get<Horariointerface>(url_api);
   }
 
+  getDaysByUserH(userid){
+    const url_api = `http://localhost:21181/api/time/${userid}`;
+    return this.http.get<Horariointerface>(url_api);
+  }
+
   getDaysByYearAndMonth(userid ,ano, mes){
     const url_api = `http://localhost:21181/api/time/my/${userid}/${ano}-${mes}`;
     return this.http.get<Horariointerface>(url_api);

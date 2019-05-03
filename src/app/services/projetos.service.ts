@@ -50,7 +50,7 @@ export class ProjetosService {
 
   public orcamentoss: orcamentoInterface = {
     id: null,
-    nameprojeto: "",
+    idprojeto: null,
     ano: "",
     valor: 0,
     comentario: ""
@@ -58,7 +58,7 @@ export class ProjetosService {
 
   public logss: logInterface = {
     id: null,
-    nameprojeto: "",
+    idprojeto: null,
     titulo: "",
     comentario: "",
     tipo: "",
@@ -68,24 +68,24 @@ export class ProjetosService {
 
 
   getAllProjetos(){
-    const url_api = 'https://carajas-tic-dashboard.mybluemix.net/api/projetos';
+    const url_api = 'http://localhost:21181/api/proj/';
     return this.http.get<projetosInterface>(url_api);
   }
 
   //?filter[where][and][0][userid]=1&filter[where][and][1][ano]=2019
 
   getProjetoD(np){
-    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/projetos?filter[where][nome]=${np}`;
+    const url_api = `http://localhost:21181/api/proj/${np}`;
     return this.http.get<projetosInterface>(url_api);
   }
 
   getOrçamento(np){
-    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/orcamentopjs?filter[where][nameprojeto]=${np}`;
+    const url_api = `http://localhost:21181/api/proj/orc/${np}`;
     return this.http.get<orcamentoInterface>(url_api);
   }
 
   getLogs(np){
-    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/logpjs?filter[where][nameprojeto]=${np}`;
+    const url_api = `http://localhost:21181/api/proj/log/${np}`;
     return this.http.get<orcamentoInterface>(url_api);
   }
 

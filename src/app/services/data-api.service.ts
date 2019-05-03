@@ -27,21 +27,18 @@ export class DataApiService {
   
   public selectedSc: ScInterface = {
     id: null,
-    numeroSC: '',
-    produtoID: '',
-    quantidadeP: '',
-    solicitanteName: '',
-    tipoID: '',
-    chamadoID: '',
-    aprovadorName: '',
-    situacaoSC: '',
-    filial: '',
-    descricao: ''
+    numerosc: null,
+    solicitante: null,
+    tipo: null,
+    chamado: null,
+    aprovador: null,
+    situacao: null,
+    filial: ''
   };
 
   //Metodos Sc
-  getallscs(){
-    const url_api = 'https://carajas-tic-dashboard.mybluemix.net/api/listas';
+  getallscs(){ 
+    const url_api = 'http://localhost:21181/api/sc';
     return this.http.get<ScInterface>(url_api);
   }
   

@@ -1,6 +1,6 @@
 export interface logInterface{
-    id?: string;
-    nameprojeto?: string;
+    id?: number;
+    idprojeto?: number;
     titulo?: string;
     comentario?: string;
     tipo?: string;

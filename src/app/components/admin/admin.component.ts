@@ -13,13 +13,8 @@ export class AdminComponent implements OnInit, OnDestroy {
   bodyClasses = 'skin-green sidebar-mini';
   body: HTMLBodyElement = document.getElementsByTagName('body')[0];
 
-  getlistscs(){
-    this.dataApi.getallscs().subscribe((scs: ScInterface) => this.scs = scs);
-  }
-
   ngOnInit() {
     // add the the body classes
-    this.getlistscs();
     this.body.classList.add('skin-green');
     this.body.classList.add('sidebar-mini');
   }

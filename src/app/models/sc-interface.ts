@@ -1,14 +1,11 @@
 export interface ScInterface{
-    numeroSC?: string,
-    produtoID?: string,
-    quantidadeP?: string,
-    solicitanteName?: string,
-    tipoID?: string,
-    chamadoID?: string,
-    aprovadorName?: string,
-    dataAP?: string,
-    situacaoSC?: string,
+    numerosc?: number,
+    solicitante?: number,
+    tipo?: number,
+    chamado?: number,
+    aprovador?: number,
+    dataap?: string,
+    situacao?: string,
     filial?: string,
-    descricao?: string;
     id?: string;
 }

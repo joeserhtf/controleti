@@ -74,15 +74,13 @@ export class ListagemComponent implements OnInit {
   resetForm(ScForm?: NgForm): void {
     this.dataApi.selectedSc = {
       id: null,
-      numeroSC: '',
-      produtoID: '',
-      quantidadeP: '',
-      solicitanteName: '',
-      tipoID: '',
-      chamadoID: '',
-      aprovadorName: '',
-      situacaoSC: '',
-      descricao: '',
+      numerosc: null,
+      solicitante: null,
+      tipo: null,
+      chamado: null,
+      aprovador: null,
+      situacao: null,
+      filial: ''
     };
   }
 

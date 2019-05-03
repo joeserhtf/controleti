@@ -45,7 +45,7 @@ export class InventarioDataService {
   };
   
   getAllInventario(){
-    const url_api = 'https://carajas-tic-dashboard.mybluemix.net/api/inventarios';
+    const url_api = 'http://localhost:21181/api/inv';
     return this.http.get<inventarioInterface>(url_api);
   }
 

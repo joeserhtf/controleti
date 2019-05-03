@@ -89,7 +89,7 @@ export class TimesheetComponent implements OnInit {
   fd = moment().startOf('month').locale('pt-br').format('dddd');
   i: number;
   selectedworker = null;
-  selectedMonth = "04";
+  selectedMonth = "05";
   selectedYear = '2019';
   public days;
   public excel;
@@ -133,7 +133,7 @@ export class TimesheetComponent implements OnInit {
         delete this.excel[i].id;
         i++;
       });
-    }, 2000);  
+    }, 1000);  
   }
 
   getDays(): void {
