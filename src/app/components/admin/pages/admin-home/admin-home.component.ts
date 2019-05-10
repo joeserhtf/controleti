@@ -21,6 +21,10 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
 
   constructor(private http: HttpClient, public atendimentoDataService: AtendimentoDataService, private authservice: AuthService) { }
 
+  selectedworker = null;
+
+  public setores;
+
   public isLogged: boolean = false;
   onCheckUser(): void{
     if(this.authservice.getCurrentUser() == null){
@@ -36,7 +40,14 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
     });
   }
 
+  getlistsetores(){
+    this.atendimentoDataService.getAllsetores().subscribe((setores) => {
+    this.setores = setores;
+    });
+  }
+
   updateAte(AteForm: NgForm){
+    console.log(AteForm.value);
       this.atendimentoDataService.updateAtendimentos(AteForm.value).subscribe(ate => setTimeout(() => {
         location.reload();
       }, 1000));
@@ -49,6 +60,7 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getlistAtendentes();
     this.onCheckUser();
+    this.getlistsetores();
   }
 
   ngOnDestroy(): void {

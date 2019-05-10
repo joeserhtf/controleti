@@ -38,7 +38,7 @@ export class HorarioComponent implements OnInit {
   constructor(private http: HttpClient, private route: ActivatedRoute, private timesheetService: TimesheetService, private authService: AuthService) { }
 
   getDaysUser(): void {
-    this.timesheetService.getDaysByUserH(this.user.id).subscribe((days: Horariointerface) => {
+    this.timesheetService.getDaysByUserH(1).subscribe((days: Horariointerface) => {
       this.days = days;
     });
     
@@ -51,22 +51,22 @@ export class HorarioComponent implements OnInit {
         this.events.push(
         {
           title: this.days[i].obs,
-          start: this.days[i].data + this.dataseparador + this.days[i].dia + this.datatimeseparador + this.days[i].e1,
-          end: this.days[i].data + this.dataseparador + this.days[i].dia + this.datatimeseparador + this.days[i].s1,
+          start: this.days[i].datat + this.datatimeseparador + this.days[i].e1,  
+          end: this.days[i].datat + this.datatimeseparador + this.days[i].s1,
           color: this.colorE1
-        });
+        });        
       }
       if(!(this.days[i].e2 === "" || this.days[i].e2 === "00:00")){
         this.events.push({
-          start: this.days[i].data + this.dataseparador + this.days[i].dia + this.datatimeseparador + this.days[i].e2,
-          end: this.days[i].data + this.dataseparador + this.days[i].dia + this.datatimeseparador + this.days[i].s2,
+          start: this.days[i].datat + this.datatimeseparador + this.days[i].e2,
+          end: this.days[i].datat + this.datatimeseparador + this.days[i].s2,
           color: this.colorE2
         });
       }
       if(!(this.days[i].e3 === "" || this.days[i].e3 === "00:00")){
         this.events.push({
-          start: this.days[i].data + this.dataseparador + this.days[i].dia + this.datatimeseparador + this.days[i].e3,
-          end: this.days[i].data + this.dataseparador + this.days[i].dia + this.datatimeseparador + this.days[i].s3,
+          start: this.days[i].datat + this.datatimeseparador + this.days[i].e3,
+          end: this.days[i].datat + this.datatimeseparador + this.days[i].s3,
           color: this.colorE3
         });
       }

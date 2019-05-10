@@ -23,7 +23,7 @@ export class TimesheetService {
   });
 
   public horario: Horariointerface = {
-    userid: 0,
+    userid: null,
     datat: '',
     total: '',
     e1: '',
@@ -58,8 +58,7 @@ export class TimesheetService {
   }
 
   updateDay(ts){
-    let token = this.authService.getToken();
-    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/timesheets?access_token=${token}`;
+    const url_api = `http://localhost:21181/api/time/${ts.id}`;
     return this.http.put<Horariointerface>(url_api, ts ,{headers: this.headers})
     .pipe(map(data => data));
   }

@@ -1,7 +1,7 @@
 export interface atendimentoInterface{
     nome?: string;
-    setor?: string;
-    chamadoatual?: string;
-    mensagem?: string;
-    id?: string;
+    setor?: number;
+    chamadoatual?: number;
+    obs?: string;
+    id?: number;
 }

@@ -28,9 +28,9 @@ export class AtendimentoDataService {
   public selectedAte: atendimentoInterface = {
     id: null,
     nome: '',
-    setor: '',
-    chamadoatual: '',
-    mensagem: ''
+    setor: null,
+    chamadoatual: null,
+    obs: ''
   };
 
   getAllAtendimentos(){
@@ -39,13 +39,15 @@ export class AtendimentoDataService {
   }
 
   updateAtendimentos(atend){
-    let token = this.authService.getToken();
     const url_api = `http://localhost:21181/${atend.id}`;
     return this.http.put<atendimentoInterface>(url_api, atend ,{headers: this.headers})
     .pipe(map(data => data));
   }
 
-
+  getAllsetores(){
+    const url_api = 'http://localhost:21181/api/s';
+    return this.http.get<atendimentoInterface>(url_api);
+  }
 
 
 
