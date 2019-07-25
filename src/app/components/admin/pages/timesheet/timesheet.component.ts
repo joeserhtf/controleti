@@ -89,7 +89,7 @@ export class TimesheetComponent implements OnInit {
   fd = moment().startOf('month').locale('pt-br').format('dddd');
   i: number;
   selectedworker = null;
-  selectedMonth = "05";
+  selectedMonth = "07";
   selectedYear = '2019';
   public days;
   public excel;
@@ -122,7 +122,7 @@ export class TimesheetComponent implements OnInit {
   }
 
   getDaysToExcel(): void {
-    this.timesheetService.getDaysByYearAndMonth(this.user.idt ,this.selectedYear, this.selectedMonth).subscribe((excel: exceltimeInterface) => {
+    this.timesheetService.getDaysByYearAndMonth(this.user.id ,this.selectedYear, this.selectedMonth).subscribe((excel: exceltimeInterface) => {
       this.excel = excel;
     });
     setTimeout(() => {
@@ -143,7 +143,7 @@ export class TimesheetComponent implements OnInit {
   }
 
   onAdmUser(): void{
-    if(this.user.idt == 1 || this.user.idt == 2){
+    if(this.user.id == 1 || this.user.id == 2){
       this.isAdm = true;
     }else{
       this.isAdm = false;
@@ -158,9 +158,11 @@ export class TimesheetComponent implements OnInit {
     console.log(this.selectedworker);
   }
 
+
+
   ngOnInit() {
     this.user = this.authService.getCurrentUser();
-    this.selectedworker = this.user.idt;
+    this.selectedworker = this.user.id;
     this.onAdmUser();
     this.fd;
     setTimeout(() => {

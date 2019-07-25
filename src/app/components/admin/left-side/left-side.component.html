@@ -13,12 +13,13 @@
 
     <ul class="sidebar-menu">
       <li class="header">Menus</li>
-      <li class="treeview">
+       <li class="treeview">
           <a routerLink="/admin/admin-home">
               <i class="fa fa-users"></i>
               <span>Atendentes</span>
             </a>
         </li>
+      
         <li class="treeview" *ngIf="isLogged">
           <a href="#">
               <i class="fa fa-pie-chart"></i>
@@ -38,12 +39,14 @@
               <span>Projetos</span>
             </a>
         </li>
+      <!--
       <li class="treeview" *ngIf="isLogged">
         <a routerLink="/admin/listagem">
             <i class="fa fa-shopping-cart"></i>
             <span>Solicitações de Compra</span>
           </a>
       </li>
+      -->
       <li class="treeview" *ngIf="isLogged">
         <a routerLink="/admin/listagemimp" >
             <i class="fa fa-print"></i>

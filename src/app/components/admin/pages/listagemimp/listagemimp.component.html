@@ -25,7 +25,6 @@
           <table class="table table-hover" datatable [dtTrigger]="dtTrigger">
             <thead>
               <tr>
-                <th scope="col">#</th>
                 <th scope="col">Setor</th>
                 <th scope="col">IP</th>
                 <th scope="col">Filial</th>
@@ -36,9 +35,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let imp of imps; index as i">
-                <td scope="row">{{i+1}}</td>
-                <td> {{ imp.setor }} <span class="fa fa-bars" data-toggle="modal" data-target="#modalUser" (click)="onPreUpdateImp(imp)">
-                  </span> </td>
+                <td> {{ imp.setor }} </td>
                 <td>{{ imp.ip }}</td>
                 <td>{{ imp.unidade }}</td>
                 <td>{{ imp.modelo}}</td>
@@ -56,4 +53,3 @@
   </div>
 </section>
 <app-modal></app-modal>
-<app-modal-user></app-modal-user>

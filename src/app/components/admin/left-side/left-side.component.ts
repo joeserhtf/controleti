@@ -19,11 +19,12 @@ export class LeftSideComponent implements OnInit {
       this.isLogged = false;
     }else{
       this.isLogged = true;
+      this.onAdmUser();
     }
   }
 
   onAdmUser(): void{
-    if(this.user.idt == 1){
+    if(this.user.id == 1){
       this.isAdm = true;
     }else{
       this.isAdm = true;
@@ -34,7 +35,6 @@ export class LeftSideComponent implements OnInit {
   ngOnInit() {
     this.user = this.authService.getCurrentUser();
     this.onCheckUser();
-    this.onAdmUser();
   }
 
 }

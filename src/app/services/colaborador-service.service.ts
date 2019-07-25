@@ -56,7 +56,7 @@ export class ColaboradorServiceService {
   } 
 
   saveCol(col: colaboradorInterface){
-    const url_api = `http://localhost:21181/api/colab/${col.id}`;
+    const url_api = `http://localhost:21181/api/colab/`;
     return this.http.post<colaboradorInterface>(url_api, col ,{ headers: this.headers})
     .pipe(map(data => data));
   }  

@@ -54,15 +54,11 @@
             <h4 class="" >{{this.atendimentoDataService.selectedAte.nome}}</h4>
           <form class="form-book" #formAte="ngForm" (ngSubmit)="updateAte(formAte)">
             <input type="hidden" id="id" name="id" class="form-control" [(ngModel)]="this.atendimentoDataService.selectedAte.id">
+            <input type="hidden" id="nome" name="nome" class="form-control" [(ngModel)]="this.atendimentoDataService.selectedAte.nome">
             <div class="form-group">
               <div class="form-group">
                 <label for="setor">Local:</label>
-                <select id="setor" name="setor" class="form-control" [(ngModel)]="this.atendimentoDataService.selectedAte.setor">
-                                <option *ngFor="let setor of setores" [ngValue]="setor.id">
-                                  {{setor.setor}}
-                                </option>
-                            </select>
-
+                <input name="setor" id="setor" class="form-control" [(ngModel)]="this.atendimentoDataService.selectedAte.setor" required>
               </div>
               <div class="form-group">
                 <label for="chamadoatual">Chamado:</label>

@@ -38,7 +38,7 @@ export class HorarioComponent implements OnInit {
   constructor(private http: HttpClient, private route: ActivatedRoute, private timesheetService: TimesheetService, private authService: AuthService) { }
 
   getDaysUser(): void {
-    this.timesheetService.getDaysByUserH(1).subscribe((days: Horariointerface) => {
+    this.timesheetService.getDaysByUserH(this.user.id).subscribe((days: Horariointerface) => {
       this.days = days;
     });
     

@@ -4,6 +4,7 @@ import { UserInterface } from './../../models/user-interface';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { isNullOrUndefined } from "util";
 
 @Component({
   selector: 'app-login',
@@ -18,10 +19,17 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(private authService: AuthService, private router: Router) { }
   public user: UserInterface = {
+    id: null,
+    nome: "",
     email: "",
-    password: ""
+    password: "",
+    setor: "",
+    cargo: "",
+    filial: "",
+    contato: ""
   }
 
+  public data;
   public isError = false;
 
   ngOnInit() {
@@ -40,14 +48,17 @@ export class LoginComponent implements OnInit, OnDestroy {
     if(form.valid){
        return this.authService.loginuser(this.user.email, this.user.password)
        .subscribe(data => {
-       this.authService.setUser(data.user);
-       let token = data.id;
-       this.authService.setToken(token);
-       this.router.navigate(['/admin/admin-home']);
-       setTimeout(() => {
-        location.reload();
-        }, 500); 
-       this.isError = false;
+        this.data = data;
+        if(!isNullOrUndefined(this.data[0])){
+          this.authService.setUser(this.data[0]);
+          this.router.navigate(['/admin/admin-home']);
+           setTimeout(() => {
+            location.reload();
+            }, 500); 
+           this.isError = false;
+        }else{
+          this.onIsError();
+        }      
        },
        error => this.onIsError());
     }else{
@@ -59,7 +70,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.isError = true;
     setTimeout(() => {
       this.isError = false;
-    }, 4000);
+    }, 3000);
   }
 
    ngOnDestroy() {

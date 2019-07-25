@@ -5,6 +5,7 @@ import { map } from "rxjs/operators";
 import { isNullOrUndefined } from "util";
 
 import { UserInterface } from "../models/user-interface";
+import { json } from "body-parser";
 @Injectable({
   providedIn: "root"
 })
@@ -13,6 +14,7 @@ export class AuthService {
   headers: HttpHeaders = new HttpHeaders({
     "Content-Type": "application/json"
   });
+  
 
   registerUser(name: string, email: string, password: string) {
     const url_api = "https://carajas-tic-dashboard.mybluemix.net/api/Users";
@@ -29,16 +31,23 @@ export class AuthService {
       .pipe(map(data => data));
   }
 
-  loginuser(email: string, password: string): Observable<any> {
-    const url_api = "https://carajas-tic-dashboard.mybluemix.net/api/Users/login?include=user";
-    return this.htttp
-      .post<UserInterface>(
-        url_api,
-        { email, password },
-        { headers: this.headers }
-      )
-      .pipe(map(data => data));
+
+  loginuser(email, password){
+    const url_api = `http://localhost:21181/api/auth/login`;
+    return this.htttp.post<UserInterface>(url_api, {email, password}, { headers: this.headers})
+      .pipe(map(data => data)); 
   }
+
+  // loginuser(email: string, password: string): Observable<any> {
+  //   const url_api = "https://carajas-tic-dashboard.mybluemix.net/api/Users/login?include=user";
+    // return this.htttp
+    //   .post<UserInterface>(
+    //     url_api,
+    //     { email, password },
+    //     { headers: this.headers }
+    //   )
+    //   .pipe(map(data => data));
+  // }
 
   setUser(user: UserInterface): void {
     let user_string = JSON.stringify(user);
