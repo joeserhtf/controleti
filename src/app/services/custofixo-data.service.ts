@@ -40,7 +40,7 @@ export class CustofixoDataService {
   };
 
   getAllCustoFixo(){
-    const url_api = 'http://localhost:21181/api/cf';
+    const url_api = 'http://192.168.4.225:21181/api/cf';
     return this.http.get<custofixoInterface>(url_api);
   }
 
@@ -55,7 +55,7 @@ export class CustofixoDataService {
 
   getCfById(cf_id: number){
     if(cf_id == 0){
-      const url_api = `http://localhost:21181/api/sc/h`;
+      const url_api = `http://192.168.4.225:21181/api/sc/h`;
       return this.http.get<historicoInterface>(url_api);
     }else{
       const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/historicos/?filter[where][cfid]=${cf_id}`;
@@ -72,7 +72,7 @@ export class CustofixoDataService {
 
   getNameById(cf_id: number){
     if(cf_id == 0){
-      const url_api = `http://localhost:21181/api/sc/h`;
+      const url_api = `http://192.168.4.225:21181/api/sc/h`;
       return this.http.get<custofixoInterface>(url_api);
     }else{
       const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/custofixos/?filter[where][cfhid]=${cf_id}`;

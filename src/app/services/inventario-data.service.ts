@@ -45,7 +45,7 @@ export class InventarioDataService {
   };
   
   getAllInventario(){
-    const url_api = 'http://localhost:21181/api/inv';
+    const url_api = 'http://192.168.4.225:21181/api/inv';
     return this.http.get<inventarioInterface>(url_api);
   }
 
@@ -80,7 +80,7 @@ export class InventarioDataService {
 
   //Ramal
   getAllRamal(){
-    const url_api = 'http://localhost:21181/api/data/ramal';
+    const url_api = 'http://192.168.4.225:21181/api/data/ramal';
     return this.http.get<ramalInterface>(url_api);
   }
 

@@ -33,7 +33,7 @@ export class AuthService {
 
 
   loginuser(email, password){
-    const url_api = `http://localhost:21181/api/auth/login`;
+    const url_api = `http://192.168.4.225:21181/api/auth/login`;
     return this.htttp.post<UserInterface>(url_api, {email, password}, { headers: this.headers})
       .pipe(map(data => data)); 
   }

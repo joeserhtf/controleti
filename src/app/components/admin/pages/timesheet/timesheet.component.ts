@@ -57,7 +57,7 @@ export class TimesheetComponent implements OnInit {
     { name: "Wylliane Costa", value: 3 },
     { name: "Weldon Rafael", value: 4 },
     { name: "Bruno Barbosa", value: 5 },
-    { name: "Crisostomos Silva", value: 6 }
+    { name: "Leandro Silva", value: 6 }
   ]
 
   months = [

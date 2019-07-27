@@ -38,7 +38,7 @@ export class DataApiService {
 
   //Metodos Sc
   getallscs(){ 
-    const url_api = 'http://localhost:21181/api/sc';
+    const url_api = 'http://192.168.4.225:21181/api/sc';
     return this.http.get<ScInterface>(url_api);
   }
   
@@ -87,7 +87,7 @@ export class DataApiService {
 
   //Metodos Imp
   getallimpressoras(){
-    const url_api = 'http://localhost:21181/api/data/';
+    const url_api = 'http://192.168.4.225:21181/api/data/';
     return this.http.get<impInterface>(url_api);
   }  
 
