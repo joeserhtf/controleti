@@ -1,3 +1,4 @@
+import { LojaServiceService } from './services/loja-service.service';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -49,6 +50,8 @@ import { TimesheetComponent } from './components/admin/pages/timesheet/timesheet
 import { TimesheetService } from './services/timesheet.service';
 import { ProjetosService } from './services/projetos.service';
 import { ColaboradorServiceService } from './services/colaborador-service.service';
+import { LojaComponent } from './components/admin/pages/loja/loja.component';
+import { CaixaComponent } from './components/admin/pages/caixa/caixa.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +84,8 @@ import { ColaboradorServiceService } from './services/colaborador-service.servic
     ProjetosComponent,
     TimesheetComponent,
     ColaboradorComponent,
+    LojaComponent,
+    CaixaComponent,
   ],
   imports: [
     HttpModule,
@@ -91,7 +96,7 @@ import { ColaboradorServiceService } from './services/colaborador-service.servic
     FormsModule,
     FullCalendarModule,
   ],
-  providers: [HttpClient, HttpModule, HttpClientModule, DataApiService, CustofixoDataService, AtendimentoDataService, InventarioDataService, UsuarioimpDataService, TimesheetService, ProjetosService, ColaboradorServiceService],
+  providers: [HttpClient, HttpModule, HttpClientModule, DataApiService, CustofixoDataService, AtendimentoDataService, InventarioDataService, UsuarioimpDataService, TimesheetService, ProjetosService, ColaboradorServiceService, LojaServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

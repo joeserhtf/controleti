@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
         this.authService.setUser(user);
         let token = user.id;
         this.authService.setToken(token);
-        this.router.navigate(['/admin/admin-home']);
+        this.router.navigate(['/admin/unidades']);
       });
   }
 }

@@ -1,0 +1,78 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Lojas
+    <small>Painel</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a routerLink="/unidades">
+        <i class="fa fa-dashboard"></i> Home</a>
+    </li>
+    <li class="active">Unidades</li>
+    <li class="active">Status</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="row">
+    <div>
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Unidades</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body ">
+          <table class="table table-hover" >
+            <thead>
+              <tr>
+                <th scope="col">Unidade</th>
+                <th scope="col">Ultima Atualização</th>
+                <th scope="col">Status</th>
+                <th scope="col" *ngIf="isLogged"><!--<span class="fa fa-circle text-red">></span>-->Alterar </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let loja of lojas; index as i">
+                <td> {{ loja.unidade }} </td>
+                <td type="date"> {{ loja.cxatu }}</td>
+                <td> {{loja.lstatus == 0 ? 'G' : 'R'}}</td>
+                <td *ngIf="isLogged">
+                  <span class="fa fa-pencil" (click)="onPreUpdateLoja(loja)" data-toggle="modal" data-target="#modalUni"></span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- /.box-body -->
+      </div>
+    </div>
+    <!-- /.box-body -->
+  </div>
+</section>
+
+<div id="modalUni" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content col-md-4">
+      <div class="modal-body">
+          <h4 class="" >{{this.LojaServiceService.selectedloja.unidade}}</h4>
+        <form class="form-book" #formUni="ngForm" (ngSubmit)="updateUni(formUni)">
+          <input type="hidden" id="id" name="id" class="form-control" [(ngModel)]="this.LojaServiceService.selectedloja.id">
+          <input type="hidden" id="unidade" name="unidade" class="form-control" [(ngModel)]="this.LojaServiceService.selectedloja.unidade">
+          <div class="form-group">
+            <div class="form-group">
+              <label for="cxatu">cxatu:</label>
+              <input type="date" name="cxatu" id="cxatu" class="form-control" [(ngModel)]="this.LojaServiceService.selectedloja.cxatu" required>
+            </div>
+            <div class="form-group">
+              <label for="lstatus">lstatus:</label>
+              <input type="text" id="lstatus" name="lstatus" class="form-control" placeholder="Ex: 10" [(ngModel)]="this.LojaServiceService.selectedloja.lstatus">
+            </div>
+          </div>              
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary float-right">Salvar</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

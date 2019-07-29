@@ -15,6 +15,7 @@ export class AuthService {
     "Content-Type": "application/json"
   });
   
+  global_api = `http://localhost:21181`;
 
   registerUser(name: string, email: string, password: string) {
     const url_api = "https://carajas-tic-dashboard.mybluemix.net/api/Users";
@@ -33,21 +34,10 @@ export class AuthService {
 
 
   loginuser(email, password){
-    const url_api = `http://192.168.4.225:21181/api/auth/login`;
+    const url_api = `${this.global_api}/api/auth/login`;
     return this.htttp.post<UserInterface>(url_api, {email, password}, { headers: this.headers})
       .pipe(map(data => data)); 
   }
-
-  // loginuser(email: string, password: string): Observable<any> {
-  //   const url_api = "https://carajas-tic-dashboard.mybluemix.net/api/Users/login?include=user";
-    // return this.htttp
-    //   .post<UserInterface>(
-    //     url_api,
-    //     { email, password },
-    //     { headers: this.headers }
-    //   )
-    //   .pipe(map(data => data));
-  // }
 
   setUser(user: UserInterface): void {
     let user_string = JSON.stringify(user);
@@ -73,10 +63,10 @@ export class AuthService {
   }
 
   logoutUser() {
-    let accessToken = localStorage.getItem("accessToken");
-    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/Users/logout?access_token=${accessToken}`;
+    // let accessToken = localStorage.getItem("accessToken");
+    // const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/Users/logout?access_token=${accessToken}`;
     localStorage.removeItem("accessToken");
     localStorage.removeItem("currentUser");
-    return this.htttp.post<UserInterface>(url_api, { headers: this.headers });
+    // return this.htttp.post<UserInterface>(url_api, { headers: this.headers });
   }
 }

@@ -18,12 +18,11 @@ import { ChangeDetectorRef } from '@angular/core';
 export class ListagemimpComponent implements OnInit, OnDestroy {
   
   public imps: impInterface;
-  public uimps: usuarioImpInterface;
   dtOptions: any = {};
   dtLanguage: any = portugues;
   dtTrigger: Subject<any> = new Subject();
   
-  constructor(private http: HttpClient, private dataApi: DataApiService, private userImp: UsuarioimpDataService, private cd : ChangeDetectorRef) { }
+  constructor(private http: HttpClient, private dataApi: DataApiService, private cd : ChangeDetectorRef) { }
 
   //imp list
   getlistimpressoras(): void{

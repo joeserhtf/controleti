@@ -6,7 +6,7 @@
   </h1>
   <ol class="breadcrumb">
     <li>
-      <a routerLink="/admin/admin-home">
+      <a routerLink="/admin/unidades">
         <i class="fa fa-dashboard"></i> Home</a>
     </li>
     <li class="active">TimeSheet</li>
@@ -18,8 +18,8 @@
       <h3 class="box-title">
         <div class="box-title" *ngIf="isAdm">
           Colaborador: <select [(ngModel)]="selectedworker"   (change)="getDays()">
-          <option  *ngFor="let work of worker" [ngValue]="work.value">
-            {{work.name}}
+          <option  *ngFor="let work of worker" [ngValue]="work.id">
+            {{work.nome}}
           </option>
         </select>
       </div>        

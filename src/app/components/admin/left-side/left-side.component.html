@@ -7,13 +7,19 @@
         <img src="assets/img/carajas.png" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
-        <p>{{user.username}}</p>
+        <p>{{user.nome}}</p>
       </div>
     </div>
 
     <ul class="sidebar-menu">
       <li class="header">Menus</li>
-       <li class="treeview">
+      <li class="treeview">
+        <a routerLink="/admin/unidades">
+            <i class="glyphicon glyphicon-check"></i>
+            <span>Lojas</span>
+          </a>
+      </li>
+       <li class="treeview"  *ngIf="isLogged">
           <a routerLink="/admin/admin-home">
               <i class="fa fa-users"></i>
               <span>Atendentes</span>

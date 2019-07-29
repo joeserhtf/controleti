@@ -24,6 +24,7 @@ export class AtendimentoDataService {
   //Var atend
   atend: Observable<any>;
   atends: Observable<any>;
+  global_api = this.authService.global_api;
   
   public selectedAte: atendimentoInterface = {
     id: null,
@@ -34,13 +35,13 @@ export class AtendimentoDataService {
   };
 
   getAllAtendimentos(){
-    const url_api = 'http://192.168.4.225:21181/';
+    const url_api = `${this.global_api}`;
     return this.http.get<atendimentoInterface>(url_api);
   }
 
   updateAtendimentos(atend){
     console.log(atend)
-    const url_api = `http://192.168.4.225:21181/${atend.id}`;
+    const url_api = `${this.global_api}/${atend.id}`;
     return this.http.put<atendimentoInterface>(url_api, atend ,{headers: this.headers})
     .pipe(map(data => data));
   }

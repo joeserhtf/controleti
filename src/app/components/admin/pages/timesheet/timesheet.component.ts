@@ -15,6 +15,7 @@ import { timestamp } from 'rxjs/operators';
 import { add } from 'timelite/time';
 import { sub } from 'timelite/time';
 import { str } from 'timelite/time';
+import { colaboradorInterface } from 'src/app/models/colaborador-interface';
 
 
 
@@ -51,14 +52,7 @@ export class TimesheetComponent implements OnInit {
     obs: ''
   };
 
-  worker = [
-    { name: "Joeser Fermiano", value: 1 },
-    { name: "João Ortiz", value: 2 },
-    { name: "Wylliane Costa", value: 3 },
-    { name: "Weldon Rafael", value: 4 },
-    { name: "Bruno Barbosa", value: 5 },
-    { name: "Leandro Silva", value: 6 }
-  ]
+  public worker: colaboradorInterface;
 
   months = [
     { name: "Janeiro", value: "01" },
@@ -142,6 +136,11 @@ export class TimesheetComponent implements OnInit {
     });
   }
 
+  getcolab(){
+    this.timesheetService.getcolaborador().subscribe((worker: colaboradorInterface ) => { 
+      this.worker = worker})
+  }
+
   onAdmUser(): void{
     if(this.user.id == 1 || this.user.id == 2){
       this.isAdm = true;
@@ -162,9 +161,12 @@ export class TimesheetComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.authService.getCurrentUser();
+    this.getcolab();
+    // console.log(this.worker[0]);
     this.selectedworker = this.user.id;
     this.onAdmUser();
     this.fd;
+    this.test();
     setTimeout(() => {
       this.getDays();
     }, 500); 

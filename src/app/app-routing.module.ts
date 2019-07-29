@@ -1,3 +1,4 @@
+import { LojaComponent } from './components/admin/pages/loja/loja.component';
 import { ColaboradorComponent } from './components/admin/pages/colaborador/colaborador.component';
 import { RamalComponent } from './components/admin/pages/ramal/ramal.component';
 import { ModalScComponent } from './components/admin/modal-sc/modal-sc.component';
@@ -33,8 +34,12 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       {
+        path: 'unidades',
+        component: LojaComponent
+      },
+      {
         path: 'admin-home',
-        component: AdminHomeComponent
+        component: AdminHomeComponent, canActivate:[AuthGuard]
       },
       {
         path: 'admin-programs',

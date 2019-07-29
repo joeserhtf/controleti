@@ -24,6 +24,7 @@ export class ProjetosService {
     Authorization: this.authService.getToken()
   });
 
+  global_api = this.authService.global_api;
 
   public projetos: projetosInterface = {
     id: null,
@@ -68,24 +69,24 @@ export class ProjetosService {
 
 
   getAllProjetos(){
-    const url_api = 'http://192.168.4.225:21181/api/proj/';
+    const url_api = `${this.global_api}/api/proj/`;
     return this.http.get<projetosInterface>(url_api);
   }
 
   //?filter[where][and][0][userid]=1&filter[where][and][1][ano]=2019
 
   getProjetoD(np){
-    const url_api = `http://192.168.4.225:21181/api/proj/${np}`;
+    const url_api = `${this.global_api}/api/proj/${np}`;
     return this.http.get<projetosInterface>(url_api);
   }
 
   getOrçamento(np){
-    const url_api = `http://192.168.4.225:21181/api/proj/orc/${np}`;
+    const url_api = `${this.global_api}/api/proj/orc/${np}`;
     return this.http.get<orcamentoInterface>(url_api);
   }
 
   getLogs(np){
-    const url_api = `http://192.168.4.225:21181/api/proj/log/${np}`;
+    const url_api = `${this.global_api}/api/proj/log/${np}`;
     return this.http.get<orcamentoInterface>(url_api);
   }
 

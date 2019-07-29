@@ -24,6 +24,8 @@ export class DataApiService {
   //Var Sc
   scs: Observable<any>;
   sc: Observable<any>;  
+
+  global_api = this.authService.global_api;
   
   public selectedSc: ScInterface = {
     id: null,
@@ -38,7 +40,7 @@ export class DataApiService {
 
   //Metodos Sc
   getallscs(){ 
-    const url_api = 'http://192.168.4.225:21181/api/sc';
+    const url_api = `${this.global_api}/api/sc`;
     return this.http.get<ScInterface>(url_api);
   }
   
@@ -87,7 +89,7 @@ export class DataApiService {
 
   //Metodos Imp
   getallimpressoras(){
-    const url_api = 'http://192.168.4.225:21181/api/data/';
+    const url_api = `${this.global_api}/api/data/`;
     return this.http.get<impInterface>(url_api);
   }  
 

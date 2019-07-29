@@ -29,6 +29,8 @@ export class InventarioDataService {
   inv: Observable<any>;
   invs: Observable<any>;
 
+  global_api = this.authService.global_api;
+
   //Inventario
 
   public selectedItem: inventarioInterface = {
@@ -43,9 +45,11 @@ export class InventarioDataService {
     mensagem: null,
     data: ''
   };
+
+
   
   getAllInventario(){
-    const url_api = 'http://192.168.4.225:21181/api/inv';
+    const url_api = `${this.global_api}/api/inv`;
     return this.http.get<inventarioInterface>(url_api);
   }
 
@@ -80,7 +84,7 @@ export class InventarioDataService {
 
   //Ramal
   getAllRamal(){
-    const url_api = 'http://192.168.4.225:21181/api/data/ramal';
+    const url_api = `${this.global_api}/api/data/ramal`;
     return this.http.get<ramalInterface>(url_api);
   }
 

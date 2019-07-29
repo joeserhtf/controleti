@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.data = data;
         if(!isNullOrUndefined(this.data[0])){
           this.authService.setUser(this.data[0]);
-          this.router.navigate(['/admin/admin-home']);
+          this.router.navigate(['/admin/unidades']);
            setTimeout(() => {
             location.reload();
             }, 500); 
