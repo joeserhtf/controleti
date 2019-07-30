@@ -1,7 +1,7 @@
 export interface orcamentoInterface{
     id?: number;
     idprojeto?: number;
-    ano?: string;
+    data?: string;
     valor?: number;
     comentario?: string;
 }

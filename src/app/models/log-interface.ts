@@ -4,6 +4,6 @@ export interface logInterface{
     titulo?: string;
     comentario?: string;
     tipo?: string;
-    usuario?: string;
+    usuarioid?: number;
     data?: string;
 }

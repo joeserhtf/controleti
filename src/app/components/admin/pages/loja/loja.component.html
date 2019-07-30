@@ -35,7 +35,7 @@
               <tr *ngFor="let loja of lojas; index as i">
                 <td> {{ loja.unidade }} </td>
                 <td type="date"> {{ loja.cxatu }}</td>
-                <td> {{loja.lstatus == 0 ? 'G' : 'R'}}</td>
+                <td><span class="fa fa-circle text-green" *ngIf="!loja.lstatus" ></span><span class="fa fa-circle text-red" *ngIf="loja.lstatus" ></span> <!--{{loja.lstatus == 0 ? 'G' : 'R'}}--></td>
                 <td *ngIf="isLogged">
                   <span class="fa fa-pencil" (click)="onPreUpdateLoja(loja)" data-toggle="modal" data-target="#modalUni"></span>
                 </td>
@@ -60,16 +60,21 @@
           <input type="hidden" id="unidade" name="unidade" class="form-control" [(ngModel)]="this.LojaServiceService.selectedloja.unidade">
           <div class="form-group">
             <div class="form-group">
-              <label for="cxatu">cxatu:</label>
+              <label for="cxatu">Ultima Atualização:</label>
               <input type="date" name="cxatu" id="cxatu" class="form-control" [(ngModel)]="this.LojaServiceService.selectedloja.cxatu" required>
             </div>
             <div class="form-group">
-              <label for="lstatus">lstatus:</label>
-              <input type="text" id="lstatus" name="lstatus" class="form-control" placeholder="Ex: 10" [(ngModel)]="this.LojaServiceService.selectedloja.lstatus">
+              <label for="lstatus">Status Da Loja:</label>
+              <!--<input type="text" id="lstatus" name="lstatus" class="form-control" placeholder="Ex: 10" [(ngModel)]="this.LojaServiceService.selectedloja.lstatus">-->
+              <select id="lstatus" name="lstatus" class="form-control"
+                [(ngModel)]="this.LojaServiceService.selectedloja.lstatus">
+                <option class="fa fa-circle text-green" value="0">OK</option>
+                <option class="fa fa-circle text-red" value="1">ERRO</option>
+              </select>
             </div>
           </div>              
             <div class="form-group">
-                <button type="submit" class="btn btn-primary float-right">Salvar</button>
+                <button type="submit" class="btn btn-primary float-right">Confirmar</button>
             </div>
         </form>
       </div>

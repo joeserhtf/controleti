@@ -17,8 +17,7 @@ export class AtendimentoDataService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   headers: HttpHeaders = new HttpHeaders({
-    'Content-Type': 'application/json',
-    Authorization: this.authService.getToken()
+    'Content-Type': 'application/json'
   });
 
   //Var atend
@@ -29,9 +28,9 @@ export class AtendimentoDataService {
   public selectedAte: atendimentoInterface = {
     id: null,
     nome: '',
-    setor: '',
-    chamadoatual: '',
-    obs: ''
+    unidade: '',
+    presente: null,
+    horario: ''
   };
 
   getAllAtendimentos(){
@@ -40,7 +39,6 @@ export class AtendimentoDataService {
   }
 
   updateAtendimentos(atend){
-    console.log(atend)
     const url_api = `${this.global_api}/${atend.id}`;
     return this.http.put<atendimentoInterface>(url_api, atend ,{headers: this.headers})
     .pipe(map(data => data));

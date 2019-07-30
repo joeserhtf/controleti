@@ -38,6 +38,7 @@ export class LojaServiceService {
   }
 
   updateUnidades(loja){
+    console.log(loja);
     const url_api = `${this.global_api}/api/uni/${loja.id}`;
     return this.http.put<LojaInterface>(url_api, loja ,{headers: this.headers})
     .pipe(map(data => data));

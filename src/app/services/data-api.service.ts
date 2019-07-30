@@ -17,15 +17,48 @@ export class DataApiService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   headers: HttpHeaders = new HttpHeaders({
-    'Content-Type': 'application/json',
-    Authorization: this.authService.getToken()
+    'Content-Type': 'application/json'
   });
+
+  global_api = this.authService.global_api;
+  
+  //Var Imp
+  imps: Observable<any>;
+  imp: Observable<any>;
+  
+  public selectedImp: impInterface = {
+    id: null,
+    setor: '',
+    ip: '',
+    unidade: '',
+    modelo: ''
+  };  
+
+  //Metodos Imp
+  getallimpressoras(){
+    const url_api = `${this.global_api}/api/data/`;
+    return this.http.get<impInterface>(url_api);
+  }  
+
+  saveImp(imp: impInterface){
+    const url_api = `${this.global_api}/api/data/`;
+    return this.http.post<impInterface>(url_api, imp ,{ headers: this.headers})
+    .pipe(map(data => data));
+  }  
+  
+  updateImp(imp: impInterface){
+    const url_api = `${this.global_api}/api/data/`;
+    return this.http.put<impInterface>(url_api, imp,{headers: this.headers})
+    .pipe(map(data => data));
+  }
+  
+
+  //Codigo abaixo era ultilizados para SC. Não fazer mais uso!
+
 
   //Var Sc
   scs: Observable<any>;
   sc: Observable<any>;  
-
-  global_api = this.authService.global_api;
   
   public selectedSc: ScInterface = {
     id: null,
@@ -75,37 +108,4 @@ export class DataApiService {
     .pipe(map(data => data));    
   }
 
-  //Var Imp
-  imps: Observable<any>;
-  imp: Observable<any>;
-  
-  public selectedImp: impInterface = {
-    id: null,
-    setor: '',
-    ip: '',
-    filial: '',
-    modelo: ''
-  };  
-
-  //Metodos Imp
-  getallimpressoras(){
-    const url_api = `${this.global_api}/api/data/`;
-    return this.http.get<impInterface>(url_api);
-  }  
-
-  saveImp(imp: impInterface){
-    let token = this.authService.getToken();
-    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/impressoras?access_token=${token}`;
-    return this.http.post<impInterface>(url_api, imp ,{ headers: this.headers})
-    .pipe(map(data => data));
-  }  
-
-  updateImp(imp: impInterface){
-    const impId = imp.id;
-    let token = this.authService.getToken();
-    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/impressoras/${impId}?access_token=${token}`;
-    return this.http.put<impInterface>(url_api, imp,{headers: this.headers})
-    .pipe(map(data => data));
-  }
-  
 }

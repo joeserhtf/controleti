@@ -33,7 +33,7 @@ export class UsuarioimpDataService {
     id: null,
     setor: '',
     ip: '',
-    filial: '',
+    unidade: '',
     modelo: ''
   };  
 

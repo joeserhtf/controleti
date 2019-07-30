@@ -41,7 +41,7 @@ export class ListagemimpComponent implements OnInit, OnDestroy {
       id: null,
       setor: '',
       ip: '',
-      filial: '',
+      unidade: '',
       modelo: ''
     };
   }

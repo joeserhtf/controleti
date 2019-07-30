@@ -17,8 +17,7 @@ export class ColaboradorServiceService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   headers: HttpHeaders = new HttpHeaders({
-    'Content-Type': 'application/json',
-    Authorization: this.authService.getToken()
+    'Content-Type': 'application/json'
   });
 
   col: Observable<any>;

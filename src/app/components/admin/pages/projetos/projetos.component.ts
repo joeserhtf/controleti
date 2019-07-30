@@ -42,6 +42,8 @@ export class ProjetosComponent implements OnInit {
     });
     this.ProjetosService.orcamentoss.idprojeto = this.id;
     this.ProjetosService.logss.idprojeto = this.id;
+    this.ProjetosService.logss.usuarioid = this.authService.getCurrentUser().id;
+    
   }
 
   saveOrca(orcaForm: NgForm): void{

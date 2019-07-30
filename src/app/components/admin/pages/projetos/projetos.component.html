@@ -338,27 +338,26 @@
             <form #logForm="ngForm" (ngSubmit)="saveLog(logForm)">
                 <div class="modal-body">
                     <div class="form-row">
-                        <div class="form-group">
                             <input type="hidden" id="idprojeto" name="idprojeto"
                                 [(ngModel)]="this.ProjetosService.logss.idprojeto">
-                        </div>
                         <div class="form-group">
                             <label for="beneficioql">Titulo </label>
                             <input class="form-control" id="titulo" name="titulo"
-                                [(ngModel)]="this.ProjetosService.logss.titulo" placeholder="Insira: Titulo">
+                                [(ngModel)]="this.ProjetosService.logss.titulo" placeholder="Titulo">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="beneficioql">Tipo </label>
-                            <input class="form-control" id="tipo" name="tipo"
-                                [(ngModel)]="this.ProjetosService.logss.tipo" placeholder="Insira: Tipo">
+                            <label for="tipo">Tipo </label>
+                            <select id="tipo" name="tipo" class="form-control"
+                                [(ngModel)]="this.ProjetosService.logss.tipo">
+                                <option value="1">Atualização</option>
+                                <option value="2">Solicitação</option>
+                                <option value="3">Erro/Bug</option>
+                            </select>
                         </div>
-                        <div class="form-group">
-                            <label for="beneficioql">Usuario </label>
-                            <input class="form-control" id="usuario" name="usuario"
-                                [(ngModel)]="this.ProjetosService.logss.usuario" placeholder="Insira: Usuario">
-                        </div>
+                            <input type="hidden" class="form-control" id="usuarioid" name="usuarioid"
+                                [(ngModel)]="this.ProjetosService.logss.usuarioid" placeholder="Usuario">
                     </div>
                     <div class="form-row">
                         <div class="form-group">
@@ -370,7 +369,7 @@
                             <label for="beneficioql">Comentario </label><br />
                             <textarea class="form-control" id="comentario" name="comentario"
                                 [(ngModel)]="this.ProjetosService.logss.comentario"
-                                placeholder="Insira: Comentario"></textarea>
+                                placeholder="Comentário"></textarea>
                         </div>
                     </div>
                 </div>
@@ -399,15 +398,15 @@
                         [(ngModel)]="this.ProjetosService.orcamentoss.idprojeto">
                     <div class="form-row">
                         <div class="form-group">
-                            <label>Ano:</label>
-                            <input class="form-control" id="ano" name="ano"
-                                [(ngModel)]="this.ProjetosService.orcamentoss.ano" placeholder="2019">
+                            <label>Data:</label>
+                            <input type="date" class="form-control" id="data" name="data"
+                                [(ngModel)]="this.ProjetosService.orcamentoss.data" placeholder="">
                         </div>
                     
                     <div class="form-group">
                         <label>Valor:</label>
-                        <input class="form-control" id="valor" name="valor"
-                            [(ngModel)]="this.ProjetosService.orcamentoss.valor" placeholder="65,00">
+                        <input type="number" class="form-control" id="valor" name="valor"
+                            [(ngModel)]="this.ProjetosService.orcamentoss.valor" placeholder="">
                     </div>
                 </div>
                     <div class="form-group">

@@ -20,8 +20,7 @@ export class ProjetosService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   headers: HttpHeaders = new HttpHeaders({
-    'Content-Type': 'application/json',
-    Authorization: this.authService.getToken()
+    'Content-Type': 'application/json'
   });
 
   global_api = this.authService.global_api;
@@ -52,7 +51,7 @@ export class ProjetosService {
   public orcamentoss: orcamentoInterface = {
     id: null,
     idprojeto: null,
-    ano: "",
+    data: "",
     valor: 0,
     comentario: ""
   };
@@ -63,7 +62,7 @@ export class ProjetosService {
     titulo: "",
     comentario: "",
     tipo: "",
-    usuario: "",
+    usuarioid: null,
     data: ""
   };
 
@@ -91,22 +90,19 @@ export class ProjetosService {
   }
 
   saveLog(log){
-    let token = this.authService.getToken();
-    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/logpjs?access_token=${token}`;
-    return this.http.put<logInterface>(url_api, log ,{headers: this.headers})
+    const url_api = `${this.global_api}/api/proj/log`;
+    return this.http.post<logInterface>(url_api, log ,{headers: this.headers})
     .pipe(map(data => data));
   }
 
   saveOrcamento(orca){
-    let token = this.authService.getToken();
-    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/orcamentopjs?access_token=${token}`;
-    return this.http.put<orcamentoInterface>(url_api, orca ,{headers: this.headers})
+    const url_api = `${this.global_api}/api/proj/orc`;
+    return this.http.post<orcamentoInterface>(url_api, orca ,{headers: this.headers})
     .pipe(map(data => data));
   }
 
   saveProjeto(projeto){
-    let token = this.authService.getToken();
-    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/projetos?access_token=${token}`;
+    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/projetos?access_token=`;
     return this.http.post<projetosInterface>(url_api, projeto ,{headers: this.headers})
     .pipe(map(data => data));
   }

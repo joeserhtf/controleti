@@ -1,7 +1,7 @@
 export interface impInterface{
     setor?: string;
     ip?: string;
-    filial?: string;
+    unidade?: string;
     modelo?: string;
     id?: string;
 }

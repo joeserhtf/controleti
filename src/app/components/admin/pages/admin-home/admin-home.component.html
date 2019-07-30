@@ -25,17 +25,17 @@
               <thead>
                 <tr>
                   <th scope="col">Atendente</th>
-                  <th scope="col">Local</th>
-                  <th scope="col">Chamado</th>
-                  <th scope="col">Obs</th>
+                  <th scope="col">Unidade</th>
+                  <th scope="col">Presente</th>
+                  <th scope="col">Horario</th>
                   <th *ngIf="isLogged" scope="col">Editar</th>
               </thead>
               <tbody>
                 <tr *ngFor="let ate of ates">
                   <td>{{ ate.nome }}</td>
-                  <td>{{ ate.setor }}</td>
-                  <td>{{ ate.chamadoatual }}</td>
-                  <td>{{ ate.obs}}</td>
+                  <td>{{ ate.unidade }}</td>
+                  <td><span class="fa fa-circle text-green" *ngIf="!ate.presente" ></span><span class="fa fa-circle text-red" *ngIf="ate.presente"></span></td>
+                  <td>{{ ate.horario}}</td>
                   <td *ngIf="isLogged"  ><span class="glyphicon glyphicon-option-horizontal" data-toggle="modal" data-target="#modalAte" (click)="onPreUpdateAte(ate)"></span></td>
                 </tr>
               </tbody>
@@ -46,7 +46,8 @@
       </div>
       <!-- /.box-body -->
     </div>
-   <!-- <div *ngIf="logado()" class="row"> -->
+
+
   <div id="modalAte" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content col-md-4">
@@ -57,16 +58,36 @@
             <input type="hidden" id="nome" name="nome" class="form-control" [(ngModel)]="this.atendimentoDataService.selectedAte.nome">
             <div class="form-group">
               <div class="form-group">
-                <label for="setor">Local:</label>
-                <input name="setor" id="setor" class="form-control" [(ngModel)]="this.atendimentoDataService.selectedAte.setor" required>
+                <label >Unidade:</label>
+                <select id="unidade" name="unidade" class="form-control"
+                                [(ngModel)]="this.atendimentoDataService.selectedAte.unidade">
+                                <option value="Matriz">Matriz</option>
+                                <option value="João Pessoa">João Pessoa</option>
+                                <option value="Cabedelo">Cabedelo</option>
+                                <option value="CD">CD</option>
+                                <option value="Juazeiro do Norte">Juazeiro do Norte</option>
+                                <option value="Fortaleza">Fortaleza</option>
+                                <option value="Arapiraca">Arapiraca</option>
+                                <option value="Dona Valmira">Dona Valmira</option>
+                                <option value="Campina Grande">Campina Grande</option>
+                                <option value="Natal">Natal</option>
+                            </select>
               </div>
               <div class="form-group">
-                <label for="chamadoatual">Chamado:</label>
-                <input type="number" id="chamadoatual" name="chamadoatual" class="form-control" placeholder="Ex: 10" [(ngModel)]="this.atendimentoDataService.selectedAte.chamadoatual">
+                <label for="presente">Presente:</label>
+                <select id="presente" name="presente" class="form-control" [(ngModel)]="this.atendimentoDataService.selectedAte.presente">
+                <option class="fa fa-circle text-green" value="0">Presente</option>
+                <option class="fa fa-circle text-red" value="1">Ausente</option>
+              </select>
               </div>
               <div class="form-group">
-                  <label for="obs">Obs:</label>
-                  <input id="obs" name="obs" class="form-control" [(ngModel)]="this.atendimentoDataService.selectedAte.obs">
+                  <label >Horario:</label>
+                  <select id="horario" name="horario" class="form-control"
+                                [(ngModel)]="this.atendimentoDataService.selectedAte.horario">
+                                <option value="Abertura">Abertura</option>
+                                <option value="Intermediário">Intermediário</option>
+                                <option value="Fechamento">Fechamento</option>
+                            </select>
                 </div>
             </div>              
               <div class="form-group">

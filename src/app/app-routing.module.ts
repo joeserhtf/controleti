@@ -26,7 +26,7 @@ import { ProjetosComponent } from './components/admin/pages/projetos/projetos.co
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'admin',
+    redirectTo: 'admin/unidades',
     pathMatch: 'full'
   },
   {

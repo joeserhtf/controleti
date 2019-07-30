@@ -45,7 +45,7 @@ export class LojaComponent implements OnInit {
   }
 
   updateUni(UniForm: NgForm){
-      this.LojaServiceService.updateUnidades(UniForm.value).subscribe(ate => setTimeout(() => {
+      this.LojaServiceService.updateUnidades(UniForm.value).subscribe(loja => setTimeout(() => {
         location.reload();
       }, 1000));
   }

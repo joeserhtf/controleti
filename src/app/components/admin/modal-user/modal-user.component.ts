@@ -38,7 +38,7 @@ export class ModalUserComponent implements OnInit {
       id: null,
       setor: '',
       ip: '',
-      filial: '',
+      unidade: '',
       modelo: ''
     };
   } 
