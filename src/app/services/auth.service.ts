@@ -15,7 +15,7 @@ export class AuthService {
     "Content-Type": "application/json"
   });
   
-  global_api = `http://localhost:21181`;
+  global_api = `http://192.168.4.225:21181`;
 
   registerUser(name: string, email: string, password: string) {
     const url_api = "https://carajas-tic-dashboard.mybluemix.net/api/Users";

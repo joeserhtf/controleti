@@ -34,7 +34,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let col of cols">
-                <td>{{ col.unidade}}</td>
+                <td>{{ col.unidade }}</td>
                 <td>{{ col.setor }}</td>
                 <td>{{ col.nome }}</td>
                 <td>{{ col.email }}</td>
@@ -72,7 +72,7 @@
             <div class="form-group">
               <label for="unidade">Unidade</label>
               <select name="unidade" id="unidade" class="form-control" [(ngModel)]="this.colApi.SelectCol.unidade" required>
-                <option *ngFor="let unid of unids" [ngValue]="unid.id">
+                <option *ngFor="let unid of unids" [ngValue]="unid.unidade">
                   {{unid.unidade}}</option>
               </select>
             </div>
