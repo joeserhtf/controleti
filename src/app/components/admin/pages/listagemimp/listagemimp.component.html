@@ -36,7 +36,7 @@
             <tbody>
               <tr *ngFor="let imp of imps; index as i">
                 <td> {{ imp.setor }} </td>
-                <td>{{ imp.ip }}</td>
+                <td><a href="https://{{ imp.ip }}" target="_blank" >{{ imp.ip }}</a></td>
                 <td>{{ imp.unidade }}</td>
                 <td>{{ imp.modelo}}</td>
                 <td>

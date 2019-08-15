@@ -83,11 +83,19 @@ export class TimesheetComponent implements OnInit {
   fd = moment().startOf('month').locale('pt-br').format('dddd');
   i: number;
   selectedworker = null;
-  selectedMonth = "07";
+  selectedMonth;
   selectedYear = '2019';
   public days;
   public excel;
   constructor(private http: HttpClient, private authService: AuthService, private timesheetService: TimesheetService, private excelService: ExcelService) { }
+
+  monthAT(){
+    if((moment().month()) < 10){
+        this.selectedMonth = String('0' + (moment().month()+1));
+    }else{
+      this.selectedMonth = String((moment().month()+1));
+    }
+  }
 
   totalhoras(e1, s1, e2, s2, e3, s3){
     var hora1;
@@ -161,16 +169,16 @@ export class TimesheetComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.authService.getCurrentUser();
+    this. monthAT();
     this.getcolab();
-    //console.log(this.worker);
     this.selectedworker = this.user.id;
     this.onAdmUser();
     this.fd;
-    this.test();
     setTimeout(() => {
       this.getDays();
     }, 500); 
     this.getDaysToExcel();
+
   }
 
 
