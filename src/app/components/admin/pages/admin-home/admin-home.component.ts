@@ -14,6 +14,9 @@ import { NgForm } from '@angular/forms';
 })
 export class AdminHomeComponent implements OnInit, OnDestroy {
 
+  public user;
+  public isAdm;
+  public present = [];
   public ates: atendimentoInterface;
   dtOptions: any = {};
   dtLanguage: any = portugues;
@@ -46,9 +49,66 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
     this.atendimentoDataService.selectedAte = Object.assign({}, ate);
   }
 
+  presenteON() {
+    setTimeout(() => {
+      let fhora = new Date();
+      let hora = fhora.getHours()
+      let minuto = fhora.getMinutes()
+      for(let ate in this.ates){
+        if(this.ates[ate].horario == 'Fechamento'){   
+          if((hora >= 11 && minuto >= 30) && hora < 15){
+            this.present.push(0);
+          }else if((hora >= 17 && hora < 22)){
+            this.present.push(0);
+          }else{
+            this.present.push(1);
+          }
+        }else if(this.ates[ate].horario == 'Intermediário'){   
+          if((hora >= 9 && hora < 13)){
+            this.present.push(0);
+          }else if((hora >= 15 && hora < 19)){
+            this.present.push(0);
+          }else{
+            this.present.push(1);
+          }
+        }else if(this.ates[ate].horario == 'Comercial') {        
+          if((hora >= 8 && hora < 12)){
+            this.present.push(0);
+          }else if((hora >= 14 && hora < 18)){
+            this.present.push(0);
+          }else{
+            this.present.push(1);
+          }
+        }else{
+          if((hora >= 7 && hora < 11)){
+            this.present.push(0);
+          }else if((hora >= 13 && hora < 17)){
+            this.present.push(0);
+          }else{
+            this.present.push(1);
+          }
+        }
+        
+      }
+    }, 300)
+    
+  }
+
+  onAdmUser(): void{
+    this.user = this.authservice.getCurrentUser();
+    if(this.user.id == 1 || this.user.id == 2){
+      this.isAdm = true;
+    }else{
+      this.isAdm = false;
+    }
+  }
+    
+
   ngOnInit(): void {
     this.getlistAtendentes();
     this.onCheckUser();
+    this.presenteON();
+    this.onAdmUser();
   }
 
   ngOnDestroy(): void {

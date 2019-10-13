@@ -33,7 +33,7 @@
             {{y.value}}
           </option>
         </select>
-        <button class="pull-right" (click)="exportAsXLSX()">Excel</button>
+        <input type="button" (click)='exportAsXLSX();' value="Excel" />
       </h3>
     </div>
     <!-- /.box-header -->
@@ -52,7 +52,7 @@
             <th scope="col">E3</th>
             <th scope="col">S3</th>
             <th scope='col'>Observações</th>
-            <th> Salvar</th>
+            <th *ngIf="isAdm"> Salvar</th>
         </thead>
 
         <tbody>
@@ -69,7 +69,7 @@
             <td><input name="e3" type="time" style="width: 100%" (change)="totalhoras(day.e1, day.s1, day.e2, day.s2, day.e3, day.s3)" [(ngModel)]="day.e3"></td>
             <td><input name="s3" type="time" style="width: 100%" (change)="totalhoras(day.e1, day.s1, day.e2, day.s2, day.e3, day.s3)" [(ngModel)]="day.s3"></td>
             <td><textarea name="obs" [(ngModel)]="day.obs"></textarea></td>
-            <td><button (click)="UpdateDay(day)"> <span class="fa fa-check text-blue"></span> </button></td>
+            <td *ngIf="isAdm"><button (click)="UpdateDay(day)"> <span class="fa fa-check text-blue"></span> </button></td>
           </tr>
         </tbody>
       </table>

@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { portugues } from './../../../../../interfaces/datatables.es';
 import { AuthService } from '../../../../services/auth.service';
 import { NgForm } from '@angular/forms';
+import { UserInterface } from './../../../../models/user-interface'
 
 
 @Component({
@@ -16,6 +17,8 @@ import { NgForm } from '@angular/forms';
 export class LojaComponent implements OnInit {
 
   public lojas: LojaInterface;
+  public user: UserInterface;
+  public isAdm: boolean = false;
 
   constructor(private http: HttpClient, private authservice: AuthService, private LojaServiceService: LojaServiceService) { }
 
@@ -33,8 +36,7 @@ export class LojaComponent implements OnInit {
     this.LojaServiceService.selectedloja = {
       id: null,
       unidade: '',
-      cxatu: '',
-      lstatus: null
+      cxatu: ''
     };
   }
 
@@ -54,9 +56,20 @@ export class LojaComponent implements OnInit {
     this.LojaServiceService.selectedloja = Object.assign({}, loja);
   }
 
-  ngOnInit(): void {
-    this.getLUnidades();
+  onAdmUser(): void{
+    this.user = this.authservice.getCurrentUser();
+    if(this.user.id == 1 || this.user.id == 2){
+      this.isAdm = true;
+    }else{
+      this.isAdm = false;
+    }
+  }
+
+  ngOnInit(): void { 
     this.onCheckUser();
+    this.onAdmUser();
+    this.getLUnidades();   
+    
   }
 
   ngOnDestroy(): void {

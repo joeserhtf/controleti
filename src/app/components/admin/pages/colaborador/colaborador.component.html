@@ -29,7 +29,7 @@
                 <th scope="col">Nome</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">Cargo</th>
-                <th><span class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#modalCol" (click)="resetForm()"> </span></th>
+                <th *ngIf="isAdm" ><span class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#modalCol" (click)="resetForm()"> </span></th>
               </tr>
             </thead>
             <tbody>
@@ -39,7 +39,7 @@
                 <td>{{ col.nome }}</td>
                 <td>{{ col.email }}</td>
                 <td>{{ col.cargo}}</td>
-                <td>
+                <td *ngIf="isAdm">
                   <span class="fa fa-pencil" (click)="onPreCol(col)" data-toggle="modal" data-target="#modalCol"></span>
                 </td>
               </tr>

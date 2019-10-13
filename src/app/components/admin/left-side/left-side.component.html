@@ -19,7 +19,19 @@
             <span>Lojas</span>
           </a>
       </li>
-       <li class="treeview"  *ngIf="isLogged">
+      <li class="treeview" *ngIf="isLogged">
+        <a routerLink="/admin/caixas">
+            <i class="glyphicon glyphicon-check"></i>
+            <span>Caixas</span>
+          </a>
+      </li>
+      <li class="treeview" *ngIf="isLogged">
+        <a routerLink="/admin/l1s">
+            <i class="glyphicon glyphicon-check"></i>
+            <span>Situa</span>
+          </a>
+      </li>
+       <li class="treeview" >
           <a routerLink="/admin/admin-home">
               <i class="fa fa-users"></i>
               <span>Atendentes</span>

@@ -3,6 +3,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FullCalendarModule } from 'ng-fullcalendar';
+import { PipesModule } from 'w-ng5';
 
 import { DataTablesModule } from 'angular-datatables';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -52,6 +53,8 @@ import { ProjetosService } from './services/projetos.service';
 import { ColaboradorServiceService } from './services/colaborador-service.service';
 import { LojaComponent } from './components/admin/pages/loja/loja.component';
 import { CaixaComponent } from './components/admin/pages/caixa/caixa.component';
+import { CaixasattComponent } from './components/admin/pages/caixasatt/caixasatt.component';
+import { L1orcComponent } from './components/admin/pages/l1orc/l1orc.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +89,8 @@ import { CaixaComponent } from './components/admin/pages/caixa/caixa.component';
     ColaboradorComponent,
     LojaComponent,
     CaixaComponent,
+    CaixasattComponent,
+    L1orcComponent,
   ],
   imports: [
     HttpModule,
@@ -95,6 +100,7 @@ import { CaixaComponent } from './components/admin/pages/caixa/caixa.component';
     DataTablesModule,
     FormsModule,
     FullCalendarModule,
+    PipesModule,
   ],
   providers: [HttpClient, HttpModule, HttpClientModule, DataApiService, CustofixoDataService, AtendimentoDataService, InventarioDataService, UsuarioimpDataService, TimesheetService, ProjetosService, ColaboradorServiceService, LojaServiceService],
   bootstrap: [AppComponent]

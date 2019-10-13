@@ -1,0 +1,52 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Caixas
+    <small>Atualização</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a routerLink="/unidades">
+        <i class="fa fa-dashboard"></i> Home</a>
+    </li>
+    <li class="active">Caixas</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="row">
+    <div>
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Caixas</h3>
+          <input *ngIf="!isLogged" type="button" onclick="disabled='disabled'; style=' background-color: #565656 '; value='Atualizando...'; " (click)='atualizarcx();' value="Atualizar" />
+        </div>
+        <!-- /.box-header c-->
+        <div class="box-body ">
+            <input type="text"  class="form-control" placeholder="Procure Por Unidade" [(ngModel)]="search5">
+          <table class="table table-hover" datatable [dtTrigger]="dtTrigger">
+            <thead>
+              <tr>
+                <th width="20%" scope="col">Caixa</th>
+                <th width="20%" scope="col">Dia</th>
+                <th width="20%" scope="col">Horas</th>
+                <th width="25%" scope="col">Status</th>
+              </tr>
+            </thead>  
+            <tbody>
+              <tr *ngFor="let c of dataSource(search5)">
+                <td> {{ c.caixa }} </td>
+                <td> {{ c.data2 }} </td>
+                <td> {{ c.data3 }} </td>
+                <td *ngIf="c.status"> <span class="fa fa-circle text-green"> </span> Atualizado </td>
+                <td *ngIf="!c.status"><span class="fa fa-circle text-red" ></span> Desatualizado </td>
+              </tr>
+            </tbody>
+          </table>
+          
+        </div>
+        <!-- /.box-body -->
+      </div>
+    </div>
+    <!-- /.box-body -->
+  </div>
+</section>

@@ -3,5 +3,6 @@ export interface atendimentoInterface{
     unidade?: string;
     presente?: number;
     horario?: string;
+    ramal?: string;
     id?: number;
 }

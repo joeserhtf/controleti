@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { portugues } from './../../../../../interfaces/datatables.es';
 import { Subject, Observable, empty } from 'rxjs';
-import * as moment from "moment";
+import moment from 'moment';
 import { Horariointerface } from './../../../../models/horario-interface';
 import { isNullOrUndefined, isNull } from 'util';
 import { timestamp } from 'rxjs/operators';
@@ -83,15 +83,16 @@ export class TimesheetComponent implements OnInit {
   fd = moment().startOf('month').locale('pt-br').format('dddd');
   i: number;
   selectedworker = null;
-  selectedMonth;
-  selectedYear = '2019';
+  public datanow = new Date();
+  selectedMonth; //String(this.datanow.getMonth());
+  selectedYear = String(this.datanow.getFullYear());
   public days;
   public excel;
   constructor(private http: HttpClient, private authService: AuthService, private timesheetService: TimesheetService, private excelService: ExcelService) { }
 
   monthAT(){
     if((moment().month()) < 10){
-        this.selectedMonth = String('0' + (moment().month()+1));
+        this.selectedMonth = String((moment().month()+1));
     }else{
       this.selectedMonth = String((moment().month()+1));
     }

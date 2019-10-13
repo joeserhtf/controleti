@@ -29,12 +29,12 @@ export class AtendimentoDataService {
     id: null,
     nome: '',
     unidade: '',
-    presente: null,
+    presente: 0,
     horario: ''
   };
 
   getAllAtendimentos(){
-    const url_api = `${this.global_api}`;
+    const url_api = `${this.global_api}/a`;
     return this.http.get<atendimentoInterface>(url_api);
   }
 

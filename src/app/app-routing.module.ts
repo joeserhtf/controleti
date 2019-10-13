@@ -21,6 +21,8 @@ import { ProfileComponent } from './components/admin/pages/profile/profile.compo
 import { ModalCustoHistoricoComponent } from './components/admin/modal-custo-historico/modal-custo-historico.component';
 import { TimesheetComponent } from './components/admin/pages/timesheet/timesheet.component';
 import { ProjetosComponent } from './components/admin/pages/projetos/projetos.component';
+import { CaixasattComponent } from './components/admin/pages/caixasatt/caixasatt.component';
+import { L1orcComponent } from './components/admin/pages/l1orc/l1orc.component';
 
 
 const routes: Routes = [
@@ -38,8 +40,16 @@ const routes: Routes = [
         component: LojaComponent
       },
       {
+        path: 'caixas',
+        component: CaixasattComponent, canActivate:[AuthGuard]
+      },
+      {
+        path: 'l1s',
+        component: L1orcComponent, canActivate:[AuthGuard]
+      },
+      {
         path: 'admin-home',
-        component: AdminHomeComponent, canActivate:[AuthGuard]
+        component: AdminHomeComponent
       },
       {
         path: 'admin-programs',

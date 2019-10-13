@@ -45,8 +45,6 @@ export class InventarioDataService {
     data: ''
   };
 
-
-  
   getAllInventario(){
     const url_api = `${this.global_api}/api/inv`;
     return this.http.get<inventarioInterface>(url_api);
@@ -62,14 +60,14 @@ export class InventarioDataService {
   updateInventario(inv: inventarioInterface){
     const invId = inv.id;
     let token = this.authService.getToken();
-    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/inventarios/${invId}?access_token=${token}`;
+    const url_api = `${this.global_api}/api/inv/${invId}`;
     return this.http.put<inventarioInterface>(url_api, inv,{headers: this.headers})
     .pipe(map(data => data));
   }
 
   saveItem(inv: inventarioInterface){
     let token = this.authService.getToken();
-    const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/inventarios/?access_token=${token}`;
+    const url_api = `${this.global_api}/api/inv/`;
     return this.http.post<inventarioInterface>(url_api, inv ,{headers: this.headers})
     .pipe(map(data => data));
   }

@@ -6,6 +6,7 @@ import { colaboradorInterface } from '../../../../models/colaborador-interface';
 import { ColaboradorServiceService } from '../../../../services/colaborador-service.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { NgForm } from '@angular/forms';
+import { AuthService } from '../../../../services/auth.service'
 
 
 @Component({
@@ -16,6 +17,8 @@ import { NgForm } from '@angular/forms';
 
 export class ColaboradorComponent implements OnInit {
 
+  public user;
+  public isAdm;
   public cols: colaboradorInterface;
   public unids;
   public cargs;
@@ -24,7 +27,7 @@ export class ColaboradorComponent implements OnInit {
   dtLanguage: any = portugues;
   dtTrigger: Subject<any> = new Subject();
 
-  constructor(public http: HttpClient, public colApi: ColaboradorServiceService) { }
+  constructor(public http: HttpClient, public colApi: ColaboradorServiceService, public authservice: AuthService) { }
 
   onSaveCol(colForm: NgForm): void{
     if(colForm.value.id == null){
@@ -59,6 +62,15 @@ export class ColaboradorComponent implements OnInit {
     });
   }
 
+  onAdmUser(): void{
+    this.user = this.authservice.getCurrentUser();
+    if(this.user.id == 1 || this.user.id == 2){
+      this.isAdm = true;
+    }else{
+      this.isAdm = false;
+    }
+  }
+
   resetForm(colForm?: NgForm): void{
     this.colApi.SelectCol = {
       id: null,
@@ -76,12 +88,13 @@ export class ColaboradorComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.onAdmUser();
     this.getColaboradores();
     this.getUnidade();
     this.getCargo();
     this.getSetor();
 
+    /*
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10,
@@ -99,7 +112,7 @@ export class ColaboradorComponent implements OnInit {
         { extend: 'excel', text: 'Exportar para Excel' },
       ]
     };
-
+    */
     
 
     
