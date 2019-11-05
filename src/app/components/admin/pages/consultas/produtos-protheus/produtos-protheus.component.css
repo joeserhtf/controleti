@@ -1,0 +1,20 @@
+button[type="submit"]{
+    float: right;
+    margin-right:15px;
+    width: 12%;
+    padding: 10px 22px;
+    border-radius: 8px;
+    align-items: center;
+}
+
+button[id="reset"]{
+    position: relative;
+    margin-left:15px;
+    width: 12%;
+    padding: 10px 22px;
+    border-radius: 8px;
+}
+
+.capitalize {
+    text-transform: capitalize;   
+}

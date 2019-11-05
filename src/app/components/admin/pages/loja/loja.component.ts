@@ -58,11 +58,15 @@ export class LojaComponent implements OnInit {
 
   onAdmUser(): void{
     this.user = this.authservice.getCurrentUser();
-    if(this.user.id == 1 || this.user.id == 2){
-      this.isAdm = true;
+    if(this.user){
+      if(this.user.id == 1 || this.user.id == 2){
+        this.isAdm = true;
+      }else{
+        this.isAdm = false;
+      }
     }else{
       this.isAdm = false;
-    }
+    }  
   }
 
   ngOnInit(): void { 

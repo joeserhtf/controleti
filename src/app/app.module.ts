@@ -55,6 +55,11 @@ import { LojaComponent } from './components/admin/pages/loja/loja.component';
 import { CaixaComponent } from './components/admin/pages/caixa/caixa.component';
 import { CaixasattComponent } from './components/admin/pages/caixasatt/caixasatt.component';
 import { L1orcComponent } from './components/admin/pages/l1orc/l1orc.component';
+import { CretiraComponent } from './components/admin/pages/consultas/cretira/cretira.component';
+import { CorcamentoComponent } from './components/admin/pages/consultas/corcamento/corcamento.component';
+import { CpedidonComponent } from './components/admin/pages/consultas/cpedidon/cpedidon.component';
+import { ConsultasService } from './services/consultas.service';
+import { ProdutosProtheusComponent } from './components/admin/pages/consultas/produtos-protheus/produtos-protheus.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +96,10 @@ import { L1orcComponent } from './components/admin/pages/l1orc/l1orc.component';
     CaixaComponent,
     CaixasattComponent,
     L1orcComponent,
+    CretiraComponent,
+    CorcamentoComponent,
+    CpedidonComponent,
+    ProdutosProtheusComponent,
   ],
   imports: [
     HttpModule,
@@ -102,7 +111,7 @@ import { L1orcComponent } from './components/admin/pages/l1orc/l1orc.component';
     FullCalendarModule,
     PipesModule,
   ],
-  providers: [HttpClient, HttpModule, HttpClientModule, DataApiService, CustofixoDataService, AtendimentoDataService, InventarioDataService, UsuarioimpDataService, TimesheetService, ProjetosService, ColaboradorServiceService, LojaServiceService],
+  providers: [HttpClient, HttpModule, HttpClientModule, DataApiService, CustofixoDataService, AtendimentoDataService, InventarioDataService, UsuarioimpDataService, TimesheetService, ProjetosService, ColaboradorServiceService, LojaServiceService, ConsultasService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,92 @@
+<section class="content-header">
+  <h1>
+    Retira CD
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a routerLink="/unidades">
+        <i class="fa fa-dashboard"></i>Home</a>
+    </li>
+    <li class="active">RCD</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="row">
+      <div class="box">
+        
+        <!-- /.box-header c-->
+        <div class="box-body with-border">
+          <div>
+              <div class="col-md-6">
+                  <div class="box-header with-border">
+                      <h3 class="box-title">Consulta Retira</h3>
+                    </div>
+              <form class="form-book" #formImp="ngForm" (ngSubmit)="getrcd(formImp)">
+                <div class="form-row">
+                 <div class="form-group">
+                   <label for="filial">Filial</label>
+                   <select name="filial" id="filial" class="form-control" [(ngModel)]="filial">
+                     <option value="0101">Matriz</option>
+                     <option value="0104">João Pessoa</option>
+                     <option value="0108">Cabedelo</option>
+                     <option value="0105">CD</option>
+                     <option value="0110">Juazeiro do Norte</option>
+                     <option value="0109">Fortaleza</option>
+                     <option value="0103">Arapiraca</option>
+                     <option value="0201">Dona Valmira</option>
+                     <option value="0106">Campina Grande</option>
+                     <option value="0107">Natal</option>
+                   </select>
+                 </div>
+                 <div class="form-group">
+                   <label for="orc">Orçamento</label>
+                   <input type="text" id="orc" name="orc" class="form-control" placeholder="Orçamento" [(ngModel)]="orc">
+                 </div>
+               </div>
+               <button type="submit" class="btn btn-primary float-right">Buscar</button>
+             </form>
+            </div>
+            <div class="col-md-6">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Solução</h3>
+                  </div>
+            </div>
+                   
+          </div>
+        <!-- /.box-body -->
+      </div>
+      <div class="box-body ">
+        <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Filial</th>
+                  <th scope="col">Orçamento</th>
+                  <th scope="col">Cliente</th>
+                  <th scope="col">Doc Retira</th>
+                  <th scope="col">Situa</th>
+                  <th scope="col">XSitua</th>
+                  <th scope="col">NF Saida- CD</th>
+                  <th scope="col">NF Serie- CD</th>
+                  <th scope="col">Pedido Venda</th>
+                </tr>
+              </thead>  
+              <tbody>
+                <tr *ngFor="let r of rd">
+                  <td> {{ r.L1_FILIAL }} </td>
+                  <td> {{ r.L1_NUM }} </td>
+                  <td> {{ r.L1_CLIENTE }} </td>
+                  <td> {{ r.C5_XDOCRET }} </td>
+                  <td> {{ r.L1_SITUA }} </td>
+                  <td> {{ r.L1_XSITUA }} </td>
+                  <td> {{ r.C5_NOTA }} </td>
+                  <td> {{ r.C5_SERIE }} </td>                  
+                  <td> {{ r.D1_PEDIDO }} </td>
+                </tr>
+              </tbody>
+            </table>  
+      </div>
+    </div>
+    <!-- /.box-body -->
+  </div>
+</section>
+

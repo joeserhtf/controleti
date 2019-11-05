@@ -1,45 +1,269 @@
-<!-- Content Header (Page header) -->
 <section class="content-header">
-  <h1>
-    Orçamentos
-  </h1>
-  <ol class="breadcrumb">
-    <li>
-      <a routerLink="/unidades">
-        <i class="fa fa-dashboard"></i>Home</a>
-    </li>
-    <li class="active">Situa</li>
-  </ol>
-</section>
-<section class="content">
-  <div class="row">
-    <div>
-      <div class="box">
-        <div class="box-header">
-          <h3 class="box-title">Situação</h3>
-         <!-- <input *ngIf="!isLogged" type="button" onclick="disabled='disabled'; style=' background-color: #565656 '; value='Atualizando...'; " (click)='atualizarcx();' value="Atualizar" />-->
+    <h1>
+      Orçamento
+    </h1>
+    <ol class="breadcrumb">
+      <li>
+        <a routerLink="/unidades">
+          <i class="fa fa-dashboard"></i>Home</a>
+      </li>
+      <li class="active">Situa</li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <div>
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title">Situação</h3>
+           <!-- <input *ngIf="!isLogged" type="button" onclick="disabled='disabled'; style=' background-color: #565656 '; value='Atualizando...'; " (click)='atualizarcx();' value="Atualizar" />-->
+          </div>
+          <!-- /.box-header c-->
+          <div class="box-body ">
+            <ul class="nav nav-tabs">
+              <li class="active"><a data-toggle="tab" href="#all" (click)="get_PerFilial('0000')">Todas <b><font color="red">{{ cont['0000'] }}</font></b></a></li>
+              <li><a data-toggle="tab" href="#matriz" (click)="get_PerFilial('0101')">MCZ <b><font color="red">{{ cont['0101'] }}</font></b></a></li>
+              <li><a data-toggle="tab" href="#ara" (click)="get_PerFilial('0103')">ARA <b><font color="red">{{ cont['0103'] }}</font></b></a><li>
+              <li><a data-toggle="tab" href="#jp" (click)="get_PerFilial('0104')">JP <b><font color="red">{{ cont['0104'] }}</font></b></a></li>
+              <li><a data-toggle="tab" href="#cg" (click)="get_PerFilial('0106')">CG <b><font color="red">{{ cont['0106'] }}</font></b></a></li>
+              <li><a data-toggle="tab" href="#nat" (click)="get_PerFilial('0107')">NAT <b><font color="red">{{ cont['0107'] }}</font></b></a></li>
+              <li><a data-toggle="tab" href="#cbd" (click)="get_PerFilial('0108')">CBD <b><font color="red">{{ cont['0108'] }}</font></b></a></li>
+              <li><a data-toggle="tab" href="#for" (click)="get_PerFilial('0109')">FOR <b><font color="red">{{ cont['0109'] }}</font></b></a></li>
+              <li><a data-toggle="tab" href="#jua" (click)="get_PerFilial('0110')">JUA <b><font color="red">{{ cont['0110'] }}</font></b></a></li>
+              <li><a data-toggle="tab" href="#dv" (click)="get_PerFilial('0201')">DV <b><font color="red">{{ cont['0201'] }}</font></b></a></li>
+              <li><a data-toggle="tab" href="#er" (click)="get_PerFilial('ER')">ER <b><font color="red">{{ cont['ER'] }}</font></b></a></li>
+              <li><a data-toggle="tab" href="#rx" (click)="get_PerFilial('RX')">RX <b><font color="red">{{ cont['RX'] }}</font></b></a></li>
+            </ul>
+            
+            <div class="tab-content">
+              <div id="all" class="tab-pane fade in active" >
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th width="20%" scope="col">Filial</th>
+                        <th width="20%" scope="col">Orçamento</th>
+                        <th width="20%" scope="col">Situa</th>
+                        <th width="20%" scope="col">Error</th>
+                      </tr>
+                    </thead>  
+                    <tbody>
+                      <tr *ngFor="let s of sl1f">
+                        <td> {{ s.FILIAL }} </td>
+                        <td> {{ s.ORCAMENTO }} </td>
+                        <td> {{ s.STATUS }} </td>
+                        <td> {{ s.MENSAGEM }} </td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+              <div id="matriz" class="tab-pane fade">
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th width="20%" scope="col">Situa</th>
+                        <th width="20%" scope="col">Orçamento</th>
+                        <th width="20%" scope="col">Error</th>
+                      </tr>
+                    </thead>  
+                    <tbody>
+                      <tr *ngFor="let s of sl1f">
+                        <td> {{ s.STATUS }} </td>
+                        <td> {{ s.ORCAMENTO }} </td>
+                        <td> {{ s.MENSAGEM }} </td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+              <div id="jp" class="tab-pane fade">
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th width="20%" scope="col">Situa</th>
+                        <th width="20%" scope="col">Orçamento</th>
+                        <th width="20%" scope="col">Error</th>
+                      </tr>
+                    </thead>  
+                    <tbody>
+                      <tr *ngFor="let s of sl1f">
+                        <td> {{ s.STATUS }} </td>
+                        <td> {{ s.ORCAMENTO }} </td>
+                        <td> {{ s.MENSAGEM }} </td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+              <div id="ara" class="tab-pane fade" >
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th width="20%" scope="col">Situa</th>
+                        <th width="20%" scope="col">Orçamento</th>
+                        <th width="20%" scope="col">Error</th>
+                      </tr>
+                    </thead>  
+                    <tbody>
+                      <tr *ngFor="let s of sl1f">
+                        <td> {{ s.STATUS }} </td>
+                        <td> {{ s.ORCAMENTO }} </td>
+                        <td> {{ s.MENSAGEM }} </td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+              <div id="cbd" class="tab-pane fade" >
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th width="20%" scope="col">Situa</th>
+                        <th width="20%" scope="col">Orçamento</th>
+                        <th width="20%" scope="col">Error</th>
+                      </tr>
+                    </thead>  
+                    <tbody>
+                      <tr *ngFor="let s of sl1f">
+                        <td> {{ s.STATUS }} </td>
+                        <td> {{ s.ORCAMENTO }} </td>
+                        <td> {{ s.MENSAGEM }} </td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+              <div id="cg" class="tab-pane fade" >
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th width="20%" scope="col">Situa</th>
+                        <th width="20%" scope="col">Orçamento</th>
+                        <th width="20%" scope="col">Error</th>
+                      </tr>
+                    </thead>  
+                    <tbody>
+                      <tr *ngFor="let s of sl1f">
+                        <td> {{ s.STATUS }} </td>
+                        <td> {{ s.ORCAMENTO }} </td>
+                        <td> {{ s.MENSAGEM }} </td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+              <div id="for" class="tab-pane fade" >
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th width="20%" scope="col">Situa</th>
+                        <th width="20%" scope="col">Orçamento</th>
+                        <th width="20%" scope="col">Error</th>
+                      </tr>
+                    </thead>  
+                    <tbody>
+                      <tr *ngFor="let s of sl1f">
+                        <td> {{ s.STATUS }} </td>
+                        <td> {{ s.ORCAMENTO }} </td>
+                        <td> {{ s.MENSAGEM }} </td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+              <div id="nat" class="tab-pane fade" >
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th width="20%" scope="col">Situa</th>
+                        <th width="20%" scope="col">Orçamento</th>
+                        <th width="20%" scope="col">Error</th>
+                      </tr>
+                    </thead>  
+                    <tbody>
+                      <tr *ngFor="let s of sl1f">
+                        <td> {{ s.STATUS }} </td>
+                        <td> {{ s.ORCAMENTO }} </td>
+                        <td> {{ s.MENSAGEM }} </td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+              <div id="jua" class="tab-pane fade" >
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th width="20%" scope="col">Situa</th>
+                        <th width="20%" scope="col">Orçamento</th>
+                        <th width="20%" scope="col">Error</th>
+                      </tr>
+                    </thead>  
+                    <tbody>
+                      <tr *ngFor="let s of sl1f">
+                        <td> {{ s.STATUS }} </td>
+                        <td> {{ s.ORCAMENTO }} </td>
+                        <td> {{ s.MENSAGEM }} </td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+              <div id="dv" class="tab-pane fade" >
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th width="20%" scope="col">Situa</th>
+                        <th width="20%" scope="col">Orçamento</th>
+                        <th width="20%" scope="col">Error</th>
+                      </tr>
+                    </thead>  
+                    <tbody>
+                      <tr *ngFor="let s of sl1f">
+                        <td> {{ s.STATUS }} </td>
+                        <td> {{ s.ORCAMENTO }} </td>
+                        <td> {{ s.MENSAGEM }} </td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+              <div id="rx" class="tab-pane fade" >
+                  <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th width="20%" scope="col">Filial</th>
+                          <th width="20%" scope="col">Situa</th>
+                          <th width="20%" scope="col">Orçamento</th>
+                          <th width="20%" scope="col">Error</th>
+                        </tr>
+                      </thead>  
+                      <tbody>
+                        <tr *ngFor="let s of sl1f">
+                          <td> {{ s.FILIAL }} </td>
+                          <td> {{ s.STATUS }} </td>
+                          <td> {{ s.ORCAMENTO }} </td>
+                          <td> {{ s.MENSAGEM }} </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+                <div id="er" class="tab-pane fade" >
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th width="20%" scope="col">Filial</th>
+                            <th width="20%" scope="col">Situa</th>
+                            <th width="20%" scope="col">Orçamento</th>
+                            <th width="20%" scope="col">Error</th>
+                          </tr>
+                        </thead>  
+                        <tbody>
+                          <tr *ngFor="let s of sl1f">
+                            <td> {{ s.FILIAL }} </td>
+                            <td> {{ s.STATUS }} </td>
+                            <td> {{ s.ORCAMENTO }} </td>
+                            <td> {{ s.MENSAGEM }} </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
+            </div>       
+          </div>
+          <!-- /.box-body -->
         </div>
-        <!-- /.box-header c-->
-        <div class="box-body ">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th width="20%" scope="col">Filial</th>
-                <th width="20%" scope="col">Situa</th>
-              </tr>
-            </thead>  
-            <tbody>
-              <tr *ngFor="let s of sl1">
-                <td> {{ s.FILIAL }} </td>
-                <td> {{ s.SITUA }} </td>
-              </tr>
-            </tbody>
-          </table>
-          
-        </div>
-        <!-- /.box-body -->
       </div>
+      <!-- /.box-body -->
     </div>
-    <!-- /.box-body -->
-  </div>
-</section>
+  </section>
+  

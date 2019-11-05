@@ -22,12 +22,15 @@ export class LojaServiceService {
     'Content-Type': 'application/json'
   });
 
+  public sl10 = [];
+  
   global_api = this.authService.global_api;
   
   public selectedloja: LojaInterface = {
     id: null,
     unidade: '',
     cxatu: '',
+    quantcx: null,
     lstatus: 0
   };
 
@@ -36,13 +39,8 @@ export class LojaServiceService {
     return this.http.get(url_api);
   }
 
-  getSL1(){
-    const url_api = `${this.global_api}/api/ocl/`;
-    return this.http.get(url_api);
-  }
-
   getAllStatus(){
-    const url_api = `${this.global_api}/api/cx`;
+    const url_api = `${this.global_api}/api/ocl`;
     return this.http.get(url_api);
   }
 

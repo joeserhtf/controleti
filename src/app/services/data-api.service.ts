@@ -53,6 +53,13 @@ export class DataApiService {
   }
   
 
+  getRCD(rcd){
+    const url_api = `${this.global_api}/api/ocl/`;
+    console.log('asd')
+    this.scs = this.http.get<any>(url_api)
+    //return fetch(url_api, { headers: this.headers });
+  }
+
   //Codigo abaixo era ultilizados para SC. Não fazer mais uso!
 
 

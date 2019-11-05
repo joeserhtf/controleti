@@ -162,12 +162,6 @@ export class TimesheetComponent implements OnInit {
     this.timesheetService.updateDay(day).subscribe();
   }
 
-  test(){
-    console.log(this.selectedworker);
-  }
-
-
-
   ngOnInit() {
     this.user = this.authService.getCurrentUser();
     this. monthAT();

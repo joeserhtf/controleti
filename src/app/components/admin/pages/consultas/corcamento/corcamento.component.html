@@ -1,0 +1,84 @@
+<section class="content-header">
+    <h1>
+      Orçamento
+    </h1>
+    <ol class="breadcrumb">
+      <li>
+        <a routerLink="/unidades">
+          <i class="fa fa-dashboard"></i>Home</a>
+      </li>
+      <li class="active">ORC</li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <div>
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title">Situação</h3>
+           <!-- <input *ngIf="!isLogged" type="button" onclick="disabled='disabled'; style=' background-color: #565656 '; value='Atualizando...'; " (click)='atualizarcx();' value="Atualizar" />-->
+          </div>
+          <!-- /.box-header c-->
+          <div class="box-body ">
+                <form class="form-book" #formImp="ngForm" (ngSubmit)="getrcd(formImp)">
+                  <div class="form-row">
+                   <div class="form-group">
+                     <label for="filial">Filial</label>
+                     <select name="filial" id="filial" class="form-control" [(ngModel)]="filial">
+                       <option value="0101">Matriz</option>
+                       <option value="0104">João Pessoa</option>
+                       <option value="0108">Cabedelo</option>
+                       <option value="0105">CD</option>
+                       <option value="0110">Juazeiro do Norte</option>
+                       <option value="0109">Fortaleza</option>
+                       <option value="0103">Arapiraca</option>
+                       <option value="0201">Dona Valmira</option>
+                       <option value="0106">Campina Grande</option>
+                       <option value="0107">Natal</option>
+                     </select>
+                   </div>
+                   <div class="form-group">
+                     <label for="orc">Orçamento</label>
+                     <input type="text" id="orc" name="orc" class="form-control" placeholder="Orçamento" [(ngModel)]="orc">
+                   </div>
+                 </div>
+                 <button type="submit" class="btn btn-primary float-right">Buscar</button>
+               </form>
+               <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th width="11%" scope="col">Orçamento</th>
+                    <th width="8%" scope="col">Cliente</th>
+                    <th width="13%" scope="col">Doc</th>
+                    <th width="3%" scope="col">Serie</th>
+                    <th width="3%" scope="col">Caixa</th>
+                    <th width="3%" scope="col">Situa</th>
+                    <th width="3%" scope="col">XSitua</th>
+                    <th width="11%" scope="col">Emissão</th>
+                    <th width="20%" scope="col">Erro</th>
+                  </tr>
+                </thead>  
+                <tbody>
+                  <tr *ngFor="let r of orcs">
+                    <td> {{ r.L1_NUM }} </td>
+                    <td> {{ r.L1_CLIENTE }} </td>
+                    <td> {{ r.L1_DOC }} </td>
+                    <td> {{ r.L1_SERIE }} </td>
+                    <td> {{ r.L1_OPERADO }} </td>
+                    <td> {{ r.L1_SITUA }} </td>
+                    <td> {{ r.L1_XSITUA }} </td>
+                    <td> {{ getData("dd/MM/aaaa" ,r.L1_EMISNF) }}</td>
+                    <td> {{ r.L1_ORCRES }}</td>
+                    <td> {{ r.L1_ERGRVBT }}</td>
+                  </tr>
+                </tbody>
+              </table>        
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </div>
+      <!-- /.box-body -->
+    </div>
+  </section>
+  
+  

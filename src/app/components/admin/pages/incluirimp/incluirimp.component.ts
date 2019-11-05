@@ -29,7 +29,6 @@ export class IncluirimpComponent implements OnInit {
   }
 
   onInclude(): void{
-    console.log(this.sc);
     this.dataApi.saveSc(this.sc)
       .subscribe( user => {
         console.log(user);

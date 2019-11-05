@@ -55,9 +55,15 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
       let hora = fhora.getHours()
       let minuto = fhora.getMinutes()
       for(let ate in this.ates){
-        if(this.ates[ate].horario == 'Fechamento'){   
-          if((hora >= 11 && minuto >= 30) && hora < 15){
-            this.present.push(0);
+        if(this.ates[ate].horario == 'Fechamento'){ 
+          if(hora >= 11 && hora < 15){
+            if(hora == 11 && minuto >= 30){
+              this.present.push(0);
+            }else if(hora > 11){
+              this.present.push(0);
+            }else{
+              this.present.push(1);
+            }
           }else if((hora >= 17 && hora < 22)){
             this.present.push(0);
           }else{
@@ -79,10 +85,22 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
           }else{
             this.present.push(1);
           }
-        }else{
+        }else if(this.ates[ate].horario == 'Abertura'){
           if((hora >= 7 && hora < 11)){
             this.present.push(0);
           }else if((hora >= 13 && hora < 17)){
+            this.present.push(0);
+          }else{
+            this.present.push(1);
+          }
+        }else if(this.ates[ate].horario == 'Matutino'){
+          if((hora >= 8 && hora < 13)){
+            this.present.push(0);
+          }else{
+            this.present.push(1);
+          }
+        }else if(this.ates[ate].horario == 'Vespertido'){
+          if((hora >= 14 && hora < 19)){
             this.present.push(0);
           }else{
             this.present.push(1);
@@ -96,11 +114,15 @@ export class AdminHomeComponent implements OnInit, OnDestroy {
 
   onAdmUser(): void{
     this.user = this.authservice.getCurrentUser();
-    if(this.user.id == 1 || this.user.id == 2){
-      this.isAdm = true;
+    if(this.user){
+      if(this.user.id == 1 || this.user.id == 2){
+        this.isAdm = true;
+      }else{
+        this.isAdm = false;
+      }
     }else{
       this.isAdm = false;
-    }
+    }  
   }
     
 

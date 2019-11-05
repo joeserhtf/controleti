@@ -23,6 +23,10 @@ import { TimesheetComponent } from './components/admin/pages/timesheet/timesheet
 import { ProjetosComponent } from './components/admin/pages/projetos/projetos.component';
 import { CaixasattComponent } from './components/admin/pages/caixasatt/caixasatt.component';
 import { L1orcComponent } from './components/admin/pages/l1orc/l1orc.component';
+import { CretiraComponent } from './components/admin/pages/consultas/cretira/cretira.component';
+import { CorcamentoComponent } from './components/admin/pages/consultas/corcamento/corcamento.component';
+import { CpedidonComponent } from './components/admin/pages/consultas/cpedidon/cpedidon.component';
+import { ProdutosProtheusComponent } from './components/admin/pages/consultas/produtos-protheus/produtos-protheus.component';
 
 
 const routes: Routes = [
@@ -114,6 +118,22 @@ const routes: Routes = [
       { 
         path: 'login',
         component: LoginComponent 
+      },
+      { 
+        path: 'cretira',
+        component: CretiraComponent 
+      },
+      { 
+        path: 'corcamento',
+        component: CorcamentoComponent
+      },
+      { 
+        path: 'cpedidon',
+        component: CpedidonComponent
+      },
+      { 
+        path: 'cproduto',
+        component: ProdutosProtheusComponent
       },
       { 
         path: '',

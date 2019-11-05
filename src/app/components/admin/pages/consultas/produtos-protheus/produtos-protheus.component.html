@@ -1,0 +1,244 @@
+<section class="content-header">
+  <h1>
+    Consulta
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a routerLink="/unidades">
+        <i class="fa fa-dashboard"></i>Home</a>
+    </li>
+    <li class="active">Produtos</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="row">
+    <div>
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Produtos</h3>
+        </div>
+        <!-- /.box-header c-->
+        <div class="box-body ">
+              <form class="form-book" #formProd="ngForm" (ngSubmit)="getprod(formProd)">
+                <div class="form-row">
+                 <div class="form-group col-md-6">
+                   <label for="filial">Filial</label>
+                   <select name="filial" id="filial" class="form-control" >
+                     <option value="0101" selected>Matriz</option>
+                     <option value="0104">João Pessoa</option>
+                     <option value="0108">Cabedelo</option>
+                     <option value="0105">CD</option>
+                     <option value="0110">Juazeiro do Norte</option>
+                     <option value="0109">Fortaleza</option>
+                     <option value="0103">Arapiraca</option>
+                     <option value="0201">Dona Valmira</option>
+                     <option value="0106">Campina Grande</option>
+                     <option value="0107">Natal</option>
+                   </select>
+                 </div>
+                 <div class="form-group col-md-6">
+                   <label for="Dproduto">Produto</label>
+                   <input type="text" id="Dproduto" name="Dproduto" class="form-control" placeholder="Produto" [(ngModel)]="Dproduto">
+                 </div>
+                 <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="Cprotheus">Codigo Protheus</label>
+                        <input type="text" id="Cprotheus" name="Cprotheus" class="form-control" placeholder="Ex: 251155447" [(ngModel)]="Cprotheus">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="Cbarras">Codigo de Barras</label>
+                        <input type="text" id="Cbarras" name="Cbarras" class="form-control" placeholder="Ex: 7890437370257" [(ngModel)]="Cbarras">
+                    </div>
+                 </div>
+               </div>
+                  <button id="busca" type="submit" class="btn btn-primary">Buscar</button>
+                  <button id="reset" (click)='reset()' type="reset" class="btn btn-default">Limpar</button>
+             </form>
+             
+             <table class="table table-hover">
+                <div *ngIf="error" class="alert alert-danger">
+                    <div> 
+                        Pelo menos 1 dos campos devem ser preenchidos
+                    </div>
+                 </div>
+              <thead *ngIf="head">
+                <tr>
+                  <th width="45%" scope="col">Produto</th>
+                  <th width="20%" scope="col">Mundo</th>                  
+                  <th width="15%" scope="col">Codigo Protheus</th>
+                  <th width="15%" scope="col">Codigo de Barras</th>
+                </tr>
+              </thead>  
+              <tbody *ngIf="head">
+                <tr id='porque' data-target="#modalProjeto" *ngFor="let p of produtos"> <!-- (dblclick)=´´ -->
+                  <td  class="capitalize"> {{ (p.B1_DESC).toLowerCase() }} </td>
+                  <td> {{ p.B1_XDSCGRP }} </td>
+                  <td> {{ p.B1_COD }} </td>
+                  <td> {{ p.B1_CODBAR }} </td>
+                </tr>
+              </tbody>
+            </table>        
+        </div>
+        <!-- /.box-body -->
+      </div>
+    </div>
+    <!-- /.box-body -->
+  </div>
+</section>
+
+
+<!--Modal De Proj-->
+<div id="modalProjeto" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Novo Projeto</h3>
+            </div>
+            <div class="modal-body">
+                <form class="form-book" #formProjeto="ngForm" (ngSubmit)="saveProjeto(formProjeto)">
+                    <input type="hidden" id="id" name="id" class="form-control"
+                        >
+                    <div class="form-group">
+                        <label for="">Nome</label>
+                        <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome"
+                            >
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="solicitante">Solicitante</label>
+                            <select id="solicitante" name="solicitante" class="form-control"
+                                >
+                                <option value="João Ortiz">João Ortiz</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="empresa">Empresa</label>
+                            <input type="text" name="empresa" id="empresa" class="form-control" placeholder="Selecione"
+                               >
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inicio">Inicio</label>
+                            <input type="date" id="inicio" name="inicio" class="form-control"
+                               >
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="previsao">Previsão</label>
+                            <input type="date" name="previsao" id="previsao" class="form-control"
+                                >
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="kuser">Key-User</label>
+                            <select id="kuser" name="kuser" class="form-control"
+                                >
+                                <option value="Joeser Fermiano">Joeser Fermiano</option>
+                                <option value="João Ortiz">João Ortiz</option>
+                                <option value="Wylianne Costa">Wylianne Costa</option>
+                                <option value="Weldon Rafael">Weldon Rafael</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="kcontato">Key-Contato</label>
+                            <select id="kcontato" name="kcontato" class="form-control"
+                               >
+                                <option value="Joeser Fermiano">Joeser Fermiano</option>
+                                <option value="João Ortiz">João Ortiz</option>
+                                <option value="Wylianne Costa">Wylianne Costa</option>
+                                <option value="Weldon Rafael">Weldon Rafael</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="codigo">Código</label>
+                            <input type="number" name="codigo" id="codigo" class="form-control"
+                                >
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="orcamento">Orçamento Inicial</label>
+                            <input type="number" id="orcamento" name="orcamento" class="form-control"
+                                placeholder="Ex: R$ 100,00" >
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="prioridade">Prioridade</label>
+                            <select id="prioridade" name="prioridade" class="form-control"
+                               >
+                                <option value="3">Maxima</option>
+                                <option value="2">Media</option>
+                                <option value="1">Baixa</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="indispensavel">Indispensável</label>
+                            <select type="number" id="indispensavel" name="dataAP" class="form-control"
+                               >
+                                <option value="1"> Sim </option>
+                                <option value="0"> Nao </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="status">Status</label>
+                            <select id="status" name="status" class="form-control"
+                                >
+                                <option value="3">Finalizado</option>
+                                <option value="2">Andamento</option>
+                                <option value="1">Não Iniciado</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="cdppai">Projeto Pai</label>
+                            <select id="cdppai" name="cdppai" class="form-control"
+                               >
+                                <option *ngFor="let projetonome of projetos" [ngValue]="projetonome.codigo">
+                                    {{projetonome.nome}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="area">Área</label>
+                            <input type="text" id="area" name="area" class="form-control" placeholder="Área"
+                                >
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="subarea">Sub-Área</label>
+                            <input type="text" id="subarea" name="subarea" class="form-control" placeholder="Sub-Área"
+                                >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="escopo">Escopo</label>
+                        <textarea name="escopo" id="escopo" class="form-control" cols="50" rows="4" placeholder="-"
+                            ></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="objetivo">Objetivo</label>
+                        <textarea name="objetivo" id="objetivo" class="form-control" cols="50" rows="4" placeholder="-"
+                           ></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="beneficioqt">Beneficios Quantitativos</label>
+                        <textarea name="beneficioqt" id="beneficioqt" class="form-control" cols="50" rows="4"
+                            placeholder="-" ></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="beneficioql">Beneficios Qualitativos:</label>
+                        <textarea name="beneficioql" id="beneficioql" class="form-control" cols="50" rows="4"
+                            placeholder="-"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
