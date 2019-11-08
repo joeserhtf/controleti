@@ -17,6 +17,7 @@ export class ProdutosProtheusComponent implements OnInit {
 
   constructor(private http: HttpClient, private authservice: AuthService, public consultasService: ConsultasService,  private dataservice: DataApiService) { }
 
+  public filial = '0101';
   public produtos;
   public loaded = true;
   public head = false;
@@ -24,6 +25,25 @@ export class ProdutosProtheusComponent implements OnInit {
   public Dproduto = undefined;
   public Cprotheus = undefined;
   public Cbarras = undefined;
+  public user;
+  public isLogged;
+  public detail;
+  
+
+
+  onCheckUser(): void{
+    if(this.authservice.getCurrentUser() == null){
+      this.isLogged = false;
+    }else{
+      this.isLogged = true;
+    }
+  }
+
+  onAdmUser(): void{
+    if(this.isLogged){
+      this.user = this.authservice.getCurrentUser();
+    }
+  }
 
   myFunction(){
     document.getElementById("porque").setAttribute('data-toggle','modal');
@@ -32,6 +52,17 @@ export class ProdutosProtheusComponent implements OnInit {
   reset(){
     this.head = false;
     this.error = false;
+  }
+
+  onDetail(produto, filial){
+    this.consultasService.produto = {codigo: '',codbar: '',descricao: '',fornecedor: '',
+                                     estoqlj: '',estoqcd: '',estoqdep:''}
+    this.consultasService.getDetail(produto, this.user.codUser, filial).subscribe((detail) => {
+      this.detail = detail
+      this.consultasService.produto = Object.assign({}, this.detail[0]);
+    })
+   
+    
   }
 
   getprod(dprod: NgForm){
@@ -50,7 +81,7 @@ export class ProdutosProtheusComponent implements OnInit {
           dprod.value.Dproduto = dprod.value.Dproduto.replace(" ", "%")
           dprod.value.Dproduto = dprod.value.Dproduto.toUpperCase();
         } 
-        this.consultasService.getprod(dprod.value).subscribe((produtos) => {
+        this.consultasService.getprod(dprod.value, this.user.codUser).subscribe((produtos) => {
           if(produtos == null || isNullOrUndefined(produtos[0])){
             this.produtos = [{B1_COD: "Sem Registro", B1_CODBAR: "Sem Registro", B1_DESC: "Sem Registro", B1_XDSCGRP: "Sem Registro"}];
           }else{
@@ -59,9 +90,12 @@ export class ProdutosProtheusComponent implements OnInit {
             document.getElementById("busca").removeAttribute('disabled');
         })
       }
+      
   }
   
   ngOnInit() {
+    this.onCheckUser();
+    this.onAdmUser();
   }
 
 }

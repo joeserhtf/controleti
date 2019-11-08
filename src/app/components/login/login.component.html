@@ -9,7 +9,7 @@
     <div class="login-box-body">
       <h3 class="login-box-msg">Login</h3>
       <div class="alert alert-danger" role="alert" *ngIf="isError">
-        Email ou Senha Incorreta!
+        Email ou Senha Incorretos!
       </div>
       <form #formLogin="ngForm" (ngSubmit)="onLogin(formLogin)">
         <div class="form-group has-feedback">

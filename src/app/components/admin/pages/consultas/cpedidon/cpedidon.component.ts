@@ -17,6 +17,7 @@ export class CpedidonComponent implements OnInit {
 
 
   public isLogged: boolean = false;
+  public sl1;
 
   onCheckUser(): void{
     if(this.authservice.getCurrentUser() == null){

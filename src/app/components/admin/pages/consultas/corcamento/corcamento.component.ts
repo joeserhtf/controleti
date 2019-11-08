@@ -18,7 +18,9 @@ export class CorcamentoComponent implements OnInit {
   constructor(private http: HttpClient, private authservice: AuthService, public consultasService: ConsultasService,  private dataservice: DataApiService) { }
 
   public orcs;
-
+  public orc;
+  public filial;
+  
   getrcd(orcp: NgForm){
     this.consultasService.getorc(orcp.value).subscribe((orcs) => {
       this.orcs = orcs;

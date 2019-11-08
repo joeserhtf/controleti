@@ -11,9 +11,11 @@ export class ProfileComponent implements OnInit {
 
   constructor(private authService: AuthService) { }
   user: UserInterface;
+  public filiaiss;
 
   ngOnInit() {
     this.user = this.authService.getCurrentUser();
+    this.filiaiss = this.user.codVend;
   }
 
 }

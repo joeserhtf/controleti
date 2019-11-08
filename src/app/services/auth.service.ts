@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams  } from "@angular/common/http";
 import { Observable } from "rxjs/internal/Observable";
 import { map } from "rxjs/operators";
 import { isNullOrUndefined } from "util";
@@ -17,6 +17,9 @@ export class AuthService {
   
   global_api = `http://192.168.6.142:21181`;
 
+  public nvl2 = ['002291'];
+  public adm = ['002291', '000001']
+
   registerUser(name: string, email: string, password: string) {
     const url_api = "https://carajas-tic-dashboard.mybluemix.net/api/Users";
     return this.htttp
@@ -33,13 +36,27 @@ export class AuthService {
   }
 
 
-  loginuser(email, password){
-    const url_api = `${this.global_api}/api/auth/login`;
-    return this.htttp.post<UserInterface>(url_api, {email, password}, { headers: this.headers})
-      .pipe(map(data => data)); 
+  loginuser(user, password){
+    const url_api = `http://192.168.0.13:9191/rest/AUTHUSER?USR=${user}&PWD=${password}`;
+    return this.htttp.get(url_api)
+      .pipe(map(data => data));
+  //  const url_api = `${this.global_api}/api/auth/login`;
+  //  return this.htttp.post<UserInterface>(url_api, {email, password}, { headers: this.headers })
+  //    .pipe(map(data => data)); 
+
   }
 
-  setUser(user: UserInterface): void {
+  createToken(app, coduser, versao){
+    const url_api = `http://192.168.0.13:9191/rest/ctrver/VALIDAR?APP=${app}&CODUSER=${coduser}&VERSAO=${versao}`;
+    return this.htttp.put(url_api, { headers: this.headers })
+      .pipe(map(data => data));
+  //  const url_api = `${this.global_api}/api/auth/login`;
+  //  return this.htttp.post<UserInterface>(url_api, {email, password}, { headers: this.headers })
+  //    .pipe(map(data => data)); 
+
+  }
+
+  setUser(user): void {
     let user_string = JSON.stringify(user);
     localStorage.setItem("currentUser", user_string);
   }
@@ -67,6 +84,7 @@ export class AuthService {
     // const url_api = `https://carajas-tic-dashboard.mybluemix.net/api/Users/logout?access_token=${accessToken}`;
     localStorage.removeItem("accessToken");
     localStorage.removeItem("currentUser");
+    
     // return this.htttp.post<UserInterface>(url_api, { headers: this.headers });
   }
 }

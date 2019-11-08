@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { AuthService } from '../../../../services/auth.service';
 import { isNullOrUndefined } from 'util';
 import { ConsultasService } from '../../../../services/consultas.service';
+import { CONNREFUSED } from 'dns';
 
 
 @Component({
@@ -39,9 +40,9 @@ export class L1orcComponent implements OnInit {
           this.cont[l1.FILIAL]++;
         }
         if(typeof(this.cont[l1.STATUS]) != 'number') {
-          this.cont[l1.STATUS] = 1;
+          this.cont[l1.SITUA] = 1;
         } else {
-          this.cont[l1.STATUS]++;
+          this.cont[l1.SITUA]++;
         }
         this.cont['0000']++;
       }
@@ -57,9 +58,10 @@ export class L1orcComponent implements OnInit {
 
   get_PerFilial(filial){
     this.sl1f = [];
+    console.log(filial)
     if(filial == 'ER' || filial == 'RX'){
       for(let l1 of this.sl1){
-        if(l1.STATUS == filial){
+        if(l1.SITUA == filial){
           this.sl1f.push(l1);
         }
       }

@@ -19,6 +19,7 @@ export class CaixasattComponent implements OnInit {
 
   constructor(private pipe: FilterPipe, private http: HttpClient, private authservice: AuthService, private LojaServiceService: LojaServiceService) { }
   filtroString
+  public search5;
   public lojas;
   public loja = {id: 0, lstatus: 0, quantcx: 0};
   public quantcx = [];

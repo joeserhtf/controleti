@@ -14,4 +14,6 @@ export interface UserInterface {
     ramal?: string
     setoro?: string
     unidade?: string;
+    codUser?: string;
+    codVend?;
 }

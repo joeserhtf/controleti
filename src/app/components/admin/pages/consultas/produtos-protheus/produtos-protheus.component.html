@@ -23,7 +23,7 @@
                 <div class="form-row">
                  <div class="form-group col-md-6">
                    <label for="filial">Filial</label>
-                   <select name="filial" id="filial" class="form-control" >
+                   <select name="filial" id="filial" class="form-control" [(ngModel)]="filial" >
                      <option value="0101" selected>Matriz</option>
                      <option value="0104">João Pessoa</option>
                      <option value="0108">Cabedelo</option>
@@ -67,14 +67,16 @@
                   <th width="20%" scope="col">Mundo</th>                  
                   <th width="15%" scope="col">Codigo Protheus</th>
                   <th width="15%" scope="col">Codigo de Barras</th>
+                  <th width="5%" scope="col">Detalhes</th> 
                 </tr>
               </thead>  
               <tbody *ngIf="head">
-                <tr id='porque' data-target="#modalProjeto" *ngFor="let p of produtos"> <!-- (dblclick)=´´ -->
+                <tr *ngFor="let p of produtos">
                   <td  class="capitalize"> {{ (p.B1_DESC).toLowerCase() }} </td>
                   <td> {{ p.B1_XDSCGRP }} </td>
                   <td> {{ p.B1_COD }} </td>
                   <td> {{ p.B1_CODBAR }} </td>
+                  <td><Span class="glyphicon glyphicon-search" (click)="onDetail(p, filial)" data-toggle="modal" data-target="#modalProduto" ></Span></td>
                 </tr>
               </tbody>
             </table>        
@@ -88,154 +90,72 @@
 
 
 <!--Modal De Proj-->
-<div id="modalProjeto" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div id="modalProduto" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLabel">Novo Projeto</h3>
+                <h3 class="modal-title" id="exampleModalLabel">{{this.consultasService.produto.descricao}}</h3>
             </div>
             <div class="modal-body">
-                <form class="form-book" #formProjeto="ngForm" (ngSubmit)="saveProjeto(formProjeto)">
-                    <input type="hidden" id="id" name="id" class="form-control"
-                        >
-                    <div class="form-group">
-                        <label for="">Nome</label>
-                        <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome"
-                            >
-                    </div>
+                <form class="form-book" >
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="solicitante">Solicitante</label>
-                            <select id="solicitante" name="solicitante" class="form-control"
-                                >
-                                <option value="João Ortiz">João Ortiz</option>
-                            </select>
+                            <label for="codprot">Codigo Protheus</label>
+                            <input  disabled id="codprot" name="codprot" class="form-control" 
+                            [(ngModel)]="this.consultasService.produto.codigo" >
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="empresa">Empresa</label>
-                            <input type="text" name="empresa" id="empresa" class="form-control" placeholder="Selecione"
+                            <label for="codbar">Codigo Barras</label>
+                            <input disabled type="text" name="codbar" id="codbar" class="form-control"
+                            [(ngModel)]="this.consultasService.produto.codbar"
                                >
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inicio">Inicio</label>
-                            <input type="date" id="inicio" name="inicio" class="form-control"
+                            <label for="fornecedor">Fornecedor</label>
+                            <input disabled type="text" id="fornecedor" name="fornecedor" class="form-control" 
+                            [(ngModel)]="this.consultasService.produto.fornecedor"
                                >
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="previsao">Previsão</label>
-                            <input type="date" name="previsao" id="previsao" class="form-control"
+                            <label for="estoqlj">Estoque Loja</label>
+                            <input disabled type="text" name="estoqlj" id="estoqlj" class="form-control" 
+                            [(ngModel)]="this.consultasService.produto.estoqlj"
                                 >
                         </div>
                     </div>
                     <div class="form-row">
+                      <div class="form-group col-md-6">
+                          <label for="estoqdep">Estoque Deposito</label>
+                          <input disabled type="text" id="estoqdep" name="estoqdep" class="form-control" 
+                          [(ngModel)]="this.consultasService.produto.estoqdep"
+                             >
+                      </div>
+                      <div class="form-group col-md-6">
+                          <label for="estoqcd">Estoque CD</label>
+                          <input  disabled type="text" name="estoqcd" id="estoqcd" class="form-control" 
+                          [(ngModel)]="this.consultasService.produto.estoqcd"
+                              >
+                      </div>
+                      <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="kuser">Key-User</label>
-                            <select id="kuser" name="kuser" class="form-control"
-                                >
-                                <option value="Joeser Fermiano">Joeser Fermiano</option>
-                                <option value="João Ortiz">João Ortiz</option>
-                                <option value="Wylianne Costa">Wylianne Costa</option>
-                                <option value="Weldon Rafael">Weldon Rafael</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="kcontato">Key-Contato</label>
-                            <select id="kcontato" name="kcontato" class="form-control"
+                            <label for="prcprod">Preço</label>
+                            <input disabled type="text" id="prcprod" name="prcprod" class="form-control" 
+                            [(ngModel)]="this.consultasService.produto.prcprod"
                                >
-                                <option value="Joeser Fermiano">Joeser Fermiano</option>
-                                <option value="João Ortiz">João Ortiz</option>
-                                <option value="Wylianne Costa">Wylianne Costa</option>
-                                <option value="Weldon Rafael">Weldon Rafael</option>
-                            </select>
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="codigo">Código</label>
-                            <input type="number" name="codigo" id="codigo" class="form-control"
-                                >
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="orcamento">Orçamento Inicial</label>
-                            <input type="number" id="orcamento" name="orcamento" class="form-control"
-                                placeholder="Ex: R$ 100,00" >
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="prioridade">Prioridade</label>
-                            <select id="prioridade" name="prioridade" class="form-control"
-                               >
-                                <option value="3">Maxima</option>
-                                <option value="2">Media</option>
-                                <option value="1">Baixa</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="indispensavel">Indispensável</label>
-                            <select type="number" id="indispensavel" name="dataAP" class="form-control"
-                               >
-                                <option value="1"> Sim </option>
-                                <option value="0"> Nao </option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="status">Status</label>
-                            <select id="status" name="status" class="form-control"
-                                >
-                                <option value="3">Finalizado</option>
-                                <option value="2">Andamento</option>
-                                <option value="1">Não Iniciado</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="cdppai">Projeto Pai</label>
-                            <select id="cdppai" name="cdppai" class="form-control"
-                               >
-                                <option *ngFor="let projetonome of projetos" [ngValue]="projetonome.codigo">
-                                    {{projetonome.nome}}</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="area">Área</label>
-                            <input type="text" id="area" name="area" class="form-control" placeholder="Área"
+                            <input  disabled type="text" name="status" id="status" class="form-control" 
+                            [(ngModel)]="this.consultasService.produto.status"
                                 >
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="subarea">Sub-Área</label>
-                            <input type="text" id="subarea" name="subarea" class="form-control" placeholder="Sub-Área"
-                                >
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="escopo">Escopo</label>
-                        <textarea name="escopo" id="escopo" class="form-control" cols="50" rows="4" placeholder="-"
-                            ></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="objetivo">Objetivo</label>
-                        <textarea name="objetivo" id="objetivo" class="form-control" cols="50" rows="4" placeholder="-"
-                           ></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="beneficioqt">Beneficios Quantitativos</label>
-                        <textarea name="beneficioqt" id="beneficioqt" class="form-control" cols="50" rows="4"
-                            placeholder="-" ></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="beneficioql">Beneficios Qualitativos:</label>
-                        <textarea name="beneficioql" id="beneficioql" class="form-control" cols="50" rows="4"
-                            placeholder="-"></textarea>
-                    </div>
+                      </div>
+                  </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                        <button type="button" class="btn btn-primary"  data-dismiss="modal" >Fechar</button>
                     </div>
                 </form>
             </div>

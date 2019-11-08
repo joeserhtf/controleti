@@ -20,6 +20,9 @@ export class CretiraComponent implements OnInit {
 
   public rcd;
   public rd;
+  public orc;
+  public filial;
+  
 
   getrcd(rcd: NgForm){
     this.consultasService.getcd(rcd.value).subscribe((rd) => {

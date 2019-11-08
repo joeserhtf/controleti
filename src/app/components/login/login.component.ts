@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   checkbox_icheck: HTMLElement = document.getElementById('checkbox_icheck');
 
   constructor(private authService: AuthService, private router: Router) { }
-  public user: UserInterface = {
+  public user = {
     id: null,
     nome: "",
     email: "",
@@ -26,10 +26,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     setor: "",
     cargo: "",
     filial: "",
-    contato: ""
+    contato: "",
+    codUser: ""
   }
 
   public data;
+  public token;
   public isError = false;
 
   ngOnInit() {
@@ -46,20 +48,27 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   onLogin(form: NgForm){
     if(form.valid){
-       return this.authService.loginuser(this.user.email, this.user.password)
+       this.authService.loginuser(this.user.email, this.user.password)
        .subscribe(data => {
         this.data = data;
-        if(!isNullOrUndefined(this.data[0])){
-          this.authService.setUser(this.data[0]);
-          this.router.navigate(['/admin/unidades']);
-           setTimeout(() => {
-            location.reload();
-            }, 500); 
-           this.isError = false;
-        }else{
+        if(!isNullOrUndefined(this.data)){
+          this.authService.setUser(this.data);
+          var usert = this.authService.getCurrentUser();
+          console.log(usert.codUser)
+          this.authService.createToken('LIBCOM', usert.codUser, '1.1.1')
+          .subscribe(token => { 
+            this.token = token
+            this.authService.setToken(this.token[0].TOKEN);
+            this.router.navigate(['/admin/unidades']);
+            setTimeout(() => {
+              location.reload();
+              }, 200);
+            this.isError = false;
+          });
+        }else{          
           this.onIsError();
-        }      
-       },
+        }   
+        },
        error => this.onIsError());
     }else{
       this.onIsError();

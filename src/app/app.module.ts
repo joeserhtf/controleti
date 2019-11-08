@@ -29,6 +29,7 @@ import { HorarioComponent } from './components/admin/pages/horario/horario.compo
 import { ColaboradorComponent } from './components/admin/pages/colaborador/colaborador.component';
 import { FormsModule } from '@angular/forms';
 
+
 //Service
 import { DataApiService } from './services/data-api.service';
 import { CustofixoDataService } from './services/custofixo-data.service';
@@ -60,6 +61,7 @@ import { CorcamentoComponent } from './components/admin/pages/consultas/corcamen
 import { CpedidonComponent } from './components/admin/pages/consultas/cpedidon/cpedidon.component';
 import { ConsultasService } from './services/consultas.service';
 import { ProdutosProtheusComponent } from './components/admin/pages/consultas/produtos-protheus/produtos-protheus.component';
+import { MyFilterPipe } from './services/shared/pipes/cx.pipe';
 
 @NgModule({
   declarations: [
@@ -100,6 +102,7 @@ import { ProdutosProtheusComponent } from './components/admin/pages/consultas/pr
     CorcamentoComponent,
     CpedidonComponent,
     ProdutosProtheusComponent,
+    MyFilterPipe
   ],
   imports: [
     HttpModule,

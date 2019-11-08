@@ -151,7 +151,7 @@ export class TimesheetComponent implements OnInit {
   }
 
   onAdmUser(): void{
-    if(this.user.id == 1 || this.user.id == 2){
+    if(this.user.codUser == '002291' || this.user.id == 2){
       this.isAdm = true;
     }else{
       this.isAdm = false;
@@ -166,7 +166,7 @@ export class TimesheetComponent implements OnInit {
     this.user = this.authService.getCurrentUser();
     this. monthAT();
     this.getcolab();
-    this.selectedworker = this.user.id;
+    this.selectedworker = this.user.codUser;
     this.onAdmUser();
     this.fd;
     setTimeout(() => {

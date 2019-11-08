@@ -17,10 +17,10 @@ import { UserInterface } from './../../../../models/user-interface'
 export class LojaComponent implements OnInit {
 
   public lojas: LojaInterface;
-  public user: UserInterface;
+  public user;
   public isAdm: boolean = false;
 
-  constructor(private http: HttpClient, private authservice: AuthService, private LojaServiceService: LojaServiceService) { }
+  constructor(private http: HttpClient, private authservice: AuthService, public LojaServiceService: LojaServiceService) { }
 
   public isLogged: boolean = false;
 
@@ -29,6 +29,13 @@ export class LojaComponent implements OnInit {
       this.isLogged = false;
     }else{
       this.isLogged = true;
+    }
+  }
+
+  onAdmUser(): void{
+    if(this.isLogged){
+      this.user = this.authservice.getCurrentUser();
+      this.isAdm = this.authservice.adm.includes(this.user.codUser);
     }
   }
 
@@ -56,18 +63,7 @@ export class LojaComponent implements OnInit {
     this.LojaServiceService.selectedloja = Object.assign({}, loja);
   }
 
-  onAdmUser(): void{
-    this.user = this.authservice.getCurrentUser();
-    if(this.user){
-      if(this.user.id == 1 || this.user.id == 2){
-        this.isAdm = true;
-      }else{
-        this.isAdm = false;
-      }
-    }else{
-      this.isAdm = false;
-    }  
-  }
+  
 
   ngOnInit(): void { 
     this.onCheckUser();
