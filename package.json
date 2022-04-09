@@ -51,7 +51,7 @@
     "jqueryui": "^1.11.1",
     "jszip": "^3.1.5",
     "loopback-cli": "^5.0.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "morris.js": "github:morrisjs/morris.js",
     "ng-fullcalendar": "^1.7.1",
     "popper.js": "^1.14.6",
